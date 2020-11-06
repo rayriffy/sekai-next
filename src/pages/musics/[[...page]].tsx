@@ -16,8 +16,6 @@ interface Props {
 const Page: NextPage<Props> = props => {
   const { maxPage, currentPage } = props
 
-  console.log({ maxPage, currentPage })
-
   const pagination = useMemo(
     () => (
       <Pagination
