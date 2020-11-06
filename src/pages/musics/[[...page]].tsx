@@ -25,7 +25,7 @@ const Page: NextPage<Props> = props => {
         className="py-6 md:py-10 text-md md:text-lg"
       />
     ),
-    []
+    [currentPage]
   )
 
   return (
