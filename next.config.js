@@ -19,7 +19,7 @@ module.exports = withPlugins(
       excludeDefaultMomentLocales: true,
     },
     images: {
-      domains: [],
+      domains: ['sekai-res.dnaroma.eu'],
     },
     experimental: {
       modern: true,
