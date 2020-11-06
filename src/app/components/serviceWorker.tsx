@@ -1,9 +1,9 @@
-import { useEffect, useMemo, useState, FunctionComponent, memo } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 
 import { Speakerphone } from '../../core/components/icons/speakerphone'
 import { X } from '../../core/components/icons/x'
 
-export const ServiceWorker: FunctionComponent = memo(props => {
+export const ServiceWorker: React.FC = React.memo(props => {
   const [serviceWorkerStatus, setServiceWorkerStatus] = useState<string>('init')
   const [dismiss, setDismiss] = useState<boolean>(false)
 
