@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { Music } from '../../../@types/Music'
+import { Music } from '../../@types/Music'
 
 export const getMusics = async (): Promise<Music[]> => {
   const res = await axios.get<Music[]>(

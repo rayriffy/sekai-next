@@ -1,6 +1,6 @@
 import { chunk } from 'lodash'
 
-import { getMusics } from './getMusics'
+import { getMusics } from '../../../core/services/getMusics'
 import { itemsPerPage } from '../../../core/constants/itemsPerPage'
 
 import { Music } from '../../../@types/Music'
