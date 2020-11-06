@@ -1,0 +1,54 @@
+{
+  "name": "next-tailwind-ui",
+  "version": "1.0.0",
+  "description": "Complete Next template for repid development",
+  "repository": "git@github.com:rayriffy/next-tailwind-ui.git",
+  "author": "Phumrapee Limpianchop <contact@rayriffy.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next",
+    "start": "next start"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "@next/bundle-analyzer": "^10.0.1",
+    "@tailwindcss/ui": "^0.7.2",
+    "@zeit/next-workers": "^1.0.0",
+    "lodash": "^4.17.20",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.31",
+    "next": "^10.0.1",
+    "next-compose-plugins": "^2.2.0",
+    "next-offline": "^5.0.3",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "swr": "^0.3.8",
+    "tailwindcss": "^1.9.6",
+    "worker-loader": "^3.0.5"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@types/moment": "^2.13.0",
+    "@types/node": "^14.14.6",
+    "@types/react": "^16.9.56",
+    "babel-plugin-lodash": "^3.3.4",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.5.1",
+    "prettier": "^2.1.2",
+    "typescript": "^4.0.5"
+  }
+}
