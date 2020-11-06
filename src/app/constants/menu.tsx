@@ -17,8 +17,8 @@ export const menus: IMenu[] = [
   },
   {
     icon: MusicNote,
-    link: '/music',
+    link: '/musics',
     name: 'Music',
-    match: ['/music', '/music/p/[page]'],
+    match: ['/musics', '/musics/p/[page]'],
   },
 ]

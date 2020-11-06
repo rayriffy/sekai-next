@@ -72,11 +72,11 @@ export const ServiceWorker: React.FC = React.memo(props => {
   const getFullDescription = (code: string) => {
     switch (code) {
       case 'onServiceWorkerUpdateFound':
-        return `Updating Riffy H to ${process.env.buildNumber}!`
+        return `Updating Sekai to newer version!`
       case 'onServiceWorkerInstalled':
         return 'Ready to use when offline!'
       case 'onServiceWorkerUpdateReady':
-        return 'Update completed! Please reload to newer version of Riffy H'
+        return 'Update completed! Please reload to newer version of Sekai'
       default:
         return '###'
     }
