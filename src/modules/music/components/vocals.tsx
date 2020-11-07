@@ -86,11 +86,12 @@ export const Vocals: FunctionComponent<Props> = memo(props => {
           <h2 className="uppercase text-gray-700 font-bold text-sm my-2">
             Short Version
           </h2>
-          <audio
-            controls
-            className="w-full mt-2"
-            src={getAudioShort(targetVocal.assetbundleName)}
-          ></audio>
+          <audio controls className="w-full mt-2">
+            <source
+              src={getAudioShort(targetVocal.assetbundleName)}
+              type="audio/mp3"
+            ></source>
+          </audio>
           <h2 className="uppercase text-gray-700 font-bold text-sm my-2">
             Long Version
           </h2>
@@ -98,7 +99,12 @@ export const Vocals: FunctionComponent<Props> = memo(props => {
             controls
             className="w-full mt-2"
             src={getAudioFull(targetVocal.assetbundleName)}
-          ></audio>
+          >
+            <source
+              src={getAudioFull(targetVocal.assetbundleName)}
+              type="audio/mp3"
+            ></source>
+          </audio>
         </div>
         <div>
           <h2 className="uppercase text-gray-700 font-bold text-sm my-2">

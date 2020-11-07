@@ -83,7 +83,6 @@ const Component: FunctionComponent<Props> = memo(props => {
   return (
     <div>
       <video
-        src={video}
         controls={playable}
         onPlay={onPlay}
         onPause={onPause}
@@ -91,9 +90,12 @@ const Component: FunctionComponent<Props> = memo(props => {
         onSeeked={onSeeked}
         className="w-full h-auto"
         ref={videoRef}
-        playsInline
-      ></video>
-      <audio src={audio} ref={audioRef}></audio>
+      >
+        <source src={video} type="video/mp4"></source>
+      </video>
+      <audio ref={audioRef}>
+        <source src={audio} type="audio/mp3"></source>
+      </audio>
     </div>
   )
 })
