@@ -40,6 +40,7 @@
     "react-transition-group": "^4.4.1",
     "swr": "^0.3.8",
     "tailwindcss": "^1.9.6",
+    "tailwindcss-aspect-ratio": "^3.0.0",
     "tailwindcss-filters": "^3.0.0",
     "web-api-hooks": "^3.0.2",
     "worker-loader": "^3.0.5"

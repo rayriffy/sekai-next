@@ -1,16 +1,26 @@
-import { Fragment, FunctionComponent, useState, useMemo } from 'react'
+import {
+  Fragment,
+  FunctionComponent,
+  useState,
+  useMemo,
+  useEffect,
+  memo,
+} from 'react'
 
+import { MusicVideo } from './musicVideo'
 import { getAudioFull, getAudioShort } from '../services/getAudio'
+import { CharacterStack } from '../../../core/components/characterStack'
 
 import { MusicVocal } from '../../../@types/MusicVocal'
+import { Music } from '../../../@types/Music'
 
 interface Props {
   vocals: MusicVocal[]
-  fullVer?: boolean
+  music: Music
 }
 
-export const Vocals: FunctionComponent<Props> = props => {
-  const { vocals, fullVer = false } = props
+export const Vocals: FunctionComponent<Props> = memo(props => {
+  const { vocals, music } = props
 
   const [selectedVocalId, setSelectedVocalId] = useState<number>(vocals[0].id)
   const targetVocal = useMemo(
@@ -20,10 +30,7 @@ export const Vocals: FunctionComponent<Props> = props => {
 
   return (
     <Fragment>
-      <div className="">
-        <h2 className="uppercase text-gray-700 font-bold text-sm mb-2">
-          {fullVer ? 'Long' : 'Short'} Version
-        </h2>
+      <div>
         <div className="sm:hidden">
           <select
             aria-label="Selected tab"
@@ -43,8 +50,15 @@ export const Vocals: FunctionComponent<Props> = props => {
               </option>
             ))}
           </select>
+          <div className="pt-4">
+            <CharacterStack
+              characterIds={targetVocal.characters.map(
+                character => character.characterId
+              )}
+            />
+          </div>
         </div>
-        <div className="hidden sm:block">
+        <div className="hidden sm:flex sm:justify-between sm:items-center">
           <nav className="flex space-x-4">
             {vocals.map(vocal => (
               <button
@@ -60,17 +74,42 @@ export const Vocals: FunctionComponent<Props> = props => {
               </button>
             ))}
           </nav>
+          <CharacterStack
+            characterIds={targetVocal.characters.map(
+              character => character.characterId
+            )}
+          />
         </div>
       </div>
-      <audio
-        controls
-        className="w-full mt-2"
-        src={
-          fullVer
-            ? getAudioFull(targetVocal.assetbundleName)
-            : getAudioShort(targetVocal.assetbundleName)
-        }
-      ></audio>
+      <div className="block sm:grid sm:grid-cols-2 gap-4">
+        <div>
+          <h2 className="uppercase text-gray-700 font-bold text-sm my-2">
+            Short Version
+          </h2>
+          <audio
+            controls
+            className="w-full mt-2"
+            src={getAudioShort(targetVocal.assetbundleName)}
+          ></audio>
+          <h2 className="uppercase text-gray-700 font-bold text-sm my-2">
+            Long Version
+          </h2>
+          <audio
+            controls
+            className="w-full mt-2"
+            src={getAudioFull(targetVocal.assetbundleName)}
+          ></audio>
+        </div>
+        <div>
+          <h2 className="uppercase text-gray-700 font-bold text-sm my-2">
+            Music Video
+          </h2>
+          <MusicVideo
+            audio={getAudioFull(targetVocal.assetbundleName)}
+            music={music}
+          />
+        </div>
+      </div>
     </Fragment>
   )
-}
+})
