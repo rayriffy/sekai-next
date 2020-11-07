@@ -4,6 +4,7 @@ import Image from 'next/image'
 
 import { Vocals } from './vocals'
 import { DescriptionCard } from './descriptionCard'
+import { Difficulties } from './difficulties'
 
 import { Music } from '../../../@types/Music'
 import { MusicDifficulty } from '../../../@types/MusicDifficulty'
@@ -33,16 +34,17 @@ export const MusicDetail: FunctionComponent<Props> = memo(props => {
         </div>
         <div className="col-span-2 space-y-2 pt-4 md:pt-0">
           <h1 className="text-4xl font-bold text-gray-900">{music.title}</h1>
-          <div className="flex space-x-4 flex-wrap">
+          <div className="flex space-x-4 flex-wrap border-b pb-4 border-gray-200">
             {tags.map(tag => (
               <div
                 key={`music-tag-${tag.id}`}
                 className="bg-blue-500 px-2 py-1 rounded-md text-white text-xs font-bold uppercase"
               >
-                {tag.musicTag}
+                {tag.musicTag.split('_').join(' ')}
               </div>
             ))}
           </div>
+          <Difficulties difficulties={difficulties} />
         </div>
       </div>
       <div className="space-y-4 max-w-4xl mx-auto">

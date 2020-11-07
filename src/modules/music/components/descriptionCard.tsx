@@ -11,8 +11,6 @@ interface Props {
 export const DescriptionCard: FunctionComponent<Props> = memo(props => {
   const { music } = props
 
-  console.log(music)
-
   return (
     <div className="bg-white shadow overflow-hidden sm:rounded-lg my-8">
       <div className="px-4 py-5 border-b border-gray-200 sm:px-6">
