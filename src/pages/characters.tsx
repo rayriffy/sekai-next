@@ -1,4 +1,8 @@
+import { Fragment } from 'react'
+
 import { GetStaticProps, NextPage } from 'next'
+
+import { HeadTitle } from '../core/components/headTitle'
 
 import { GameCharacter } from '../@types/GameCharacter'
 import { UnitProfile } from '../@types/UnitProfile'
@@ -10,9 +14,10 @@ interface Props {
 
 const Page: NextPage<Props> = props => {
   return (
-    <div>
+    <Fragment>
+      <HeadTitle title="Characters" />
       <p className="text-sm text-gray-900">{JSON.stringify(props)}</p>
-    </div>
+    </Fragment>
   )
 }
 

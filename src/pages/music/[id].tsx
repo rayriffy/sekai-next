@@ -3,6 +3,7 @@ import { Fragment } from 'react'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
 import { MusicDetail } from '../../modules/music/components/detail'
+import { HeadTitle } from '../../core/components/headTitle'
 
 import { Music } from '../../@types/Music'
 import { MusicDifficulty } from '../../@types/MusicDifficulty'
@@ -21,6 +22,7 @@ const Page: NextPage<Props> = props => {
 
   return (
     <Fragment>
+      <HeadTitle title={music.title} />
       <MusicDetail {...props} />
       <div className="p-8 space-y-4 bg-gray-200">
         <h1 className="text-gray-900 font-bold text-xl">Debug</h1>

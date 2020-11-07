@@ -1,10 +1,15 @@
+import { Fragment } from 'react'
+
 import { NextPage } from 'next'
+
+import { HeadTitle } from '../core/components/headTitle'
 
 const Page: NextPage = props => {
   return (
-    <div>
+    <Fragment>
+      <HeadTitle title="Home" />
       <h1 className="font-bold text-2xl">Hello</h1>
-    </div>
+    </Fragment>
   )
 }
 

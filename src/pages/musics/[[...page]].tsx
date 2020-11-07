@@ -1,9 +1,10 @@
-import { useMemo } from 'react'
+import { Fragment, useMemo } from 'react'
 
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
 import { MusicsListing } from '../../modules/musics/components/listing'
 import { Pagination } from '../../core/components/pagination'
+import { HeadTitle } from '../../core/components/headTitle'
 
 import { Music } from '../../@types/Music'
 
@@ -29,11 +30,14 @@ const Page: NextPage<Props> = props => {
   )
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      {pagination}
-      <MusicsListing {...props} />
-      {pagination}
-    </div>
+    <Fragment>
+      <HeadTitle title="Musics" />
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {pagination}
+        <MusicsListing {...props} />
+        {pagination}
+      </div>
+    </Fragment>
   )
 }
 
