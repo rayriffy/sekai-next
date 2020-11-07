@@ -44,7 +44,7 @@ export const MobileOverlay: React.FC<IProps> = React.memo(props => {
             <React.Fragment>
               <div
                 ref={ref}
-                className="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-teal-600 text-white"
+                className="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-blue-800 text-white"
               >
                 <div className="absolute top-0 right-0 -mr-14 p-1">
                   <button

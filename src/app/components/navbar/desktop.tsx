@@ -14,15 +14,15 @@ const DesktopMenuLink: React.FC<IMenu> = React.memo(props => {
   return (
     <Link href={props.link}>
       <a
-        className={`group flex items-center px-2 py-2 text-sm leading-5 font-medium rounded-md focus:outline-none focus:bg-teal-500 transition ease-in-out duration-150 ${
+        className={`group flex items-center px-2 py-2 text-sm leading-5 font-medium rounded-md focus:outline-none focus:bg-blue-700 transition ease-in-out duration-150 ${
           isMatch
-            ? 'text-white bg-teal-700'
-            : 'text-teal-100 hover:text-white hover:bg-teal-500'
+            ? 'text-white bg-blue-900'
+            : 'text-blue-300 hover:text-white hover:bg-blue-700'
         }`}
       >
         <props.icon
-          className={`mr-3 h-6 w-6 group-hover:text-teal-200 group-focus:text-teal-200 transition ease-in-out duration-150 ${
-            isMatch ? 'text-teal-200' : 'text-teal-300'
+          className={`mr-3 h-6 w-6 group-hover:text-blue-200 group-focus:text-blue-200 transition ease-in-out duration-150 ${
+            isMatch ? 'text-blue-400' : 'text-blue-500'
           }`}
         />
         {props.name}
