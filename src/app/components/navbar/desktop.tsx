@@ -14,15 +14,15 @@ const DesktopMenuLink: React.FC<IMenu> = React.memo(props => {
   return (
     <Link href={props.link}>
       <a
-        className={`group flex items-center px-2 py-2 text-sm leading-5 font-medium rounded-md focus:outline-none focus:bg-gray-50 transition ease-in-out duration-150 ${
+        className={`group flex items-center px-2 py-2 text-sm leading-5 font-medium rounded-md focus:outline-none focus:bg-teal-500 transition ease-in-out duration-150 ${
           isMatch
-            ? 'text-gray-900 bg-gray-200'
-            : 'text-gray-700 hover:text-gray-900 hover:bg-gray-50'
+            ? 'text-white bg-teal-700'
+            : 'text-teal-100 hover:text-white hover:bg-teal-500'
         }`}
       >
         <props.icon
-          className={`mr-3 h-6 w-6 group-hover:text-gray-500 group-focus:text-gray-600 transition ease-in-out duration-150 ${
-            isMatch ? 'text-gray-500' : 'text-gray-400'
+          className={`mr-3 h-6 w-6 group-hover:text-teal-200 group-focus:text-teal-200 transition ease-in-out duration-150 ${
+            isMatch ? 'text-teal-200' : 'text-teal-300'
           }`}
         />
         {props.name}
@@ -41,7 +41,7 @@ export const DesktopNavbar: React.FC = React.memo(props => {
       </div>
       <div className="mt-8">
         <h3
-          className="px-3 text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider"
+          className="px-3 text-xs leading-4 font-semibold text-white uppercase tracking-wider"
           id="teams-headline"
         >
           Tools

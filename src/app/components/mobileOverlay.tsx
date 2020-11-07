@@ -44,7 +44,7 @@ export const MobileOverlay: React.FC<IProps> = React.memo(props => {
             <React.Fragment>
               <div
                 ref={ref}
-                className="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-white"
+                className="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-teal-600 text-white"
               >
                 <div className="absolute top-0 right-0 -mr-14 p-1">
                   <button
@@ -56,10 +56,8 @@ export const MobileOverlay: React.FC<IProps> = React.memo(props => {
                   </button>
                 </div>
                 <div className="px-4">
-                  <p className="font-bold text-3xl text-gray-800">
-                    Sekai Viewer
-                  </p>
-                  <p className="text-xs text-gray-500">
+                  <p className="font-bold text-3xl">Sekai Viewer</p>
+                  <p className="text-xs text-gray-200">
                     {process.env.buildNumber}
                   </p>
                 </div>

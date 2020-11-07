@@ -16,15 +16,15 @@ const MobileMenuLink: React.FC<IMenu> = props => {
   return (
     <Link href={link}>
       <a
-        className={`group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md focus:outline-none transition ease-in-out duration-150 ${
+        className={`group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md focus:bg-teal-500 focus:outline-none transition ease-in-out duration-150 ${
           isMatch
-            ? 'text-gray-900 bg-gray-100 hover:bg-gray-100 focus:bg-gray-200 hover:text-gray-900'
-            : 'text-gray-600 hover:bg-gray-50 focus:bg-gray-50 hover:text-gray-90'
+            ? 'text-white bg-teal-700'
+            : 'text-teal-100 hover:text-white hover:bg-teal-500'
         }`}
       >
         <props.icon
-          className={`mr-3 h-6 w-6 group-hover:text-gray-500 group-focus:text-gray-600 transition ease-in-out duration-150 ${
-            isMatch ? 'text-gray-500' : 'text-gray-400'
+          className={`mr-3 h-6 w-6 group-hover:text-teal-200 group-focus:text-teal-200 transition ease-in-out duration-150 ${
+            isMatch ? 'text-teal-200' : 'text-teal-300'
           }`}
         />
         {name}
@@ -46,7 +46,7 @@ export const MobileNavbar: React.FC = React.memo(props => {
       </div>
       <div className="mt-8">
         <h3
-          className="px-3 text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider"
+          className="px-3 text-xs leading-4 font-semibold text-white uppercase tracking-wider"
           id="teams-headline"
         >
           Tools
