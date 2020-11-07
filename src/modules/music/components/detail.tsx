@@ -20,7 +20,7 @@ export const MusicDetail: FunctionComponent<Props> = props => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-3 py-8 gap-8">
+      <div className="max-w-4xl mx-auto grid grid-cols-3 py-8 gap-8">
         <div className="col-span-1 rounded-lg overflow-hidden">
           <Image
             src={`https://sekai-res.dnaroma.eu/file/sekai-assets/music/jacket/${music.assetbundleName}_rip/${music.assetbundleName}.webp`}
@@ -28,9 +28,10 @@ export const MusicDetail: FunctionComponent<Props> = props => {
             height={740}
           />
         </div>
-        <div className="col-span-2">
+        <div className="col-span-2 space-y-4">
           <h1 className="text-2xl font-bold text-gray-900">{music.title}</h1>
           <Vocals vocals={vocals} />
+          <Vocals vocals={vocals} fullVer />
         </div>
       </div>
     </div>

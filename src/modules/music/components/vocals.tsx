@@ -1,15 +1,16 @@
 import { Fragment, FunctionComponent, useState, useMemo } from 'react'
 
-import { getAudioFull } from '../services/getAudio'
+import { getAudioFull, getAudioShort } from '../services/getAudio'
 
 import { MusicVocal } from '../../../@types/MusicVocal'
 
 interface Props {
   vocals: MusicVocal[]
+  fullVer?: boolean
 }
 
 export const Vocals: FunctionComponent<Props> = props => {
-  const { vocals } = props
+  const { vocals, fullVer = false } = props
 
   const [selectedVocalId, setSelectedVocalId] = useState<number>(vocals[0].id)
   const targetVocal = useMemo(
@@ -19,7 +20,10 @@ export const Vocals: FunctionComponent<Props> = props => {
 
   return (
     <Fragment>
-      <div className="flex justify-center">
+      <div className="">
+        <h2 className="uppercase text-gray-700 font-bold text-sm mb-2">
+          {fullVer ? 'Long' : 'Short'} Version
+        </h2>
         <div className="sm:hidden">
           <select
             aria-label="Selected tab"
@@ -58,9 +62,15 @@ export const Vocals: FunctionComponent<Props> = props => {
           </nav>
         </div>
       </div>
-      <div className="flex justify-center py-4">
-        <audio controls src={getAudioFull(targetVocal.assetbundleName)}></audio>
-      </div>
+      <audio
+        controls
+        className="w-full mt-2"
+        src={
+          fullVer
+            ? getAudioFull(targetVocal.assetbundleName)
+            : getAudioShort(targetVocal.assetbundleName)
+        }
+      ></audio>
     </Fragment>
   )
 }
