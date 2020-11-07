@@ -1,5 +1,7 @@
 import { Fragment, FunctionComponent, useState, useMemo } from 'react'
 
+import { getAudioFull } from '../services/getAudio'
+
 import { MusicVocal } from '../../../@types/MusicVocal'
 
 interface Props {
@@ -17,7 +19,7 @@ export const Vocals: FunctionComponent<Props> = props => {
 
   return (
     <Fragment>
-      <div>
+      <div className="flex justify-center">
         <div className="sm:hidden">
           <select
             aria-label="Selected tab"
@@ -46,8 +48,8 @@ export const Vocals: FunctionComponent<Props> = props => {
                 onClick={() => setSelectedVocalId(vocal.id)}
                 className={`px-3 py-2 font-medium text-sm leading-5 rounded-md focus:outline-none ${
                   selectedVocalId === vocal.id
-                    ? 'text-indigo-700 bg-indigo-100 focus:text-indigo-800 focus:bg-indigo-200'
-                    : 'text-gray-500 hover:text-gray-700 focus:text-indigo-600 focus:bg-indigo-50'
+                    ? 'text-blue-700 bg-blue-100 focus:text-blue-800 focus:bg-blue-200'
+                    : 'text-gray-500 hover:text-gray-700 focus:text-blue-600 focus:bg-blue-50'
                 }`}
               >
                 {vocal.caption}
@@ -56,7 +58,9 @@ export const Vocals: FunctionComponent<Props> = props => {
           </nav>
         </div>
       </div>
-      <div>{JSON.stringify(targetVocal)}</div>
+      <div className="flex justify-center py-4">
+        <audio controls src={getAudioFull(targetVocal.assetbundleName)}></audio>
+      </div>
     </Fragment>
   )
 }
