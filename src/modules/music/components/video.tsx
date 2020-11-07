@@ -91,6 +91,7 @@ const Component: FunctionComponent<Props> = memo(props => {
         onSeeked={onSeeked}
         className="w-full h-auto"
         ref={videoRef}
+        playsInline
       ></video>
       <audio src={audio} ref={audioRef}></audio>
     </div>
