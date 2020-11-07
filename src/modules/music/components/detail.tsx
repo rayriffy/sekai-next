@@ -28,12 +28,10 @@ export const MusicDetail: FunctionComponent<Props> = props => {
             height={740}
           />
         </div>
-        <div className="w-full">
+        <div className="col-span-2">
           <h1 className="text-2xl font-bold text-gray-900">{music.title}</h1>
+          <Vocals vocals={vocals} />
         </div>
-      </div>
-      <div className="">
-        <Vocals vocals={vocals} />
       </div>
     </div>
   )
