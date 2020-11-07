@@ -2,9 +2,9 @@ import { Fragment } from 'react'
 
 import { NextPage } from 'next'
 import { AppProps } from 'next/app'
-import Head from 'next/head'
 
 import { AppLayout } from '../app/components/appLayout'
+import { HeadTitle } from '../core/components/headTitle'
 
 import '../styles/tailwind.css'
 
@@ -13,9 +13,7 @@ const NextApp: NextPage<AppProps> = props => {
 
   return (
     <Fragment>
-      <Head>
-        <title>Next Template</title>
-      </Head>
+      <HeadTitle />
       <AppLayout>
         <Component {...pageProps} />
       </AppLayout>
