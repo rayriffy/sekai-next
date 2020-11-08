@@ -16,6 +16,7 @@ module.exports = withPlugins(
   ],
   {
     target: 'serverless',
+    analyticsId: '8IiZe32S3qEvfNoZOPXTkEuio2C',
     env: {
       buildNumber: moment().tz('Asia/Tokyo').format('YYYYMMDD.HH'),
     },
