@@ -68,7 +68,11 @@ const Page: NextPage<Props> = props => {
                 <button
                   onClick={() => setAfterTrainingCard(o => !o)}
                   disabled={card.rarity < 3}
-                  className="bg-white rounded-full border-4 border-gray-300 p-1 text-teal-500 relative z-10 focus:outline-none focus:border-teal-300 focus:shadow-outline-indigo transition ease-in-out duration-150"
+                  className={`${
+                    card.rarity < 3
+                      ? 'bg-gray-200 cursor-not-allowed'
+                      : 'bg-white'
+                  } rounded-full border-4 border-gray-300 p-1 text-teal-500 relative z-10 focus:outline-none focus:border-teal-300 focus:shadow-outline-indigo transition ease-in-out duration-150`}
                 >
                   <SwitchHorizontal className="w-6 h-6" />
                 </button>

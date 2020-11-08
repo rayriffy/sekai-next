@@ -9,7 +9,6 @@ import { Card } from '../../@types/Card'
 
 interface Props {
   card: Card
-  small?: boolean
   afterTraining?: boolean
   disableLink?: boolean
 }
@@ -19,16 +18,12 @@ interface StarProps {
 }
 
 export const CharacterCard: FunctionComponent<Props> = props => {
-  const { card, small, afterTraining = false, disableLink = false } = props
+  const { card, afterTraining = false, disableLink = false } = props
 
   const cardNode = useMemo(
     () => (
       <div className="rounded-lg overflow-hidden relative">
-        <div
-          className={`z-10 absolute bottom-2 left-2 ${
-            small ? 'w-4 md:w-6' : 'w-6 md:w-8'
-          }`}
-        >
+        <div className="z-10 absolute bottom-2 left-2 w-1/12">
           {Array.from({ length: card.rarity }).map((_, i) => (
             <Star
               key={`card-${card.id}-star-${i}-mode-${
@@ -38,11 +33,7 @@ export const CharacterCard: FunctionComponent<Props> = props => {
             />
           ))}
         </div>
-        <div
-          className={`z-10 absolute top-2 right-2 ${
-            small ? 'w-6' : 'w-6 md:w-8'
-          }`}
-        >
+        <div className="z-10 absolute top-2 right-2 w-1/12">
           <Image
             src={`/static/icon_attribute_${card.attr}.png`}
             width={88}

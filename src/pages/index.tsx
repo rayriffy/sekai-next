@@ -50,7 +50,7 @@ const Page: NextPage<Props> = props => {
           <CardHeading title="Latest card">
             <div className="grid gap-4 grid-cols-2">
               {cards.map(card => (
-                <CharacterCard key={`card-${card.id}`} card={card} small />
+                <CharacterCard key={`card-${card.id}`} card={card} />
               ))}
             </div>
           </CardHeading>
