@@ -37,6 +37,7 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
       cards: cards.map(card => ({
         ...card,
         cardParameters: [],
+        specialTrainingCosts: [],
       })),
     },
   }

@@ -24,7 +24,15 @@ export interface Card {
     cardParameterType: string
     power: number
   }[]
-  specialTrainingCosts: unknown[]
+  specialTrainingCosts: {
+    cardId: number
+    cost: {
+      quantity: number
+      resourceId: number
+      resourceLevel: number
+      resourceType: string
+    }
+  }[]
   masterLessonAchieveResources: {
     releaseConditionId: number
     cardId: number

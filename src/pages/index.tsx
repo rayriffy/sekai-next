@@ -39,7 +39,7 @@ const Page: NextPage<Props> = props => {
           <CardHeading title="Latest card">
             <div className="grid gap-4 grid-cols-2">
               {cards.map(card => (
-                <CharacterCard key={`card-${card.id}`} card={card} />
+                <CharacterCard key={`card-${card.id}`} card={card} small />
               ))}
             </div>
           </CardHeading>
@@ -85,7 +85,12 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
   return {
     props: {
       musics: filteredMusics,
-      cards: filteredCards,
+      // discard data that will not be rendered
+      cards: filteredCards.map(card => ({
+        ...card,
+        cardParameters: [],
+        specialTrainingCosts: [],
+      })),
     },
   }
 }
