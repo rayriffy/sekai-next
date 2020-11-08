@@ -6,7 +6,7 @@ interface Props {
   cards: Card[]
 }
 
-export const Cards: NextPage<Props> = props => {
+const Page: NextPage<Props> = props => {
   const { cards } = props
 
   return <div className="p-8">{JSON.stringify(cards)}</div>
@@ -23,3 +23,5 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
     },
   }
 }
+
+export default Page
