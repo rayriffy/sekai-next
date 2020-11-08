@@ -1,8 +1,7 @@
-import { Fragment } from 'react'
+import { Fragment, FunctionComponent } from 'react'
 
 import { GetStaticProps, NextPage } from 'next'
-
-import { TwitterTimelineEmbed } from 'react-twitter-embed'
+import dynamic from 'next/dynamic'
 
 import { HeadTitle } from '../core/components/headTitle'
 import { MusicCard } from '../core/components/musicCard'
@@ -13,6 +12,15 @@ import { Music } from '../@types/Music'
 import { Card } from '../@types/Card'
 import { Event } from '../@types/Event'
 import { EventCard } from '../core/components/eventCard'
+
+const TwitterTimelineEmbed = dynamic(
+  import('react-twitter-embed').then(
+    o => o.TwitterTimelineEmbed as FunctionComponent<any>
+  ),
+  {
+    ssr: false,
+  }
+)
 
 interface Props {
   musics: Music[]
