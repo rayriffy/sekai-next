@@ -18,7 +18,7 @@ export const HeadTitle: FunctionComponent<Props> = props => {
   const router = useRouter()
 
   const transformedTitle = useMemo(
-    () => (title ? `${title} · Sekai Viewer` : 'Sekai Viewer'),
+    () => (title ? `${title} · セカイ Wiki` : 'セカイ Wiki'),
     [title]
   )
 

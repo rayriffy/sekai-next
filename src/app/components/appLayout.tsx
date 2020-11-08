@@ -23,7 +23,7 @@ export const AppLayout: React.FC = props => {
   return (
     <React.Fragment>
       {/* <Unstable /> */}
-      <div className="h-screen flex overflow-hidden bg-gray-50">
+      <div className="h-screen flex overflow-hidden bg-gradient-to-tr from-blue-100">
         <MobileOverlay show={sidebarOpen} onToggleSidebar={onToggleSidebar} />
         <DesktopHeader />
         <div className="flex flex-col w-0 flex-1 overflow-hidden">
