@@ -22,7 +22,7 @@ export const EventCard: FunctionComponent<Props> = memo(props => {
   const eventStatus = useMemo(() => {
     const currentTime = moment()
     const eventStarted = moment(event.startAt)
-    const eventEnded = moment(event.closedAt)
+    const eventEnded = moment(event.aggregateAt)
 
     if (currentTime.isAfter(eventStarted) && currentTime.isBefore(eventEnded)) {
       return {

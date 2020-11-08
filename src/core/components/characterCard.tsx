@@ -21,8 +21,6 @@ interface StarProps {
 export const CharacterCard: FunctionComponent<Props> = props => {
   const { card, small, afterTraining = false, disableLink = false } = props
 
-  console.log(afterTraining)
-
   const cardNode = useMemo(
     () => (
       <div className="rounded-lg overflow-hidden relative">

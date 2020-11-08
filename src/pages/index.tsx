@@ -11,14 +11,17 @@ import { CharacterCard } from '../core/components/characterCard'
 
 import { Music } from '../@types/Music'
 import { Card } from '../@types/Card'
+import { Event } from '../@types/Event'
+import { EventCard } from '../core/components/eventCard'
 
 interface Props {
   musics: Music[]
   cards: Card[]
+  event: Event
 }
 
 const Page: NextPage<Props> = props => {
-  const { musics, cards } = props
+  const { musics, cards, event } = props
 
   return (
     <Fragment>
@@ -45,7 +48,9 @@ const Page: NextPage<Props> = props => {
           </CardHeading>
         </div>
         <div className="col-span-1 space-y-4 sm:space-y-6 lg:space-y-8">
-          <CardHeading title="Latest event"></CardHeading>
+          <CardHeading title="Latest event">
+            <EventCard event={event} />
+          </CardHeading>
           <CardHeading title="Official announcement">
             <TwitterTimelineEmbed
               sourceType="profile"
@@ -61,13 +66,19 @@ const Page: NextPage<Props> = props => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async context => {
-  const { sortBy, reverse, slice } = await import('lodash')
+  const { sortBy, reverse, slice, first } = await import('lodash')
 
   const { getMusics } = await import('../core/services/getMusics')
   const { getCards } = await import('../core/services/getCards')
+  const { getEvents } = await import('../core/services/getEvents')
+
+  const [musics, cards, events] = await Promise.all([
+    getMusics(),
+    getCards(),
+    getEvents(),
+  ])
 
   // get first 4 latest musics
-  const musics = await getMusics()
   const filteredMusics = slice(
     reverse(sortBy(musics, music => music.publishedAt)),
     0,
@@ -75,12 +86,14 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
   )
 
   // get first 4 latest cards
-  const cards = await getCards()
   const filteredCards = slice(
     reverse(sortBy(cards, card => card.releaseAt)),
     0,
     4
   )
+
+  // get first 4 latest cards
+  const filteredEvent = first(reverse(sortBy(events, event => event.startAt)))
 
   return {
     props: {
@@ -91,6 +104,7 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
         cardParameters: [],
         specialTrainingCosts: [],
       })),
+      event: filteredEvent,
     },
   }
 }
