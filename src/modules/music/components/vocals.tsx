@@ -13,6 +13,7 @@ import { CharacterStack } from '../../../core/components/characterStack'
 
 import { MusicVocal } from '../../../@types/MusicVocal'
 import { Music } from '../../../@types/Music'
+import { Audio } from './audio'
 
 interface Props {
   vocals: MusicVocal[]
@@ -43,7 +44,6 @@ export const Vocals: FunctionComponent<Props> = memo(props => {
             {vocals.map(vocal => (
               <option
                 key={`tab-vocal-select-${vocal.id}`}
-                selected={selectedVocalId === vocal.id}
                 value={vocal.id.toString()}
               >
                 {vocal.caption}
@@ -86,25 +86,16 @@ export const Vocals: FunctionComponent<Props> = memo(props => {
           <h2 className="uppercase text-gray-700 font-bold text-sm my-2">
             Short Version
           </h2>
-          <audio controls className="w-full mt-2">
-            <source
-              src={getAudioShort(targetVocal.assetbundleName)}
-              type="audio/mp3"
-            ></source>
-          </audio>
+          <Audio music={music} vocal={targetVocal} className="w-full mt-2" />
           <h2 className="uppercase text-gray-700 font-bold text-sm my-2">
             Long Version
           </h2>
-          <audio
-            controls
+          <Audio
+            music={music}
+            vocal={targetVocal}
+            fullVersion
             className="w-full mt-2"
-            src={getAudioFull(targetVocal.assetbundleName)}
-          >
-            <source
-              src={getAudioFull(targetVocal.assetbundleName)}
-              type="audio/mp3"
-            ></source>
-          </audio>
+          />
         </div>
         <div>
           <h2 className="uppercase text-gray-700 font-bold text-sm my-2">
@@ -113,6 +104,7 @@ export const Vocals: FunctionComponent<Props> = memo(props => {
           <MusicVideo
             audio={getAudioFull(targetVocal.assetbundleName)}
             music={music}
+            vocal={targetVocal}
           />
         </div>
       </div>

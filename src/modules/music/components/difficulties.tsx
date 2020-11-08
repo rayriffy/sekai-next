@@ -43,7 +43,6 @@ export const Difficulties: FunctionComponent<Props> = memo(props => {
             {difficulties.map(difficulty => (
               <option
                 key={`tab-difficulty-select-${difficulty.id}`}
-                selected={selectedDifficulty === difficulty.musicDifficulty}
                 value={difficulty.musicDifficulty}
               >
                 {capitalize(difficulty.musicDifficulty)}

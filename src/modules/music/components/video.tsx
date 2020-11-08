@@ -1,23 +1,28 @@
 import {
   FunctionComponent,
-  ReactEventHandler,
   memo,
   useCallback,
   useEffect,
   useState,
   useRef,
-  Fragment,
 } from 'react'
 
 import dynamic from 'next/dynamic'
 
+import { getMediaMetadata } from '../services/getMediaMetadata'
+
+import { Music } from '../../../@types/Music'
+import { MusicVocal } from '../../../@types/MusicVocal'
+
 interface Props {
+  music: Music
+  vocal: MusicVocal
   audio: string
   video: string
 }
 
 const Component: FunctionComponent<Props> = memo(props => {
-  const { audio, video } = props
+  const { audio, video, music, vocal } = props
 
   const audioRef = useRef<HTMLAudioElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -46,48 +51,50 @@ const Component: FunctionComponent<Props> = memo(props => {
     audioRef.current!.currentTime = currentTime
   }
 
-  const onPlay = useCallback<ReactEventHandler<HTMLVideoElement>>(
-    ({ currentTarget: { currentTime } }) => {
-      syncAudioTimecode(currentTime)
-      // play audio
-      audioRef.current?.play()
-    },
-    []
-  )
+  const onPlay = useCallback<(currentTime: number) => void>(currentTime => {
+    syncAudioTimecode(currentTime)
+    // play audio
+    audioRef.current.play()
+    videoRef.current.play()
 
-  const onPause = useCallback<ReactEventHandler<HTMLVideoElement>>(
-    ({ currentTarget: { currentTime } }) => {
-      syncAudioTimecode(currentTime)
-      // pause audio
-      audioRef.current?.pause()
-    },
-    []
-  )
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.metadata = getMediaMetadata(music, vocal)
 
-  const onEnded = useCallback<ReactEventHandler<HTMLVideoElement>>(
-    ({ currentTarget: { currentTime } }) => {
-      syncAudioTimecode(currentTime)
-      // pause audio
-      audioRef.current?.pause()
-    },
-    []
-  )
+      navigator.mediaSession.setActionHandler('play', () => {
+        onPlay(videoRef.current.currentTime)
+      })
+      navigator.mediaSession.setActionHandler('pause', () => {
+        onPause(videoRef.current.currentTime)
+      })
+    }
+  }, [])
 
-  const onSeeked = useCallback<ReactEventHandler<HTMLVideoElement>>(
-    ({ currentTarget: { currentTime } }) => {
-      syncAudioTimecode(currentTime)
-    },
-    []
-  )
+  const onPause = useCallback<(currentTime: number) => void>(currentTime => {
+    syncAudioTimecode(currentTime)
+    // pause audio
+    audioRef.current.pause()
+    videoRef.current.pause()
+  }, [])
+
+  const onEnded = useCallback<(currentTime: number) => void>(currentTime => {
+    syncAudioTimecode(currentTime)
+    // pause audio
+    audioRef.current.pause()
+    videoRef.current.pause()
+  }, [])
+
+  const onSeeked = useCallback<(currentTime: number) => void>(currentTime => {
+    syncAudioTimecode(currentTime)
+  }, [])
 
   return (
     <div>
       <video
         controls={playable}
-        onPlay={onPlay}
-        onPause={onPause}
-        onEnded={onEnded}
-        onSeeked={onSeeked}
+        onPlay={e => onPlay(e.currentTarget.currentTime)}
+        onPause={e => onPause(e.currentTarget.currentTime)}
+        onEnded={e => onEnded(e.currentTarget.currentTime)}
+        onSeeked={e => onSeeked(e.currentTarget.currentTime)}
         className="w-full h-auto"
         ref={videoRef}
       >

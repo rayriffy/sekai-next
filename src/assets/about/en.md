@@ -20,3 +20,5 @@ This site is built with [Next](https://nextjs.org) and deployed on [Vercel](http
 - All of the data are static, so I use **Static Generation** to cooked all of the data on build time, so there will not be any waiting time for the data to process
 - Most of image assets are already served in **WebP** form CDN though, but file sizes can still be able to improve. So, thanks to the major update of [Next 10](https://nextjs.org/blog/next-10) I am able to use **Automatic Image Optimization** to optimize and cache optimized image on-the-fly. (This will help to reduce CDN bandwidth as well because when image has been requested once, it will pull data from cache instead for the second time.)
 - **(This is not included at this moment)** This site is offline-ready, if your browser supports [Service Worker](https://caniuse.com/serviceworkers)
+
+Some page might have internal write-ups as well but that is in to-do list at the moment, but keep looking forward to it.

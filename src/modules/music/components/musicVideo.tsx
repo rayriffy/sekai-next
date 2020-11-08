@@ -2,18 +2,20 @@ import { FunctionComponent, memo, useMemo, useState, Fragment } from 'react'
 
 import { Video } from './video'
 import { getMusicVideo } from '../services/getMusicVideo'
+import { musicCategoryToLocaleText } from '../services/musicCategoryToLocaleText'
 
 import { Music } from '../../../@types/Music'
 import { MusicCategory } from '../../../@types/MusicCategory'
-import { musicCategoryToLocaleText } from '../services/musicCategoryToLocaleText'
+import { MusicVocal } from '../../../@types/MusicVocal'
 
 interface Props {
   audio: string
   music: Music
+  vocal: MusicVocal
 }
 
 export const MusicVideo: FunctionComponent<Props> = memo(props => {
-  const { audio, music } = props
+  const { music } = props
 
   // remove 'music' category away
   const filteredMusicCategory = useMemo(
@@ -54,10 +56,7 @@ export const MusicVideo: FunctionComponent<Props> = memo(props => {
               ))}
             </nav>
           ) : null}
-          <Video
-            audio={audio}
-            video={getMusicVideo(music.id, selectedCategory)}
-          />
+          <Video video={getMusicVideo(music.id, selectedCategory)} {...props} />
         </Fragment>
       )}
     </div>

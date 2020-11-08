@@ -3,6 +3,8 @@ import { FunctionComponent, memo } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
+import { getMusicCover } from '../../modules/musics/services/getMusicCover'
+
 import { Music } from '../../@types/Music'
 
 interface Props {
@@ -40,7 +42,7 @@ export const MusicCard: FunctionComponent<Props> = memo(props => {
             </div>
           )}
           <Image
-            src={`https://sekai-res.dnaroma.eu/file/sekai-assets/music/jacket/${music.assetbundleName}_rip/${music.assetbundleName}.webp`}
+            src={getMusicCover(music.assetbundleName)}
             width={740}
             height={740}
           />

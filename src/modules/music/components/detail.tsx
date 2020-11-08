@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { Vocals } from './vocals'
 import { DescriptionCard } from './descriptionCard'
 import { Difficulties } from './difficulties'
+import { getMusicCover } from '../../musics/services/getMusicCover'
 
 import { Music } from '../../../@types/Music'
 import { MusicDifficulty } from '../../../@types/MusicDifficulty'
@@ -26,7 +27,7 @@ export const MusicDetail: FunctionComponent<Props> = memo(props => {
       <div className="max-w-4xl mx-auto block sm:grid sm:grid-cols-3 py-8 gap-8">
         <div className="col-span-1">
           <Image
-            src={`https://sekai-res.dnaroma.eu/file/sekai-assets/music/jacket/${music.assetbundleName}_rip/${music.assetbundleName}.webp`}
+            src={getMusicCover(music.assetbundleName)}
             className="rounded-lg"
             width={740}
             height={740}
