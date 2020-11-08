@@ -3,9 +3,7 @@ import { Fragment, useEffect } from 'react'
 import { GetStaticProps, NextPage } from 'next'
 
 import { HeadTitle } from '../core/components/headTitle'
-
 import { CharactersListing } from '../modules/characters/components/listing'
-
 import { GameCharacter } from '../@types/GameCharacter'
 import { UnitProfile } from '../@types/UnitProfile'
 
@@ -26,7 +24,6 @@ const Page: NextPage<Props> = props => {
   return (
     <Fragment>
       <HeadTitle title="Characters" />
-      {/* <p className="text-sm text-gray-900">{JSON.stringify(props)}</p> */}
       <CharactersListing {...props} />
     </Fragment>
   )

@@ -1,18 +1,19 @@
-import React from 'react'
-
-import { MenuAlt1 } from '../../../core/components/icons/menuAlt1'
+import { FunctionComponent, memo } from 'react'
 
 import { useNetworkAvailability } from 'web-api-hooks'
+
+import { useStoreon } from '../../../context/storeon'
+import { MenuAlt1 } from '../../../core/components/icons/menuAlt1'
 
 interface IProps {
   onToggleSidebar?(): void
 }
 
-export const MobileHeader: React.FC<IProps> = React.memo(props => {
+export const MobileHeader: FunctionComponent<IProps> = memo(props => {
   const { onToggleSidebar = () => {} } = props
 
   return (
-    <div className="relative z-10 flex-shrink-0 flex h-16 bg-white border-b border-gray-200 lg:hidden">
+    <div className="relative z-10 flex-shrink-0 flex h-16 bg-white border-b border-gray-200">
       <button
         onClick={onToggleSidebar}
         className="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:bg-gray-100 focus:text-gray-600 lg:hidden"
@@ -23,11 +24,22 @@ export const MobileHeader: React.FC<IProps> = React.memo(props => {
           <Indicator />
         </div>
       </button>
+      <Title />
     </div>
   )
 })
 
-const Indicator: React.FC = React.memo(props => {
+const Title: FunctionComponent = memo(props => {
+  const { title } = useStoreon('title')
+
+  return (
+    <div className="flex justify-center items-center px-4 sm:px-6 lg:px-8">
+      <h2 className="text-gray-800 font-bold text-xl">{title}</h2>
+    </div>
+  )
+})
+
+const Indicator: FunctionComponent = memo(props => {
   const isOnline = useNetworkAvailability()
 
   if (!isOnline) {

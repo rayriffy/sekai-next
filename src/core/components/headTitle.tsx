@@ -1,7 +1,9 @@
-import { FunctionComponent, useMemo } from 'react'
+import { FunctionComponent, useMemo, useEffect } from 'react'
 
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+
+import { useStoreon } from '../../context/storeon'
 
 interface Props {
   title?: string
@@ -16,11 +18,16 @@ export const HeadTitle: FunctionComponent<Props> = props => {
   } = props
 
   const router = useRouter()
+  const { dispatch } = useStoreon('title')
 
   const transformedTitle = useMemo(
     () => (title ? `${title} · セカイ Wiki` : 'セカイ Wiki'),
     [title]
   )
+
+  useEffect(() => {
+    dispatch('title/set', title)
+  }, [title])
 
   return (
     <Head>
