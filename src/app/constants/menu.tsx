@@ -1,3 +1,4 @@
+import { Collection } from '../../core/components/icons/collection'
 import { Home } from '../../core/components/icons/home'
 import { MusicNote } from '../../core/components/icons/musicNote'
 import { User } from '../../core/components/icons/user'
@@ -27,5 +28,11 @@ export const menus: IMenu[] = [
     link: '/characters',
     name: 'Characters',
     match: ['/characters', '/character/[id]'],
+  },
+  {
+    icon: Collection,
+    link: '/cards',
+    name: 'Cards',
+    match: ['/cards', '/card/[id]'],
   },
 ]
