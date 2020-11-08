@@ -1,6 +1,7 @@
 import { Calendar } from '../../core/components/icons/calendar'
 import { Collection } from '../../core/components/icons/collection'
 import { Home } from '../../core/components/icons/home'
+import { InformationCircle } from '../../core/components/icons/informationCircle'
 import { MusicNote } from '../../core/components/icons/musicNote'
 import { User } from '../../core/components/icons/user'
 
@@ -41,5 +42,11 @@ export const menus: IMenu[] = [
     link: '/events',
     name: 'Events',
     match: ['/events', '/event/[id]'],
+  },
+  {
+    icon: InformationCircle,
+    link: '/about',
+    name: 'About',
+    match: ['/about'],
   },
 ]
