@@ -1,5 +1,7 @@
+import { Unit } from './Unit'
+
 export interface UnitProfile {
-  unit: string
+  unit: Unit
   unitName: string
   seq: number
   profileSentence: string

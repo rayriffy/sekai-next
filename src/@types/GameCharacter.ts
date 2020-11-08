@@ -1,3 +1,8 @@
+import { BreastSize } from './BreastSize'
+import { Figure } from './Figure'
+import { Gender } from './Gender'
+import { Unit } from './Unit'
+
 export interface GameCharacter {
   id: number
   seq: number
@@ -6,12 +11,12 @@ export interface GameCharacter {
   givenName: string
   firstNameRuby: string
   givenNameRuby: string
-  gender: string
+  gender: Gender
   height: number
   live2dHeightAdjustment: number
-  figure: string
-  breastSize: string
+  figure: Figure
+  breastSize: BreastSize
   modelName: string
-  unit: string
+  unit: Unit
   supportUnitType: string
 }

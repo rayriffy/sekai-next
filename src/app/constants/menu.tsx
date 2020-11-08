@@ -1,5 +1,6 @@
 import { Home } from '../../core/components/icons/home'
 import { MusicNote } from '../../core/components/icons/musicNote'
+import { User } from '../../core/components/icons/user'
 
 export interface IMenu {
   icon: React.FC<React.SVGProps<SVGSVGElement>>
@@ -18,7 +19,13 @@ export const menus: IMenu[] = [
   {
     icon: MusicNote,
     link: '/musics',
-    name: 'Music',
+    name: 'Musics',
     match: ['/musics/[[...page]]', '/music/[id]'],
+  },
+  {
+    icon: User,
+    link: '/characters',
+    name: 'Characters',
+    match: ['/characters', '/character/[id]'],
   },
 ]
