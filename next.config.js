@@ -17,7 +17,7 @@ module.exports = withPlugins(
   {
     target: 'serverless',
     env: {
-      buildNumber: moment().tz('Asia/Bangkok').format('YYYYMMDD.HH'),
+      buildNumber: moment().tz('Asia/Tokyo').format('YYYYMMDD.HH'),
     },
     future: {
       excludeDefaultMomentLocales: true,
