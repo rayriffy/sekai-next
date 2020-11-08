@@ -11,7 +11,7 @@ import { Music } from '../../@types/Music'
 interface Props {
   musics: Music[]
   maxPage: number
-  currentPage: string
+  currentPage: number
 }
 
 const Page: NextPage<Props> = props => {
@@ -21,7 +21,7 @@ const Page: NextPage<Props> = props => {
     () => (
       <Pagination
         max={maxPage}
-        current={Number(currentPage)}
+        current={currentPage}
         prefix="/musics/"
         className="py-6 md:py-10 text-md md:text-lg"
       />
@@ -48,14 +48,14 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
   )
 
   const { params } = context
-  const currentPage: string = get(params, 'page[1]', 1)
+  const currentPage = Number(get(params, 'page[1]', '1'))
 
   const chunks = await getMusicsChunks()
 
   return {
     props: {
       // minus 1 refer to index
-      musics: get(chunks, Number(currentPage) - 1),
+      musics: get(chunks, currentPage - 1),
       // for pagination
       currentPage,
       maxPage: chunks.length,
