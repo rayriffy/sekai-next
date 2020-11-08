@@ -1,5 +1,9 @@
+import { Fragment, useEffect } from 'react'
+
 import { GetStaticProps, NextPage } from 'next'
-import { useEffect } from 'react'
+
+import { HeadTitle } from '../core/components/headTitle'
+import { CardsListing } from '../modules/cards/components/listing'
 
 import { Card } from '../@types/Card'
 
@@ -14,7 +18,12 @@ const Page: NextPage<Props> = props => {
     console.log(cards)
   }, [cards])
 
-  return <div className="p-8">{JSON.stringify(cards)}</div>
+  return (
+    <Fragment>
+      <HeadTitle title="Cards" />
+      <CardsListing {...props} />
+    </Fragment>
+  )
 }
 
 export const getStaticProps: GetStaticProps<Props> = async context => {
