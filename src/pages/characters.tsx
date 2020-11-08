@@ -10,17 +10,18 @@ import { GameCharacter } from '../@types/GameCharacter'
 import { UnitProfile } from '../@types/UnitProfile'
 
 interface Props {
-  unitProfiles: UnitProfile[]
-  gameCharacters: GameCharacter[]
+  grouppedGameCharacters: {
+    unit: UnitProfile
+    characters: GameCharacter[]
+  }[]
 }
 
 const Page: NextPage<Props> = props => {
-  const { unitProfiles, gameCharacters } = props
+  const { grouppedGameCharacters } = props
 
   useEffect(() => {
-    console.log('unitProfiles', unitProfiles)
-    console.log('gameCharacters', gameCharacters)
-  }, [unitProfiles, gameCharacters])
+    console.log('grouppedGameCharacters', grouppedGameCharacters)
+  }, [grouppedGameCharacters])
 
   return (
     <Fragment>
@@ -46,6 +47,12 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
     props: {
       unitProfiles,
       gameCharacters,
+      grouppedGameCharacters: unitProfiles.map(unitProfile => ({
+        unit: unitProfile,
+        characters: gameCharacters.filter(
+          gameCharacter => gameCharacter.unit === unitProfile.unit
+        ),
+      })),
     },
   }
 }
