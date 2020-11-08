@@ -1,3 +1,4 @@
+import { Calendar } from '../../core/components/icons/calendar'
 import { Collection } from '../../core/components/icons/collection'
 import { Home } from '../../core/components/icons/home'
 import { MusicNote } from '../../core/components/icons/musicNote'
@@ -34,5 +35,11 @@ export const menus: IMenu[] = [
     link: '/cards',
     name: 'Cards',
     match: ['/cards', '/card/[id]'],
+  },
+  {
+    icon: Calendar,
+    link: '/events',
+    name: 'Events',
+    match: ['/events', '/event/[id]'],
   },
 ]

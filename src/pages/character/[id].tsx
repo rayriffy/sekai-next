@@ -1,4 +1,8 @@
+import { Fragment } from 'react'
+
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+
+import { HeadTitle } from '../../core/components/headTitle'
 
 import { GameCharacter } from '../../@types/GameCharacter'
 import { CharacterProfile } from '../../@types/CharacterProfile'
@@ -13,12 +17,19 @@ interface Props {
 }
 
 const Page: NextPage<Props> = props => {
+  const { character } = props
+
   return (
-    <div className="p-8 text-sm text-gray-900">{JSON.stringify(props)}</div>
+    <Fragment>
+      <HeadTitle
+        title={`${character.firstName} ${character.givenName} (${character.firstNameRuby} ${character.givenNameRuby})`}
+      />
+      <div className="p-8 text-sm text-gray-900">{JSON.stringify(props)}</div>
+    </Fragment>
   )
 }
 
-export const getStaticProps: GetStaticProps = async context => {
+export const getStaticProps: GetStaticProps<Props> = async context => {
   const { getGameCharacters } = await import(
     '../../core/services/getGameCharacters'
   )
