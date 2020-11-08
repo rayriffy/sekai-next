@@ -49,21 +49,26 @@ export const EventCard: FunctionComponent<Props> = memo(props => {
           <div
             className={`absolute top-0 right-0 z-10 px-2 py-1 text-sm font-bold text-white rounded-bl-md uppercase ${
               eventStatus.code === 0
-                ? 'bg-green-500'
+                ? 'bg-green-600'
                 : eventStatus.code === 1
-                ? 'bg-blue-500'
-                : 'bg-orange-500'
+                ? 'bg-blue-600'
+                : 'bg-orange-600'
             }`}
           >
             {eventStatus.text}
           </div>
           <div className="absolute bottom-4 left-2 z-10 w-1/2">
-            <Image src={getEventLogo(event.assetbundleName)} unsized />
+            <Image
+              src={getEventLogo(event.assetbundleName)}
+              alt={`${event.name} Logo`}
+              unsized
+            />
           </div>
           <Image
             src={getEventBackground(event.assetbundleName)}
             width={2048}
             height={1261}
+            alt={`${event.name} Background`}
           />
         </div>
       </a>

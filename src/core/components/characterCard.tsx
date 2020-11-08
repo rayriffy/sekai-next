@@ -47,6 +47,7 @@ export const CharacterCard: FunctionComponent<Props> = props => {
             src={`/static/icon_attribute_${card.attr}.png`}
             width={88}
             height={88}
+            alt={card.attr}
           />
         </div>
         <div className="z-10 absolute top-0 bottom-0 left-0 right-0">
@@ -54,6 +55,7 @@ export const CharacterCard: FunctionComponent<Props> = props => {
             src={`/static/frame/cardFrame_L_${card.rarity}.png`}
             width={2048}
             height={1261}
+            alt="Card Frame"
           />
         </div>
         <Image
@@ -63,6 +65,7 @@ export const CharacterCard: FunctionComponent<Props> = props => {
           src={getCard(card.assetbundleName, afterTraining)}
           width={2048}
           height={1261}
+          alt={card.prefix}
         />
       </div>
     ),
@@ -90,6 +93,7 @@ export const Star: FunctionComponent<StarProps> = memo(props => {
       }.png`}
       width={72}
       height={70}
+      alt="Star"
     />
   )
 })
