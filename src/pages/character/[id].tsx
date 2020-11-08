@@ -3,11 +3,13 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { GameCharacter } from '../../@types/GameCharacter'
 import { CharacterProfile } from '../../@types/CharacterProfile'
 import { Music } from '../../@types/Music'
+import { Card } from '../../@types/Card'
 
 interface Props {
   character: GameCharacter
   profile: CharacterProfile
-  music: Music
+  musics: Music[]
+  cards: Card[]
 }
 
 const Page: NextPage<Props> = props => {
@@ -26,6 +28,7 @@ export const getStaticProps: GetStaticProps = async context => {
   )
   const { getMusics } = await import('../../core/services/getMusics')
   const { getMusicVocals } = await import('../../core/services/getMusicVocals')
+  const { getCards } = await import('../../core/services/getCards')
 
   const targetId = Number(context.params.id)
 
@@ -35,10 +38,11 @@ export const getStaticProps: GetStaticProps = async context => {
   )
 
   // mass data grinding
-  const [characterProfiles, musics, musicVocals] = await Promise.all([
+  const [characterProfiles, musics, musicVocals, cards] = await Promise.all([
     getCharacterProfiles(),
     getMusics(),
     getMusicVocals(),
+    getCards(),
   ])
 
   // get character profile
@@ -52,17 +56,21 @@ export const getStaticProps: GetStaticProps = async context => {
       .map(character => character.characterId)
       .includes(targetId)
   )
-  const targetMusic = musics.filter(music =>
+  const targetMusics = musics.filter(music =>
     targetMusicVocals
       .map(targetMusicVocal => targetMusicVocal.musicId)
       .includes(music.id)
   )
 
+  // get character card
+  const targetCards = cards.filter(card => card.characterId === targetId)
+
   return {
     props: {
       character: targetCharacter,
       profile: targetCharacterProfile,
-      music: targetMusic,
+      musics: targetMusics,
+      cards: targetCards,
     },
   }
 }
