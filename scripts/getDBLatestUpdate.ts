@@ -2,27 +2,7 @@
  * This script is being used to check for an update from Sekai-World/sekai-master-db-diff. If it is, this script will trigger Vercel to redeploy the site.
  */
 
-import axios from 'axios'
-
-const {
-  GITHUB_GRAPHQL_URL = 'https://api.github.com/graphql',
-  PERSONAL_TOKEN,
-} = process.env
-
-const sendQuery = (query: string) =>
-  axios.post(
-    GITHUB_GRAPHQL_URL,
-    {
-      query,
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${PERSONAL_TOKEN}`,
-        Accept: `application/json`,
-      },
-    }
-  )
-
+import { sendQuery } from './functions/sendQuery'
 ;(async () => {
   const query = `
     query { 

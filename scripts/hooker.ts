@@ -7,11 +7,9 @@ import moment from 'moment'
 import fs from 'fs'
 import path from 'path'
 
-const {
-  GITHUB_GRAPHQL_URL = 'https://api.github.com/graphql',
-  PERSONAL_TOKEN,
-  DEPLOY_HOOKS,
-} = process.env
+import { sendQuery } from './functions/sendQuery'
+
+const { DEPLOY_HOOKS } = process.env
 
 const cacheDirectory = path.join(__dirname, '../.cache')
 const fileEndpoint = path.join(cacheDirectory, 'data.json')
@@ -21,20 +19,6 @@ const defaultValues = {
     updatedAt: moment('2000-06-22').toISOString(),
   },
 }
-
-const sendQuery = (query: string) =>
-  axios.post(
-    GITHUB_GRAPHQL_URL,
-    {
-      query,
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${PERSONAL_TOKEN}`,
-        Accept: `application/json`,
-      },
-    }
-  )
 
 ;(async () => {
   // If cache directory does not exist, then create it with default value
