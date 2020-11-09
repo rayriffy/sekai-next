@@ -3,7 +3,8 @@ import { FunctionComponent, memo, useMemo } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import moment from 'moment'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
 
 import {
   getEventBackground,
@@ -20,9 +21,11 @@ export const EventCard: FunctionComponent<Props> = memo(props => {
   const { event } = props
 
   const eventStatus = useMemo(() => {
-    const currentTime = moment()
-    const eventStarted = moment(event.startAt)
-    const eventEnded = moment(event.aggregateAt)
+    dayjs.extend(relativeTime)
+
+    const currentTime = dayjs()
+    const eventStarted = dayjs(event.startAt)
+    const eventEnded = dayjs(event.aggregateAt)
 
     if (currentTime.isAfter(eventStarted) && currentTime.isBefore(eventEnded)) {
       return {
@@ -32,12 +35,12 @@ export const EventCard: FunctionComponent<Props> = memo(props => {
     } else if (currentTime.isBefore(eventStarted)) {
       return {
         code: 1,
-        text: `Staring ${moment(eventStarted).fromNow()}`,
+        text: `Staring ${dayjs(eventStarted).toNow()}`,
       }
     } else {
       return {
         code: 2,
-        text: `Ended ${moment(eventEnded).fromNow()}`,
+        text: `Ended ${dayjs(eventEnded).toNow()}`,
       }
     }
   }, [])

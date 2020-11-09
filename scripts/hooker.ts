@@ -3,7 +3,7 @@
  */
 
 import axios from 'axios'
-import moment from 'moment'
+import dayjs from 'dayjs'
 import fs from 'fs'
 import path from 'path'
 
@@ -14,7 +14,7 @@ const fileEndpoint = path.join(cacheDirectory, 'data.json')
 const defaultValues = {
   version: 1,
   data: {
-    updatedAt: moment('2000-06-22').toISOString(),
+    updatedAt: dayjs('2000-06-22').toISOString(),
   },
 }
 
@@ -36,9 +36,9 @@ const defaultValues = {
 
   // Read a file
   const metadata = JSON.parse(fs.readFileSync(fileEndpoint).toString())
-  const currentUpdatedAt = moment(metadata.data.updatedAt)
+  const currentUpdatedAt = dayjs(metadata.data.updatedAt)
 
-  const remoteRepositoryUpdatedAt = moment(DB_UPDATED_AT)
+  const remoteRepositoryUpdatedAt = dayjs(DB_UPDATED_AT)
 
   if (currentUpdatedAt.isBefore(remoteRepositoryUpdatedAt)) {
     console.log('Update found! Pinging an update to Vercel')
