@@ -74,7 +74,7 @@ export const SkillCard: FunctionComponent<Props> = memo(props => {
         </div>
       </div>
       <div className="pt-4 border-t-2 border-teal-300 pb-4">
-        {getSkillDescription(skill, 1)}
+        {getSkillDescription(skill, selectedLevel)}
       </div>
     </div>
   )
