@@ -1,11 +1,11 @@
 name: CRON
 
 # Run this workflow every time a new commit pushed to your repository
-# on:  
-#   schedule:
-#     - cron: '2 * * * *'
+on:  
+  schedule:
+    - cron: '2 * * * *'
 
-on: push
+# on: push
 
 jobs:
   cron:
