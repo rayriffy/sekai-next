@@ -1,0 +1,35 @@
+name: Super-Linter
+
+# Run this workflow every time a new commit pushed to your repository
+on: push
+
+jobs:
+  cron:
+    name: Cronjob
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Init: Checkout"
+        uses: actions/checkout@v2
+      - name: "Init: Node"
+        uses: actions/setup-node@v1
+        with:
+          node-version: "lts/*"
+      - name: "Cache: node_modules"
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
+      - name: "Cache: .cache/data.json"
+        uses: actions/cache@v2
+        with:
+          path: .cache/data.json
+          key: ${{ runner.OS }}-sekai-next-data-json-${{ hashFiles('.cache/data.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-sekai-next-data-json-
+      - name: "Init: Install dependencies"
+        run: yarn
+      - name: "Exec: Check for update"
+        run: yarn cron:hooker
