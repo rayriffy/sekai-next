@@ -37,7 +37,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: .cache/data.json
-          key: ${{ runner.OS }}-sekai-next-data-json-${{ fromJSON(steps.prepare_metadata.outputs).repository.updatedAt }}
+          key: ${{ runner.OS }}-sekai-next-data-json-${{ steps.prepare_metadata.outputs }}
           restore-keys: |
             ${{ runner.OS }}-sekai-next-data-json-
       - name: "Exec: Check for update"

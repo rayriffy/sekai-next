@@ -34,7 +34,7 @@ const sendQuery = (query: string) =>
 
   const res = await sendQuery(query)
 
-  console.log(JSON.stringify(res.data.data))
+  console.log(JSON.stringify(res.data.data.repository.updatedAt))
 })()
 
 // noob
