@@ -1,6 +1,6 @@
-import React from 'react'
+import { FunctionComponent, SVGProps, memo } from 'react'
 
-export const UserRemove: React.FC<React.SVGProps<SVGSVGElement>> = React.memo(
+export const UserRemove: FunctionComponent<SVGProps<SVGSVGElement>> = memo(
   props => {
     return (
       <svg

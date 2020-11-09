@@ -1,14 +1,19 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import {
+  useState,
+  useCallback,
+  useEffect,
+  Fragment,
+  FunctionComponent,
+} from 'react'
 
 import { useRouter } from 'next/router'
 
-// import { Unstable } from './unstable'
 import { ServiceWorker } from './serviceWorker'
 import { MobileHeader } from './header/mobile'
 import { MobileOverlay } from './mobileOverlay'
 import { DesktopHeader } from './header/destop'
 
-export const AppLayout: React.FC = props => {
+export const AppLayout: FunctionComponent = props => {
   const { children } = props
 
   const router = useRouter()
@@ -21,8 +26,7 @@ export const AppLayout: React.FC = props => {
   const onToggleSidebar = useCallback(() => setSidebarOpen(o => !o), [])
 
   return (
-    <React.Fragment>
-      {/* <Unstable /> */}
+    <Fragment>
       <div className="h-screen flex overflow-hidden bg-gradient-to-tr from-blue-100">
         <MobileOverlay show={sidebarOpen} onToggleSidebar={onToggleSidebar} />
         <DesktopHeader />
@@ -37,6 +41,6 @@ export const AppLayout: React.FC = props => {
         </div>
       </div>
       <ServiceWorker />
-    </React.Fragment>
+    </Fragment>
   )
 }

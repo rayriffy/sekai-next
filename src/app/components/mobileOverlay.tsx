@@ -1,4 +1,4 @@
-import React from 'react'
+import { FunctionComponent, memo, Fragment } from 'react'
 
 import { Transition } from '@headlessui/react'
 
@@ -12,7 +12,7 @@ interface IProps {
   onToggleSidebar?(): void
 }
 
-export const MobileOverlay: React.FC<IProps> = React.memo(props => {
+export const MobileOverlay: FunctionComponent<IProps> = memo(props => {
   const { show = false, onToggleSidebar = () => {} } = props
 
   return (
@@ -41,7 +41,7 @@ export const MobileOverlay: React.FC<IProps> = React.memo(props => {
           leaveTo="-translate-x-full"
         >
           {ref => (
-            <React.Fragment>
+            <Fragment>
               <div
                 ref={ref}
                 className="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 text-white bg-gradient-to-r from-blue-500 to-teal-400"
@@ -69,7 +69,7 @@ export const MobileOverlay: React.FC<IProps> = React.memo(props => {
               <div className="flex-shrink-0 w-14">
                 {/* Dummy element to force sidebar to shrink to fit close icon */}
               </div>
-            </React.Fragment>
+            </Fragment>
           )}
         </Transition.Child>
       </Transition>

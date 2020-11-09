@@ -1,6 +1,6 @@
-import React from 'react'
+import { FunctionComponent, SVGProps, memo } from 'react'
 
-export const DeviceMobile: React.FC<React.SVGProps<SVGSVGElement>> = React.memo(
+export const DeviceMobile: FunctionComponent<SVGProps<SVGSVGElement>> = memo(
   props => {
     return (
       <svg

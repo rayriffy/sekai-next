@@ -1,6 +1,6 @@
-import React from 'react'
+import { FunctionComponent, SVGProps, memo } from 'react'
 
-export const Camera: React.FC<React.SVGProps<SVGSVGElement>> = React.memo(
+export const Camera: FunctionComponent<SVGProps<SVGSVGElement>> = memo(
   props => {
     return (
       <svg

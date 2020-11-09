@@ -1,13 +1,11 @@
-import React, { useMemo } from 'react'
+import { useMemo, FunctionComponent, memo } from 'react'
 
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-import { capitalize } from 'lodash'
-
 import { IMenu, menus } from '../../constants/menu'
 
-const DesktopMenuLink: React.FC<IMenu> = React.memo(props => {
+const DesktopMenuLink: FunctionComponent<IMenu> = memo(props => {
   const router = useRouter()
   const isMatch = useMemo(() => props.match.includes(router.pathname), [router])
 
@@ -31,7 +29,7 @@ const DesktopMenuLink: React.FC<IMenu> = React.memo(props => {
   )
 })
 
-export const DesktopNavbar: React.FC = React.memo(props => {
+export const DesktopNavbar: FunctionComponent = memo(props => {
   return (
     <nav className="px-3 mt-6">
       <div className="space-y-1">

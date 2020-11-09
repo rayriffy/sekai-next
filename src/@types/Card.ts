@@ -1,4 +1,5 @@
 import { Attr } from './Attr'
+import { CardParameter } from './CardParameter'
 
 export interface Card {
   id: number
@@ -17,13 +18,7 @@ export interface Card {
   gachaPhrase: string
   flavorText: string
   releaseAt: number
-  cardParameters: {
-    id: number
-    cardId: number
-    cardLevel: number
-    cardParameterType: string
-    power: number
-  }[]
+  cardParameters: CardParameter[]
   specialTrainingCosts: {
     cardId: number
     cost: {

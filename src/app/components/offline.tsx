@@ -1,10 +1,10 @@
-import React from 'react'
+import { FunctionComponent, memo } from 'react'
 
 import { StatusOffline } from '../../core/components/icons/statusOffline'
 
 import { useNetworkAvailability } from 'web-api-hooks'
 
-export const Offline: React.FC = React.memo(props => {
+export const Offline: FunctionComponent = memo(props => {
   const isOnline = useNetworkAvailability()
 
   if (!isOnline) {

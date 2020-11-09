@@ -1,3 +1,5 @@
+import { FunctionComponent, SVGProps } from 'react'
+
 import { Calendar } from '../../core/components/icons/calendar'
 import { Collection } from '../../core/components/icons/collection'
 import { Home } from '../../core/components/icons/home'
@@ -6,7 +8,7 @@ import { MusicNote } from '../../core/components/icons/musicNote'
 import { User } from '../../core/components/icons/user'
 
 export interface IMenu {
-  icon: React.FC<React.SVGProps<SVGSVGElement>>
+  icon: FunctionComponent<SVGProps<SVGSVGElement>>
   link: string
   name: string
   match: string[]

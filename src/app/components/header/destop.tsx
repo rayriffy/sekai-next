@@ -1,9 +1,9 @@
-import React from 'react'
+import { FunctionComponent, memo } from 'react'
 
 import { DesktopNavbar } from '../navbar/desktop'
 import { Offline } from '../offline'
 
-export const DesktopHeader: React.FC = React.memo(props => {
+export const DesktopHeader: FunctionComponent = memo(props => {
   return (
     <div className="hidden lg:flex lg:flex-shrink-0">
       <div className="flex flex-col w-64 border-r border-gray-200 pt-5 pb-4 text-white bg-gradient-to-r from-blue-500 to-teal-400">
