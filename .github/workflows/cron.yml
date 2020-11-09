@@ -36,7 +36,7 @@ jobs:
         id: prepare_metadata
         env:
           PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
-        run: echo "::set-output name=updatedTimestamp::$(yarn --silent cron:getDBLatestUpdate)
+        run: echo "::set-output name=updatedTimestamp::$(yarn --silent cron:getDBLatestUpdate)"
 
       - name: "Cache: .cache/data.json"
         uses: actions/cache@v2
