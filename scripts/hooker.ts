@@ -7,9 +7,7 @@ import moment from 'moment'
 import fs from 'fs'
 import path from 'path'
 
-import { sendQuery } from './functions/sendQuery'
-
-const { DEPLOY_HOOKS } = process.env
+const { DEPLOY_HOOKS, DB_UPDATED_AT } = process.env
 
 const cacheDirectory = path.join(__dirname, '../.cache')
 const fileEndpoint = path.join(cacheDirectory, 'data.json')
@@ -40,17 +38,7 @@ const defaultValues = {
   const metadata = JSON.parse(fs.readFileSync(fileEndpoint).toString())
   const currentUpdatedAt = moment(metadata.data.updatedAt)
 
-  // Get latest update from GitHub API
-  const getDataQuery = `
-    query { 
-      repository(name: "sekai-master-db-diff", owner: "Sekai-World") {
-        updatedAt
-      }
-    }
-  `
-  const res = await sendQuery(getDataQuery)
-
-  const remoteRepositoryUpdatedAt = moment(res.data.data.repository.updatedAt)
+  const remoteRepositoryUpdatedAt = moment(DB_UPDATED_AT)
 
   if (currentUpdatedAt.isBefore(remoteRepositoryUpdatedAt)) {
     console.log('Update found! Pinging an update to Vercel')
