@@ -14,7 +14,7 @@ import { sendQuery } from './functions/sendQuery'
 
   const res = await sendQuery(query)
 
-  console.log(JSON.stringify(res.data.data.repository.updatedAt))
+  console.log(res.data.data.repository.updatedAt)
 })()
 
 // noob

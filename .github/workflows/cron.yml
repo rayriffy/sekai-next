@@ -15,10 +15,12 @@ jobs:
     steps:
       - name: "Init: Checkout"
         uses: actions/checkout@v2
+
       - name: "Init: Node"
         uses: actions/setup-node@v1
         with:
           node-version: "14.*"
+
       - name: "Cache: node_modules"
         uses: actions/cache@v2
         with:
@@ -26,20 +28,24 @@ jobs:
           key: ${{ runner.OS }}-node-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.OS }}-node-
+
       - name: "Init: Install dependencies"
         run: yarn
+
       - name: "Exec: Read metadata for cache"
         id: prepare_metadata
         env:
           PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
-        run: yarn --silent cron:getDBLatestUpdate
+        run: echo "::set-output name=updatedTimestamp::$(yarn --silent cron:getDBLatestUpdate)
+
       - name: "Cache: .cache/data.json"
         uses: actions/cache@v2
         with:
           path: .cache/data.json
-          key: ${{ runner.OS }}-sekai-next-data-json-${{ steps.prepare_metadata.outputs }}
+          key: ${{ runner.OS }}-sekai-next-data-json-${{ steps.prepare_metadata.outputs.updatedTimestamp }}
           restore-keys: |
             ${{ runner.OS }}-sekai-next-data-json-
+
       - name: "Exec: Check for update"
         env:
           PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
