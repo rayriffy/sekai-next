@@ -9,8 +9,8 @@ import path from 'path'
 
 const {
   GITHUB_GRAPHQL_URL = 'https://api.github.com/graphql',
-  GITHUB_TOKEN = '631008ab5c5fc8e673c8ad552471813aec740b28',
-  DEPLOY_HOOKS = 'https://api.vercel.com/v1/integrations/deploy/QmQbn9qoj3vjq4mxvKrU5ByewFrzzCJUSYscgR226F9tnW/L7bw8QdClu',
+  PERSONAL_TOKEN,
+  DEPLOY_HOOKS,
 } = process.env
 
 const cacheDirectory = path.join(__dirname, '../.cache')
@@ -30,7 +30,7 @@ const sendQuery = (query: string) =>
     },
     {
       headers: {
-        Authorization: `Bearer ${GITHUB_TOKEN}`,
+        Authorization: `Bearer ${PERSONAL_TOKEN}`,
         Accept: `application/json`,
       },
     }
