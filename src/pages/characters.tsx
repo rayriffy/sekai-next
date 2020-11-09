@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from 'react'
+import { Fragment } from 'react'
 
 import { GetStaticProps, NextPage } from 'next'
 
@@ -15,12 +15,6 @@ interface Props {
 }
 
 const Page: NextPage<Props> = props => {
-  const { grouppedGameCharacters } = props
-
-  useEffect(() => {
-    console.log('grouppedGameCharacters', grouppedGameCharacters)
-  }, [grouppedGameCharacters])
-
   return (
     <Fragment>
       <HeadTitle title="Characters" />

@@ -37,7 +37,6 @@ export const Audio: FunctionComponent<Props> = memo(props => {
         audioRef.current?.play()
       })
       navigator.mediaSession.setActionHandler('pause', () => {
-        console.log('pause')
         audioRef.current?.pause()
       })
     }

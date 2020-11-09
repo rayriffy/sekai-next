@@ -38,14 +38,6 @@ export const ServiceWorker: FunctionComponent = memo(props => {
                     setServiceWorkerStatus('onServiceWorkerInstalled')
                   }
                   break
-
-                // case `redundant`:
-                //   setServiceWorkerStatus('onServiceWorkerRedundant')
-                //   break
-
-                // case `activated`:
-                //   setServiceWorkerStatus('onServiceWorkerActive')
-                //   break
               }
             })
           })

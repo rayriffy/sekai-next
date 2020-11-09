@@ -14,10 +14,6 @@ interface Props {
 const Page: NextPage<Props> = props => {
   const { cards } = props
 
-  useEffect(() => {
-    console.log(cards)
-  }, [cards])
-
   return (
     <Fragment>
       <HeadTitle title="Cards" />
