@@ -19,7 +19,7 @@ export const CharactersListing: FunctionComponent<Props> = memo(props => {
   const { grouppedGameCharacters } = props
 
   return (
-    <div className="space-y-6 p-6">
+    <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 items-end p-6">
       {grouppedGameCharacters.map(chunk => (
         <div key={`character-unit-${chunk.unit.unit}`}>
           <div className="flex justify-center pt-2 pb-6">
