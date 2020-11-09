@@ -5,21 +5,23 @@ import { SwitchHorizontal } from '../../../core/components/icons/switchHorizonta
 import { Power } from './power'
 import { LevelSelector } from './level'
 import { Header } from './header'
+import { SideStory } from './sideStory'
+import { SkillCard } from './skillCard'
 
 import { Card } from '../../../@types/Card'
 import { GameCharacter } from '../../../@types/GameCharacter'
 import { CardEpisode } from '../../../@types/CardEpisode'
-import { SideStory } from './sideStory'
-import { Skill } from './skill'
+import { Skill } from '../../../@types/Skill'
 
 interface Props {
   card: Card
   character: GameCharacter
   episodes: CardEpisode[]
+  skill: Skill
 }
 
 export const CardDetail: FunctionComponent<Props> = memo(props => {
-  const { card, character, episodes } = props
+  const { card, character, episodes, skill } = props
 
   const [afterTrainingCard, setAfterTrainingCard] = useState(card.rarity >= 3)
   const [selectedLevel, setSelectedLevel] = useState(
@@ -85,7 +87,7 @@ export const CardDetail: FunctionComponent<Props> = memo(props => {
             card={card}
             level={selectedLevel}
           />
-          <Skill card={card} />
+          <SkillCard card={card} skill={skill} />
         </div>
       </div>
     </div>
