@@ -10,7 +10,8 @@
     "build": "next build",
     "dev": "next",
     "start": "next start",
-    "cron:hooker": "ts-node --project tsconfig.tools.json scripts/hooker.ts"
+    "cron:hooker": "ts-node --project tsconfig.tools.json scripts/hooker.ts",
+    "cron:getDBLatestUpdate": "ts-node --project tsconfig.tools.json scripts/getDBLatestUpdate.ts"
   },
   "husky": {
     "hooks": {

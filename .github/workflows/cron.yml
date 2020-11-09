@@ -26,15 +26,20 @@ jobs:
           key: ${{ runner.OS }}-node-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.OS }}-node-
+      - name: "Init: Install dependencies"
+        run: yarn
+      - name: "Exec: Read metadata for cache"
+        id: prepare_metadata
+        env:
+          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+        run: yarn --silent cron:getDBLatestUpdate
       - name: "Cache: .cache/data.json"
         uses: actions/cache@v2
         with:
           path: .cache/data.json
-          key: ${{ runner.OS }}-sekai-next-data-json-${{ hashFiles('**/.cache/data.json') }}
+          key: ${{ runner.OS }}-sekai-next-data-json-${{ fromJSON(steps.prepare_metadata.outputs).repository.updatedAt }}
           restore-keys: |
             ${{ runner.OS }}-sekai-next-data-json-
-      - name: "Init: Install dependencies"
-        run: yarn
       - name: "Exec: Check for update"
         env:
           PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
