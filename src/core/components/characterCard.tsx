@@ -11,7 +11,6 @@ interface Props {
   card: Card
   afterTraining?: boolean
   disableLink?: boolean
-  original?: boolean
 }
 
 interface StarProps {
@@ -19,12 +18,7 @@ interface StarProps {
 }
 
 export const CharacterCard: FunctionComponent<Props> = props => {
-  const {
-    card,
-    afterTraining = false,
-    disableLink = false,
-    original = false,
-  } = props
+  const { card, afterTraining = false, disableLink = false } = props
 
   const cardNode = useMemo(
     () => (
@@ -42,16 +36,16 @@ export const CharacterCard: FunctionComponent<Props> = props => {
         <div className="z-10 absolute top-2 right-2 w-1/12">
           <Image
             src={`/static/icon_attribute_${card.attr}.png`}
-            width={44}
-            height={44}
+            width={88}
+            height={88}
             alt={card.attr}
           />
         </div>
         <div className="z-10 absolute top-0 bottom-0 left-0 right-0">
           <Image
             src={`/static/frame/cardFrame_L_${card.rarity}.png`}
-            width={original ? 2048 : 600}
-            height={original ? 1261 : (600 * 1261) / 2048}
+            width={2048}
+            height={1261}
             alt="Card Frame"
           />
         </div>
@@ -60,8 +54,8 @@ export const CharacterCard: FunctionComponent<Props> = props => {
             afterTraining ? 'afterTraining' : 'normal'
           }`}
           src={getCard(card.assetbundleName, afterTraining)}
-          width={600}
-          height={(600 * 1261) / 2048}
+          width={2048}
+          height={1261}
           alt={card.prefix}
         />
       </div>
@@ -88,8 +82,8 @@ export const Star: FunctionComponent<StarProps> = memo(props => {
       src={`/static/rarity_star_${
         afterTraining ? 'afterTraining' : 'normal'
       }.png`}
-      width={46}
-      height={(46 * 70) / 72}
+      width={72}
+      height={70}
       alt="Star"
     />
   )

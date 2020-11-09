@@ -14,11 +14,10 @@ import { Event } from '../../@types/Event'
 
 interface Props {
   event: Event
-  original?: boolean
 }
 
 export const EventCard: FunctionComponent<Props> = memo(props => {
-  const { event, original = false } = props
+  const { event } = props
 
   const eventStatus = useMemo(() => {
     const currentTime = moment()
@@ -67,8 +66,8 @@ export const EventCard: FunctionComponent<Props> = memo(props => {
           </div>
           <Image
             src={getEventBackground(event.assetbundleName)}
-            width={original ? 2048 : 600}
-            height={original ? 1261 : (600 * 1261) / 2048}
+            width={2048}
+            height={1261}
             alt={`${event.name} Background`}
           />
         </div>

@@ -40,7 +40,6 @@ export const CardDetail: FunctionComponent<Props> = memo(props => {
             card={card}
             afterTraining={afterTrainingCard}
             disableLink
-            original
           />
           <div className="block xl:flex justify-between pt-4">
             <div className="flex pb-4 xl:pb-0">
