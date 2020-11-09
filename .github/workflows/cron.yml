@@ -30,7 +30,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: .cache/data.json
-          key: ${{ runner.OS }}-sekai-next-data-json-${{ hashFiles('.cache/data.json') }}
+          key: ${{ runner.OS }}-sekai-next-data-json-${{ hashFiles('**/.cache/data.json') }}
           restore-keys: |
             ${{ runner.OS }}-sekai-next-data-json-
       - name: "Init: Install dependencies"
