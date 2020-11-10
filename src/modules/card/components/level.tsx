@@ -1,7 +1,8 @@
 import { FunctionComponent, memo, useCallback, useEffect, useMemo } from 'react'
 
-import { Card } from '../../../@types/Card'
 import { ProgressBar } from '../../../app/components/progressBar'
+
+import { Card } from '../../../@types/Card'
 
 interface Props {
   onSelected(level: number): void
