@@ -25,6 +25,8 @@ export const LevelSelector: FunctionComponent<Props> = memo(props => {
   useEffect(() => {
     if (!afterTraining && level > maxLevel) {
       onSelected(maxLevel)
+    } else if (afterTraining && level < minimumSafeLevel) {
+      onSelected(minimumSafeLevel)
     }
   }, [maxLevel])
 
