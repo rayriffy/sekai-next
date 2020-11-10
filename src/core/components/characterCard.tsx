@@ -1,4 +1,10 @@
-import { FunctionComponent, memo, useMemo } from 'react'
+import {
+  FunctionComponent,
+  memo,
+  useMemo,
+  DetailedHTMLProps,
+  HTMLAttributes,
+} from 'react'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -7,7 +13,8 @@ import { getCard } from '../../modules/cards/services/getCard'
 
 import { Card } from '../../@types/Card'
 
-interface Props {
+interface Props
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   card: Card
   afterTraining?: boolean
   disableLink?: boolean
@@ -18,11 +25,20 @@ interface StarProps {
 }
 
 export const CharacterCard: FunctionComponent<Props> = props => {
-  const { card, afterTraining = false, disableLink = false } = props
+  const {
+    card,
+    afterTraining = false,
+    disableLink = false,
+    className,
+    ...rest
+  } = props
 
   const cardNode = useMemo(
     () => (
-      <div className="rounded-lg overflow-hidden relative">
+      <div
+        className={`rounded-lg overflow-hidden relative ${className}`}
+        {...rest}
+      >
         <div className="z-10 absolute bottom-2 left-2 w-1/12">
           {Array.from({ length: card.rarity }).map((_, i) => (
             <Star
@@ -60,7 +76,7 @@ export const CharacterCard: FunctionComponent<Props> = props => {
         />
       </div>
     ),
-    [afterTraining]
+    [afterTraining, className]
   )
 
   if (disableLink) {

@@ -31,6 +31,12 @@ module.exports = {
       backgroundColor: {
         'black-overlay': 'rgba(0, 0, 0, 0.60)',
       },
+      zIndex: {
+        hide: -1,
+      },
+      scale: {
+        102: '1.02',
+      },
     },
   },
   variants: {},

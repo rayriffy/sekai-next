@@ -3,17 +3,20 @@ import { Fragment } from 'react'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
 import { HeadTitle } from '../../core/components/headTitle'
+import { CharacterDetail } from '../../modules/character/components/detail'
 
 import { GameCharacter } from '../../@types/GameCharacter'
 import { CharacterProfile } from '../../@types/CharacterProfile'
 import { Music } from '../../@types/Music'
 import { Card } from '../../@types/Card'
+import { GameCharacterUnit } from '../../@types/GameCharacterUnit'
 
 interface Props {
   character: GameCharacter
   profile: CharacterProfile
   musics: Music[]
   cards: Card[]
+  characterUnit: GameCharacterUnit
 }
 
 const Page: NextPage<Props> = props => {
@@ -24,7 +27,7 @@ const Page: NextPage<Props> = props => {
       <HeadTitle
         title={`${character.firstName} ${character.givenName} (${character.firstNameRuby} ${character.givenNameRuby})`}
       />
-      <div className="p-8 text-sm text-gray-900">{JSON.stringify(props)}</div>
+      <CharacterDetail {...props} />
     </Fragment>
   )
 }
@@ -40,6 +43,9 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
   const { getMusics } = await import('../../core/services/getMusics')
   const { getMusicVocals } = await import('../../core/services/getMusicVocals')
   const { getCards } = await import('../../core/services/getCards')
+  const { getGameCharacterUnits } = await import(
+    '../../core/services/getGameCharacterUnits'
+  )
 
   const targetId = Number(context.params.id)
 
@@ -49,11 +55,18 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
   )
 
   // mass data grinding
-  const [characterProfiles, musics, musicVocals, cards] = await Promise.all([
+  const [
+    characterProfiles,
+    musics,
+    musicVocals,
+    cards,
+    gameCharacterUnits,
+  ] = await Promise.all([
     getCharacterProfiles(),
     getMusics(),
     getMusicVocals(),
     getCards(),
+    getGameCharacterUnits(),
   ])
 
   // get character profile
@@ -76,11 +89,17 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
   // get character card
   const targetCards = cards.filter(card => card.characterId === targetId)
 
+  // get character unit
+  const targetCharacterUnit = gameCharacterUnits.find(
+    gameCharacterUnit => gameCharacterUnit.gameCharacterId === targetId
+  )
+
   return {
     props: {
       character: targetCharacter,
       profile: targetCharacterProfile,
       musics: targetMusics,
+      characterUnit: targetCharacterUnit,
       cards: targetCards.map(card => ({
         ...card,
         cardParameters: [],

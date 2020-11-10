@@ -1,4 +1,9 @@
-import { FunctionComponent, memo } from 'react'
+import {
+  FunctionComponent,
+  memo,
+  DetailedHTMLProps,
+  HTMLAttributes,
+} from 'react'
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -7,18 +12,22 @@ import { getMusicCover } from '../../modules/musics/services/getMusicCover'
 
 import { Music } from '../../@types/Music'
 
-interface Props {
+interface Props
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   music: Music
   disableOverlay?: boolean
 }
 
 export const MusicCard: FunctionComponent<Props> = memo(props => {
-  const { music, disableOverlay = false } = props
+  const { music, disableOverlay = false, className, ...rest } = props
 
   return (
     <Link href={`/music/${music.id}`}>
       <a>
-        <div className="relative rounded-md overflow-hidden">
+        <div
+          className={`relative rounded-md overflow-hidden ${className}`}
+          {...rest}
+        >
           {!disableOverlay && (
             <div className="rounded-md absolute top-0 bottom-0 left-0 right-0 bg-black-overlay backdrop-blur transition ease-in-out duration-200 z-10 flex flex-col justify-between text-white p-6 opacity-0 hover:opacity-100">
               <div>
