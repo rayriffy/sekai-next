@@ -40,7 +40,7 @@ export const EventCard: FunctionComponent<Props> = memo(props => {
     } else {
       return {
         code: 2,
-        text: `Ended ${dayjs(eventEnded).toNow()}`,
+        text: `Ended ${dayjs(eventEnded).fromNow()}`,
       }
     }
   }, [])
