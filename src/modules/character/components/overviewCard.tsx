@@ -35,7 +35,7 @@ export const OverviewCard: FunctionComponent<Props> = memo(props => {
             />
           </div>
           <Image
-            className="transform scale-150 -mt-10 xl:-mt-16"
+            className="transform scale-102 sm:scale-150 -mt-0 sm:-mt-10 xl:-mt-16"
             src={getCharacterCutout(character.id)}
             width={1512}
             height={1024}
