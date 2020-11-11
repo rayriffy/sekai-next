@@ -43,6 +43,7 @@ const Page: NextPage<Props> = props => {
                   music={music}
                   key={`music-${music.id}`}
                   disableOverlay
+                  sizes="275px"
                 />
               ))}
             </div>
@@ -54,6 +55,8 @@ const Page: NextPage<Props> = props => {
                   key={`card-${card.id}`}
                   card={card}
                   afterTraining={card.rarity >= 3}
+                  cardSizes="300px"
+                  iconSizes="40px"
                 />
               ))}
             </div>
@@ -61,7 +64,11 @@ const Page: NextPage<Props> = props => {
         </div>
         <div className="col-span-1 space-y-4 sm:space-y-6 lg:space-y-8">
           <CardHeading title="Latest event">
-            <EventCard event={event} />
+            <EventCard
+              event={event}
+              backgroundSizes="600px"
+              logoSizes="300px"
+            />
           </CardHeading>
           <CardHeading title="Official announcement">
             <TwitterTimelineEmbed

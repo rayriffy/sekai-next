@@ -16,6 +16,8 @@ import { Event } from '../../@types/Event'
 interface Props {
   event: Event
   disableSlug?: boolean
+  logoSizes?: string
+  backgroundSizes?: string
 }
 
 interface DateSlugProps {
@@ -24,7 +26,7 @@ interface DateSlugProps {
 }
 
 export const EventCard: FunctionComponent<Props> = memo(props => {
-  const { event, disableSlug = false } = props
+  const { event, disableSlug = false, logoSizes, backgroundSizes } = props
 
   return (
     <Link href={`/event/${event.id}`}>
@@ -38,7 +40,7 @@ export const EventCard: FunctionComponent<Props> = memo(props => {
               src={getEventLogo(event.assetbundleName)}
               width={600}
               height={300}
-              sizes="300px"
+              sizes={logoSizes}
               alt={`${event.name} Logo`}
             />
           </div>
@@ -46,7 +48,7 @@ export const EventCard: FunctionComponent<Props> = memo(props => {
             src={getEventBackground(event.assetbundleName)}
             width={2048}
             height={1261}
-            sizes="600px"
+            sizes={backgroundSizes}
             alt={`${event.name} Background`}
           />
         </div>

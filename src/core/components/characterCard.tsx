@@ -18,10 +18,13 @@ interface Props
   card: Card
   afterTraining?: boolean
   disableLink?: boolean
+  cardSizes?: string
+  iconSizes?: string
 }
 
 interface StarProps {
   afterTraining?: boolean
+  iconSizes?: string
 }
 
 export const CharacterCard: FunctionComponent<Props> = props => {
@@ -29,6 +32,8 @@ export const CharacterCard: FunctionComponent<Props> = props => {
     card,
     afterTraining = false,
     disableLink = false,
+    cardSizes,
+    iconSizes,
     className,
     ...rest
   } = props
@@ -45,6 +50,7 @@ export const CharacterCard: FunctionComponent<Props> = props => {
               key={`card-${card.id}-star-${i}-mode-${
                 afterTraining ? 'afterTraining' : 'normal'
               }`}
+              iconSizes={iconSizes}
               afterTraining={afterTraining}
             />
           ))}
@@ -54,6 +60,7 @@ export const CharacterCard: FunctionComponent<Props> = props => {
             src={`/static/icon_attribute_${card.attr}.png`}
             width={88}
             height={88}
+            sizes={iconSizes}
             alt={card.attr}
           />
         </div>
@@ -62,7 +69,7 @@ export const CharacterCard: FunctionComponent<Props> = props => {
             src={`/static/frame/cardFrame_L_${card.rarity}.png`}
             width={2048}
             height={1261}
-            sizes="600px"
+            sizes={cardSizes}
             alt="Card Frame"
           />
         </div>
@@ -73,7 +80,7 @@ export const CharacterCard: FunctionComponent<Props> = props => {
           src={getCard(card.assetbundleName, afterTraining)}
           width={2048}
           height={1261}
-          sizes="600px"
+          sizes={cardSizes}
           alt={card.prefix}
         />
       </div>
@@ -93,7 +100,7 @@ export const CharacterCard: FunctionComponent<Props> = props => {
 }
 
 export const Star: FunctionComponent<StarProps> = memo(props => {
-  const { afterTraining } = props
+  const { afterTraining, iconSizes } = props
 
   return (
     <Image
@@ -102,6 +109,7 @@ export const Star: FunctionComponent<StarProps> = memo(props => {
       }.png`}
       width={72}
       height={70}
+      sizes={iconSizes}
       alt="Star"
     />
   )

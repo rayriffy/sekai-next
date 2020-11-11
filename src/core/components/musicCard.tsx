@@ -16,10 +16,11 @@ interface Props
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   music: Music
   disableOverlay?: boolean
+  sizes?: string
 }
 
 export const MusicCard: FunctionComponent<Props> = memo(props => {
-  const { music, disableOverlay = false, className, ...rest } = props
+  const { music, disableOverlay = false, sizes, className, ...rest } = props
 
   return (
     <Link href={`/music/${music.id}`}>
@@ -54,7 +55,7 @@ export const MusicCard: FunctionComponent<Props> = memo(props => {
             src={getMusicCover(music.assetbundleName)}
             width={740}
             height={740}
-            sizes="600px"
+            sizes={sizes}
             alt={music.title}
           />
         </div>
