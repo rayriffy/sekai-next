@@ -34,7 +34,7 @@ const Title: FunctionComponent = memo(props => {
 
   return (
     <div className="flex justify-center items-center px-4 sm:px-6 lg:px-8">
-      <h2 className="text-gray-800 font-bold text-xl">{title}</h2>
+      <h2 className="text-gray-800 font-bold text-xl truncate">{title}</h2>
     </div>
   )
 })
