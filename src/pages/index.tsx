@@ -1,26 +1,16 @@
-import { Fragment, FunctionComponent } from 'react'
+import { Fragment } from 'react'
 
 import { GetStaticProps, NextPage } from 'next'
-import dynamic from 'next/dynamic'
 
 import { HeadTitle } from '../core/components/headTitle'
 import { MusicCard } from '../core/components/musicCard'
 import { CardHeading } from '../core/components/cardHeading'
 import { CharacterCard } from '../core/components/characterCard'
+import { EventCard } from '../core/components/eventCard'
 
 import { Music } from '../@types/Music'
 import { Card } from '../@types/Card'
 import { Event } from '../@types/Event'
-import { EventCard } from '../core/components/eventCard'
-
-const TwitterTimelineEmbed = dynamic(
-  import('react-twitter-embed').then(
-    o => o.TwitterTimelineEmbed as FunctionComponent<any>
-  ),
-  {
-    ssr: false,
-  }
-)
 
 interface Props {
   musics: Music[]
@@ -68,14 +58,6 @@ const Page: NextPage<Props> = props => {
               event={event}
               backgroundSizes="600px"
               logoSizes="300px"
-            />
-          </CardHeading>
-          <CardHeading title="Official announcement">
-            <TwitterTimelineEmbed
-              sourceType="profile"
-              screenName="pj_sekai"
-              noHeader
-              options={{ height: 600 }}
             />
           </CardHeading>
         </div>
