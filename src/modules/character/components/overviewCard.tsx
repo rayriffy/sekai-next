@@ -29,9 +29,9 @@ export const OverviewCard: FunctionComponent<Props> = memo(props => {
         <div className="col-span-3 lg:col-span-2 overflow-hidden relative flex items-end">
           <div className="absolute w-1/3 bottom-0 left-0 mb-4 ml-4 z-20">
             <Image
-              className=""
               src={getNameLabelHorizontal(character.id)}
-              unsized
+              width={574}
+              height={216}
             />
           </div>
           <Image

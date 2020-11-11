@@ -62,6 +62,7 @@ export const CharacterCard: FunctionComponent<Props> = props => {
             src={`/static/frame/cardFrame_L_${card.rarity}.png`}
             width={2048}
             height={1261}
+            sizes="600px"
             alt="Card Frame"
           />
         </div>
@@ -72,6 +73,7 @@ export const CharacterCard: FunctionComponent<Props> = props => {
           src={getCard(card.assetbundleName, afterTraining)}
           width={2048}
           height={1261}
+          sizes="600px"
           alt={card.prefix}
         />
       </div>

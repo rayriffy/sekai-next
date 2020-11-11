@@ -79,7 +79,12 @@ export const Power: FunctionComponent<Props> = memo(props => {
           </div>
         </div>
         <div className="ml-4 flex items-center">
-          <Image className="w-5" src="/static/icon_totalStrength.png" unsized />
+          <Image
+            className="w-5"
+            src="/static/icon_totalStrength.png"
+            width={36}
+            height={42}
+          />
           <span className="ml-2 text-xl text-gray-700 font-medium">
             {performanceValue + techniqueValue + staminaValue}
           </span>
@@ -91,7 +96,8 @@ export const Power: FunctionComponent<Props> = memo(props => {
             <Image
               className="w-4 h-4"
               src="/static/icon_performance.png"
-              unsized
+              width={28}
+              height={28}
             />
             <span className="text-sm pl-1 pr-2">Performance</span>
             <span className="text-md font-medium">{performanceValue}</span>
@@ -100,13 +106,19 @@ export const Power: FunctionComponent<Props> = memo(props => {
             <Image
               className="w-4 h-4"
               src="/static/icon_technique.png"
-              unsized
+              width={28}
+              height={28}
             />
             <span className="text-sm pl-1 pr-2">Technique</span>
             <span className="text-md font-medium">{techniqueValue}</span>
           </div>
           <div className="flex items-center text-gray-700">
-            <Image className="w-4 h-4" src="/static/icon_stamina.png" unsized />
+            <Image
+              className="w-4 h-4"
+              src="/static/icon_stamina.png"
+              width={28}
+              height={28}
+            />
             <span className="text-sm pl-1 pr-2">Stamina</span>
             <span className="text-md font-medium">{staminaValue}</span>
           </div>

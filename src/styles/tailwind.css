@@ -26,3 +26,9 @@ html, body, #__next {
   border-left-color: transparent;
   animation: spinnerSpin 0.45s linear infinite;
 }
+
+img {
+  letter-spacing: 0;
+  word-spacing: 0;
+  font-size: 0;
+}

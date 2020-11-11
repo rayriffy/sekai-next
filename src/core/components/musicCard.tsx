@@ -54,6 +54,7 @@ export const MusicCard: FunctionComponent<Props> = memo(props => {
             src={getMusicCover(music.assetbundleName)}
             width={740}
             height={740}
+            sizes="600px"
             alt={music.title}
           />
         </div>

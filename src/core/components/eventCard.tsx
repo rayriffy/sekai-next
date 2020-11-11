@@ -36,15 +36,17 @@ export const EventCard: FunctionComponent<Props> = memo(props => {
           <div className="absolute bottom-4 left-2 z-10 w-1/2">
             <Image
               src={getEventLogo(event.assetbundleName)}
+              width={600}
+              height={300}
+              sizes="300px"
               alt={`${event.name} Logo`}
-              unsized
             />
           </div>
           <Image
             src={getEventBackground(event.assetbundleName)}
             width={2048}
             height={1261}
-            sizes="(max-width: 1200px) 600px"
+            sizes="600px"
             alt={`${event.name} Background`}
           />
         </div>
