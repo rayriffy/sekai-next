@@ -18,6 +18,7 @@ interface Props {
   disableSlug?: boolean
   logoSizes?: string
   backgroundSizes?: string
+  priority?: boolean
 }
 
 interface DateSlugProps {
@@ -26,7 +27,13 @@ interface DateSlugProps {
 }
 
 export const EventCard: FunctionComponent<Props> = memo(props => {
-  const { event, disableSlug = false, logoSizes, backgroundSizes } = props
+  const {
+    event,
+    disableSlug = false,
+    logoSizes,
+    backgroundSizes,
+    priority = false,
+  } = props
 
   return (
     <Link href={`/event/${event.id}`}>
@@ -50,6 +57,7 @@ export const EventCard: FunctionComponent<Props> = memo(props => {
             height={1261}
             sizes={backgroundSizes}
             alt={`${event.name} Background`}
+            priority={priority}
           />
         </div>
       </a>
