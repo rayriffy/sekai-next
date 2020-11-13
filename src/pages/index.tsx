@@ -59,7 +59,6 @@ const Page: NextPage<Props> = props => {
               event={event}
               backgroundSizes="600px"
               logoSizes="300px"
-              priority
             />
           </CardHeading>
         </div>
