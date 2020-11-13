@@ -40,11 +40,15 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
 
   const targetId = Number(context.params.id)
 
-  const characters = await getEvents()
+  const [characters, resourceBoxes, honors] = await Promise.all([
+    getEvents(),
+    getResourceBoxes(),
+    getHonors(),
+  ])
+
   const targetEvent = characters.find(event => event.id === targetId)
 
   // get resource boxes to refer to honor id
-  const resourceBoxes = await getResourceBoxes()
   const targetResourceBoxes = resourceBoxes.filter(
     resourceBox =>
       resourceBox.resourceBoxPurpose === 'event_ranking_reward' &&
@@ -57,7 +61,6 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
   )
 
   // honor id is tied to resource id, which in resource box id, not id in eventRankingRewardRange
-  const honors = await getHonors()
   const targetHonors = await honors.filter(honor =>
     targetResourceBoxes
       .filter(targetResourceBox =>
