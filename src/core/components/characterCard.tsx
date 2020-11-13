@@ -67,8 +67,8 @@ export const CharacterCard: FunctionComponent<Props> = props => {
         <div className="z-10 absolute top-0 bottom-0 left-0 right-0">
           <Image
             src={`/static/frame/cardFrame_L_${card.rarity}.png`}
-            width={2048}
-            height={1261}
+            width={1024}
+            height={576}
             sizes={cardSizes}
             alt="Card Frame"
           />
