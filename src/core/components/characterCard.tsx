@@ -20,6 +20,7 @@ interface Props
   disableLink?: boolean
   cardSizes?: string
   iconSizes?: string
+  priority?: boolean
 }
 
 interface StarProps {
@@ -34,6 +35,7 @@ export const CharacterCard: FunctionComponent<Props> = props => {
     disableLink = false,
     cardSizes,
     iconSizes,
+    priority = false,
     className,
     ...rest
   } = props
@@ -82,6 +84,7 @@ export const CharacterCard: FunctionComponent<Props> = props => {
           height={1261}
           sizes={cardSizes}
           alt={card.prefix}
+          priority={priority}
         />
       </div>
     ),

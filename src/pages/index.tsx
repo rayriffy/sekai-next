@@ -48,6 +48,7 @@ const Page: NextPage<Props> = props => {
                   afterTraining={card.rarity >= 3}
                   cardSizes="300px"
                   iconSizes="40px"
+                  priority
                 />
               ))}
             </div>
@@ -59,6 +60,7 @@ const Page: NextPage<Props> = props => {
               event={event}
               backgroundSizes="600px"
               logoSizes="300px"
+              priority
             />
           </CardHeading>
         </div>
