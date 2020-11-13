@@ -78,7 +78,7 @@ export const Difficulties: FunctionComponent<Props> = memo(props => {
           </div>
           <div>
             <span className="font-bold">Notes Count:</span>{' '}
-            {targetDifficulty.playLevel}
+            {targetDifficulty.noteCount}
           </div>
         </div>
       </div>
