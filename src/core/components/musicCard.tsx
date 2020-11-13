@@ -17,10 +17,18 @@ interface Props
   music: Music
   disableOverlay?: boolean
   sizes?: string
+  priority?: boolean
 }
 
 export const MusicCard: FunctionComponent<Props> = memo(props => {
-  const { music, disableOverlay = false, sizes, className, ...rest } = props
+  const {
+    music,
+    disableOverlay = false,
+    sizes,
+    className,
+    priority = false,
+    ...rest
+  } = props
 
   return (
     <Link href={`/music/${music.id}`}>
@@ -57,6 +65,7 @@ export const MusicCard: FunctionComponent<Props> = memo(props => {
             height={740}
             sizes={sizes}
             alt={music.title}
+            priority={priority}
           />
         </div>
       </a>

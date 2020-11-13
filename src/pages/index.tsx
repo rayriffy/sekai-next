@@ -34,6 +34,7 @@ const Page: NextPage<Props> = props => {
                   key={`music-${music.id}`}
                   disableOverlay
                   sizes="275px"
+                  priority
                 />
               ))}
             </div>
