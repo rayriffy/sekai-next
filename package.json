@@ -8,7 +8,9 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "next",
+    "dev": "yarn --silent dev:debugger",
+    "dev:normal": "next",
+    "dev:debugger": "NODE_OPTIONS='--inspect' next dev",
     "start": "next start",
     "cron:hooker": "ts-node --project tsconfig.tools.json scripts/hooker.ts",
     "cron:getDBLatestUpdate": "ts-node --project tsconfig.tools.json scripts/getDBLatestUpdate.ts"
