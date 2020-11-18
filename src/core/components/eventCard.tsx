@@ -83,7 +83,7 @@ const DateSlug: FunctionComponent<DateSlugProps> = memo(props => {
     } else if (currentTime.isBefore(eventStarted)) {
       return {
         code: 1,
-        text: `Staring ${dayjs(eventStarted).toNow()}`,
+        text: `Staring ${dayjs(eventStarted).fromNow()}`,
       }
     } else {
       return {
@@ -91,7 +91,7 @@ const DateSlug: FunctionComponent<DateSlugProps> = memo(props => {
         text: `Ended ${dayjs(eventEnded).fromNow()}`,
       }
     }
-  }, [])
+  }, [startAt, aggregateAt])
 
   return (
     <div
