@@ -66,25 +66,25 @@ export const CharacterCard: FunctionComponent<Props> = props => {
             alt={card.attr}
           />
         </div>
-        <div className="z-10 absolute top-0 bottom-0 left-0 right-0">
+        <div className="absolute top-0 bottom-0 left-0 right-0">
           <Image
-            src={`/static/frame/cardFrame_L_${card.rarity}.png`}
-            width={1024}
-            height={576}
+            key={`card-${card.id}-mode-${
+              afterTraining ? 'afterTraining' : 'normal'
+            }`}
+            src={getCard(card.assetbundleName, afterTraining)}
+            width={2048}
+            height={1261}
             sizes={cardSizes}
-            alt="Card Frame"
+            alt={card.prefix}
+            priority={priority}
           />
         </div>
         <Image
-          key={`card-${card.id}-mode-${
-            afterTraining ? 'afterTraining' : 'normal'
-          }`}
-          src={getCard(card.assetbundleName, afterTraining)}
-          width={2048}
-          height={1261}
+          src={`/static/frame/cardFrame_L_${card.rarity}.png`}
+          width={1024}
+          height={576}
           sizes={cardSizes}
-          alt={card.prefix}
-          priority={priority}
+          alt="Card Frame"
         />
       </div>
     ),
