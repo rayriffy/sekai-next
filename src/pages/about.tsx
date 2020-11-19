@@ -14,7 +14,7 @@ const Page: NextPage<Props> = props => {
   return (
     <Fragment>
       <HeadTitle title="About" />
-      <div className="max-w-4xl p-4 sm:p-6 lg:p-8 prose mx-auto">
+      <div className="max-w-4xl p-4 sm:p-6 lg:p-8 prose prose-blue mx-auto">
         <Markdown children={props.md} />
       </div>
     </Fragment>
