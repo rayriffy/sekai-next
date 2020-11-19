@@ -23,8 +23,12 @@ export const CharactersListing: FunctionComponent<Props> = memo(props => {
       {grouppedGameCharacters.map(chunk => (
         <div key={`character-unit-${chunk.unit.unit}`}>
           <div className="flex justify-center pt-2 pb-6">
-            <div className="w-64 h-auto">
-              <Image src={getUnitBanner(chunk.unit.unit)} unsized />
+            <div className="w-64 h-auto relative">
+              <Image
+                src={getUnitBanner(chunk.unit.unit)}
+                width={620}
+                height={260}
+              />
             </div>
           </div>
           <div

@@ -32,7 +32,7 @@ export const MusicVideo: FunctionComponent<Props> = memo(props => {
   return (
     <div>
       {selectedCategory === undefined ? (
-        <div className="aspect-ratio-16/9 border-4 border-dashed border-gray-200 relative pointer-events-none select-none">
+        <div className="aspect-w-16 aspect-h-9 border-4 border-dashed border-gray-200 relative pointer-events-none select-none">
           <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center font-bold text-gray-500">
             Unavailable
           </div>
