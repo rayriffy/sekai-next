@@ -33,9 +33,12 @@ export const MusicCard: FunctionComponent<Props> = memo(props => {
   return (
     <Link href={`/music/${music.id}`}>
       <a>
-        <div className={`relative ${className}`} {...rest}>
+        <div
+          className={`relative aspect-w-1 aspect-h-1 ${className}`}
+          {...rest}
+        >
           {!disableOverlay && (
-            <div className="rounded-md absolute top-0 bottom-1 left-0 right-0 bg-black-overlay backdrop-blur transition ease-in-out duration-200 z-10 flex flex-col justify-between text-white p-6 opacity-0 hover:opacity-100">
+            <div className="rounded-md absolute top-0 bottom-0 left-0 right-0 bg-black-overlay backdrop-blur transition ease-in-out duration-200 z-10 flex flex-col justify-between text-white p-6 opacity-0 hover:opacity-100">
               <div>
                 <h1 className="font-bold text-xl">{music.title}</h1>
                 <div className="pt-2 flex space-x-4">
@@ -58,9 +61,8 @@ export const MusicCard: FunctionComponent<Props> = memo(props => {
           )}
           <Image
             src={getMusicCover(music.assetbundleName)}
-            className="rounded-md"
-            width={740}
-            height={740}
+            className="rounded-md object-cover"
+            layout="fill"
             sizes={sizes}
             alt={music.title}
             priority={priority}
