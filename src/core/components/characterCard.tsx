@@ -66,7 +66,7 @@ export const CharacterCard: FunctionComponent<Props> = props => {
             alt={card.attr}
           />
         </div>
-        <div className="absolute top-0 bottom-0 left-0 right-0">
+        <div className="absolute top-0 bottom-2 left-0 right-0 overflow-hidden rounded-lg">
           <Image
             key={`card-${card.id}-mode-${
               afterTraining ? 'afterTraining' : 'normal'
@@ -81,6 +81,7 @@ export const CharacterCard: FunctionComponent<Props> = props => {
         </div>
         <Image
           src={`/static/frame/cardFrame_L_${card.rarity}.png`}
+          className="rounded-lg"
           width={1024}
           height={576}
           sizes={cardSizes}

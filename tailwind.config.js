@@ -1,3 +1,4 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
 module.exports = {
@@ -51,6 +52,9 @@ module.exports = {
       // color: {
       //   teal: colors.teal,
       // },
+      fontFamily: {
+        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+      },
       backgroundColor: {
         'black-overlay': 'rgba(0, 0, 0, 0.60)',
       },

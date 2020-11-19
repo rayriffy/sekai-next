@@ -45,6 +45,8 @@ export const HeadTitle: FunctionComponent<Props> = props => {
       <meta property="twitter:title" content={transformedTitle} />
       <meta property="twitter:description" content={description} />
 
+      <link rel="stylesheet" href="https://rsms.me/inter/inter.css"></link>
+
       {children}
     </Head>
   )
