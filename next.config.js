@@ -9,7 +9,7 @@ const withWorkers = require('@zeit/next-workers')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
-// const withPreact = require('next-plugin-preact')
+const withPreact = require('next-plugin-preact')
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
@@ -18,7 +18,7 @@ module.exports = withPlugins(
   [
     // [withOffline],
     [withWorkers],
-    // [withPreact],
+    [withPreact],
     [withBundleAnalyzer],
   ],
   {
