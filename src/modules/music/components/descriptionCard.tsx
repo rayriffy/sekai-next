@@ -1,5 +1,8 @@
 import { FunctionComponent, memo } from 'react'
 
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+
 import { PaperClip } from '../../../core/components/icons/paperClip'
 
 import { Music } from '../../../@types/Music'
@@ -7,6 +10,8 @@ import { Music } from '../../../@types/Music'
 interface Props {
   music: Music
 }
+
+dayjs.extend(relativeTime)
 
 export const DescriptionCard: FunctionComponent<Props> = memo(props => {
   const { music } = props
@@ -53,6 +58,15 @@ export const DescriptionCard: FunctionComponent<Props> = memo(props => {
             </dt>
             <dd className="mt-1 text-sm leading-5 text-gray-900">
               {music.lyricist}
+            </dd>
+          </div>
+          <div className="sm:col-span-1">
+            <dt className="text-sm leading-5 font-medium text-gray-500">
+              Release to the game
+            </dt>
+            <dd className="mt-1 text-sm leading-5 text-gray-900">
+              {dayjs(music.publishedAt).format('DD MMMM YYYY HH:MM')} (
+              {dayjs(music.publishedAt).fromNow()})
             </dd>
           </div>
         </dl>

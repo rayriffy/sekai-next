@@ -6,21 +6,24 @@ import { Vocals } from './vocals'
 import { DescriptionCard } from './descriptionCard'
 import { Difficulties } from './difficulties'
 import { getMusicCover } from '../../musics/services/getMusicCover'
+import { getUnitBanner } from '../../characters/services/getUnitBanner'
 
 import { Music } from '../../../@types/Music'
 import { MusicDifficulty } from '../../../@types/MusicDifficulty'
 import { MusicTag } from '../../../@types/MusicTag'
 import { MusicVocal } from '../../../@types/MusicVocal'
+import { Unit } from '../../../@types/Unit'
 
 interface Props {
   music: Music
   difficulties: MusicDifficulty[]
   tags: MusicTag[]
   vocals: MusicVocal[]
+  unitProfiles: Unit[]
 }
 
 export const MusicDetail: FunctionComponent<Props> = memo(props => {
-  const { music, difficulties, tags, vocals } = props
+  const { music, difficulties, tags, vocals, unitProfiles } = props
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,13 +38,10 @@ export const MusicDetail: FunctionComponent<Props> = memo(props => {
         </div>
         <div className="col-span-2 space-y-2 pt-4 md:pt-0">
           <h1 className="text-4xl font-bold text-gray-900">{music.title}</h1>
-          <div className="flex space-x-4 flex-wrap border-b pb-4 border-gray-200">
-            {tags.map(tag => (
-              <div
-                key={`music-tag-${tag.id}`}
-                className="bg-blue-500 px-2 py-1 rounded-md text-white text-xs font-bold uppercase"
-              >
-                {tag.musicTag.split('_').join(' ')}
+          <div className="flex space-x-4 flex-wrap border-b py-4 border-gray-200">
+            {unitProfiles.map(unit => (
+              <div key={`music-unit-${unit}`} className="w-36">
+                <Image src={getUnitBanner(unit)} width={620} height={260} />
               </div>
             ))}
           </div>
