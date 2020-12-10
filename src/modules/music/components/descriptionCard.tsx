@@ -3,8 +3,6 @@ import { FunctionComponent, memo } from 'react'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 
-import { PaperClip } from '../../../core/components/icons/paperClip'
-
 import { Music } from '../../../@types/Music'
 
 interface Props {

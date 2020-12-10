@@ -23,7 +23,7 @@ interface Props {
 }
 
 export const MusicDetail: FunctionComponent<Props> = memo(props => {
-  const { music, difficulties, tags, vocals, unitProfiles } = props
+  const { music, difficulties, vocals, unitProfiles } = props
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
