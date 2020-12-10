@@ -6,6 +6,7 @@ import {
   memo,
   useEffect,
   useCallback,
+  useMemo,
 } from 'react'
 
 import { getAudioFull, getAudioShort } from '../services/getAudio'
@@ -29,6 +30,13 @@ export const Audio: FunctionComponent<Props> = memo(props => {
 
   const audioRef = useRef<HTMLAudioElement>(null)
 
+  const targetSource = useMemo(
+    () =>
+      fullVersion
+        ? getAudioFull(vocal.assetbundleName)
+        : getAudioShort(vocal.assetbundleName),
+    [vocal]
+  )
   const onPlay = useCallback(() => {
     if ('mediaSession' in navigator) {
       navigator.mediaSession.metadata = getMediaMetadata(music, vocal)
@@ -40,18 +48,17 @@ export const Audio: FunctionComponent<Props> = memo(props => {
         audioRef.current?.pause()
       })
     }
-  }, [])
+  }, [vocal])
+
+  // stop and load new audio when source change
+  useEffect(() => {
+    audioRef.current?.pause()
+    audioRef.current?.load()
+  }, [vocal])
 
   return (
     <audio controls onPlay={onPlay} ref={audioRef} {...rest}>
-      <source
-        src={
-          fullVersion
-            ? getAudioFull(vocal.assetbundleName)
-            : getAudioShort(vocal.assetbundleName)
-        }
-        type="audio/mp3"
-      ></source>
+      <source src={targetSource} type="audio/mp3"></source>
     </audio>
   )
 })
