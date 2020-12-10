@@ -8,6 +8,7 @@ export const NotFound: FunctionComponent = memo(props => {
           src="https://media.tenor.com/videos/2bd91e4765588e1b7ca31f90c4deeea7/mp4"
           loop
           autoPlay
+          muted
           className="w-full h-auto rounded-t-lg"
         ></video>
         <div className="px-4 py-4 sm:px-6">
