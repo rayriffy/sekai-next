@@ -36,6 +36,7 @@ const Component: FunctionComponent<Props> = memo(props => {
     if (audioRef.current) {
       audioRef.current.pause()
       audioRef.current.currentTime = 0
+      audioRef.current.load()
       audioRef.current.addEventListener('canplay', () => setPlayable(true))
       audioRef.current.addEventListener('loadstart', () => setPlayable(false))
     }
@@ -43,8 +44,9 @@ const Component: FunctionComponent<Props> = memo(props => {
     if (videoRef.current) {
       videoRef.current.pause()
       videoRef.current.currentTime = 0
+      videoRef.current.load()
     }
-  }, [audio, video])
+  }, [audio, video, vocal])
 
   // match audio timecode with video
   const syncAudioTimecode = (currentTime: number) => {
