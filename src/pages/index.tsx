@@ -27,7 +27,7 @@ const Page: NextPage<Props> = props => {
       <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
         <div className="col-span-1 space-y-4 sm:space-y-6 lg:space-y-8">
           <CardHeading title="Latest music">
-            <div className="grid gap-4 grid-cols-2 sm:grid-cols-4">
+            <div className="grid gap-6 grid-cols-2 xl:grid-cols-4">
               {musics.map(music => (
                 <MusicCard
                   music={music}
