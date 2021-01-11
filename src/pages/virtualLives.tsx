@@ -54,7 +54,7 @@ const Page: NextPage<Props> = props => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async context => {
-  const { sortBy, reverse } = await import('lodash')
+  const { sortBy, reverse, pick } = await import('lodash')
 
   const { getVirtualLives } = await import('../core/services/getVirtualLives')
 
@@ -62,10 +62,9 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
 
   return {
     props: {
-      virtualLives: reverse(sortBy(virtualLives, 'startAt')).map(live => ({
-        id: live.id,
-        assetbundleName: live.assetbundleName,
-      })),
+      virtualLives: reverse(sortBy(virtualLives, 'startAt')).map(live =>
+        pick(live, ['id', 'assetbundleName'])
+      ),
     },
   }
 }
