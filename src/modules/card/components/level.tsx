@@ -15,7 +15,7 @@ export const LevelSelector: FunctionComponent<Props> = memo(props => {
   const { onSelected, afterTraining, card, level } = props
 
   const minimumSafeLevel = useMemo(
-    () => (afterTraining ? (card.rarity + 1) * 10 : 0),
+    () => (afterTraining ? (card.rarity + 1) * 10 : 1),
     [afterTraining]
   )
   const maxLevel = useMemo(
