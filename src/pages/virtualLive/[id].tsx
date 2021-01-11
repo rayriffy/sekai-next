@@ -21,6 +21,8 @@ interface Props {
 const Page: NextPage<Props> = props => {
   const { virtualLive } = props
 
+  console.log(props)
+
   return (
     <Fragment>
       <HeadTitle title={virtualLive.name} />
