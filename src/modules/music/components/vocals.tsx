@@ -1,14 +1,7 @@
-import {
-  Fragment,
-  FunctionComponent,
-  useState,
-  useMemo,
-  useEffect,
-  memo,
-} from 'react'
+import { Fragment, FunctionComponent, useState, useMemo, memo } from 'react'
 
 import { MusicVideo } from './musicVideo'
-import { getAudioFull, getAudioShort } from '../services/getAudio'
+import { getAudioFull } from '../services/getAudio'
 import { CharacterStack } from '../../../core/components/characterStack'
 
 import { MusicVocal } from '../../../@types/MusicVocal'

@@ -2,7 +2,7 @@ export interface VirtualLiveSetlist {
   id: number
   virtualLiveId: number
   seq: number
-  virtualLiveSetlistType: string
+  virtualLiveSetlistType: 'mc' | 'music'
   assetbundleName: string
   virtualLiveStageId: number
   musicId?: number
