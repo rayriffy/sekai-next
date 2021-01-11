@@ -21,10 +21,6 @@ interface Props {
 export const CharacterDetail: FunctionComponent<Props> = memo(props => {
   const { character, profile, musics, cards, characterUnit } = props
 
-  useEffect(() => {
-    console.log(props)
-  }, [])
-
   return (
     <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
       <OverviewCard {...{ character, characterUnit, profile }} />
