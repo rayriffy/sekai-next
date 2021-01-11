@@ -27,6 +27,7 @@ const api: NextApiHandler = async (req, res) => {
     url: 'https://sekai.rayriffy.com/api/virtualLiveFeed',
     events: virtualLives
       .filter(o => o.virtualLiveType === 'normal')
+      .filter(o => o.id !== 51)
       .map(live => {
         const sortedSchedules = sortBy(live.virtualLiveSchedules, 'seq')
 
