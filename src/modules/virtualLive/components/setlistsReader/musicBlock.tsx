@@ -1,10 +1,10 @@
 import { FunctionComponent, memo } from 'react'
 
 import { Audio } from '../../../music/components/audio'
+import { CharacterStack } from '../../../../core/components/characterStack'
 
 import { Music } from '../../../../@types/Music'
 import { MusicVocal } from '../../../../@types/MusicVocal'
-import { CharacterStack } from '../../../../core/components/characterStack'
 
 interface Props {
   music: Music
