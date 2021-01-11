@@ -28,7 +28,6 @@ const api: NextApiHandler = async (req, res) => {
     ttl: 60 * 60,
     events: virtualLives
       .filter(o => o.virtualLiveType === 'normal')
-      .filter(o => o.id !== 51)
       .map(live => {
         const sortedSchedules = sortBy(live.virtualLiveSchedules, 'seq')
 
