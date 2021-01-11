@@ -29,7 +29,10 @@ const Page: NextPage<Props> = props => {
           </div>
           <div className="mt-8 sm:w-full sm:max-w-md xl:mt-0 xl:ml-8">
             <div className="sm:flex xl:justify-end">
-              <a href="/api/virtualLiveFeed" download="virtual-lives.ics">
+              <a
+                href="webcal:https://sekai.rayriffy.com/subscribe/virtual-lives.ics"
+                download="virtual-lives.ics"
+              >
                 <button className="mt-3 w-full flex items-center justify-center px-5 py-3 border border-transparent shadow text-base font-medium rounded-md text-white bg-blue-500 hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-blue-700 focus:ring-white sm:mt-0 sm:w-auto sm:flex-shrink-0">
                   Subscribe
                 </button>
