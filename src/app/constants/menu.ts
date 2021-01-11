@@ -2,6 +2,7 @@ import { FunctionComponent, SVGProps } from 'react'
 
 import { Calendar } from '../../core/components/icons/calendar'
 import { Collection } from '../../core/components/icons/collection'
+import { Film } from '../../core/components/icons/film'
 import { Home } from '../../core/components/icons/home'
 import { InformationCircle } from '../../core/components/icons/informationCircle'
 import { MusicNote } from '../../core/components/icons/musicNote'
@@ -38,6 +39,12 @@ export const menus: IMenu[] = [
     link: '/cards',
     name: 'Cards',
     match: ['/cards', '/card/[id]'],
+  },
+  {
+    icon: Film,
+    link: '/virtualLives',
+    name: 'Virtual Lives',
+    match: ['/virtualLives', '/virtualLive/[id]'],
   },
   {
     icon: Calendar,
