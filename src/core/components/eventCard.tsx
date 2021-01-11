@@ -14,7 +14,10 @@ import {
 import { Event } from '../../@types/Event'
 
 interface Props {
-  event: Event
+  event: Pick<
+    Event,
+    'id' | 'startAt' | 'aggregateAt' | 'assetbundleName' | 'name'
+  >
   disableSlug?: boolean
   logoSizes?: string
   backgroundSizes?: string

@@ -4,7 +4,16 @@ import { Music } from '../../../@types/Music'
 import { MusicCard } from '../../../core/components/musicCard'
 
 interface Props {
-  musics: Music[]
+  musics: Pick<
+    Music,
+    | 'title'
+    | 'categories'
+    | 'lyricist'
+    | 'composer'
+    | 'arranger'
+    | 'assetbundleName'
+    | 'id'
+  >[]
 }
 
 export const MusicsListing: FunctionComponent<Props> = memo(props => {

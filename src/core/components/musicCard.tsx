@@ -14,7 +14,16 @@ import { Music } from '../../@types/Music'
 
 interface Props
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  music: Music
+  music: Pick<
+    Music,
+    | 'title'
+    | 'categories'
+    | 'lyricist'
+    | 'composer'
+    | 'arranger'
+    | 'assetbundleName'
+    | 'id'
+  >
   disableOverlay?: boolean
   sizes?: string
   priority?: boolean

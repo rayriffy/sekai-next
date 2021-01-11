@@ -8,7 +8,10 @@ import { EventCard } from '../core/components/eventCard'
 import { Event } from '../@types/Event'
 
 interface Props {
-  events: Event[]
+  events: Pick<
+    Event,
+    'id' | 'startAt' | 'aggregateAt' | 'assetbundleName' | 'name'
+  >[]
 }
 
 const Page: NextPage<Props> = props => {
@@ -29,13 +32,17 @@ const Page: NextPage<Props> = props => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async context => {
+  const { sortBy, reverse, pick } = await import('lodash')
+
   const { getEvents } = await import('../core/services/getEvents')
 
   const events = await getEvents()
 
   return {
     props: {
-      events,
+      events: reverse(sortBy(events, 'startAt')).map(o =>
+        pick(o, ['id', 'startAt', 'aggregateAt', 'assetbundleName', 'name'])
+      ),
     },
   }
 }
