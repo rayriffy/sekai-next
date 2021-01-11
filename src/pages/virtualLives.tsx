@@ -16,7 +16,7 @@ const Page: NextPage<Props> = props => {
 
   return (
     <Fragment>
-      <HeadTitle title="Events" />
+      <HeadTitle title="Virtual Lives" />
       <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 space-y-6">
         <div className="px-6 py-6 bg-blue-700 rounded-lg md:py-12 md:px-12 lg:py-16 lg:px-16 xl:flex xl:items-center">
           <div className="xl:w-0 xl:flex-1">
