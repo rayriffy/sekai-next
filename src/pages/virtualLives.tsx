@@ -26,6 +26,9 @@ const Page: NextPage<Props> = props => {
             <p className="mt-3 max-w-3xl text-lg leading-6 text-blue-200">
               Subscribe for calendar events here.
             </p>
+            <p className="mt-1 text-blue-300 text-sm">
+              and don't forget to adjust auto-refresh to every hour.
+            </p>
           </div>
           <div className="mt-8 sm:w-full sm:max-w-md xl:mt-0 xl:ml-8">
             <div className="sm:flex xl:justify-end">
