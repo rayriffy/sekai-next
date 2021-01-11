@@ -24,7 +24,8 @@ const api: NextApiHandler = async (req, res) => {
       language: 'JP',
     },
     timezone: 'Asia/Tokyo',
-    url: 'https://sekai.rayriffy.com/api/virtualLiveFeed',
+    url: 'https://sekai.rayriffy.com/subscribe/virtual-lives.ics',
+    ttl: 60 * 60,
     events: virtualLives
       .filter(o => o.virtualLiveType === 'normal')
       .filter(o => o.id !== 51)
