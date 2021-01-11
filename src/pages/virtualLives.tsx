@@ -8,7 +8,7 @@ import { VirtualLiveCard } from '../core/components/virtualLiveCard'
 import { VirtualLive } from '../@types/VirtualLive'
 
 interface Props {
-  virtualLives: VirtualLive[]
+  virtualLives: Pick<VirtualLive, 'id' | 'assetbundleName'>[]
 }
 
 const Page: NextPage<Props> = props => {
@@ -62,7 +62,10 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
 
   return {
     props: {
-      virtualLives: reverse(sortBy(virtualLives, 'startAt')),
+      virtualLives: reverse(sortBy(virtualLives, 'startAt')).map(live => ({
+        id: live.id,
+        assetbundleName: live.assetbundleName,
+      })),
     },
   }
 }
