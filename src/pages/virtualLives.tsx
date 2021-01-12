@@ -9,10 +9,11 @@ import { VirtualLive } from '../@types/VirtualLive'
 
 interface Props {
   virtualLives: Pick<VirtualLive, 'id' | 'assetbundleName'>[]
+  beginnerLives: Pick<VirtualLive, 'id' | 'assetbundleName'>[]
 }
 
 const Page: NextPage<Props> = props => {
-  const { virtualLives } = props
+  const { virtualLives, beginnerLives } = props
 
   return (
     <Fragment>
@@ -48,6 +49,17 @@ const Page: NextPage<Props> = props => {
             />
           ))}
         </div>
+        <div className="pt-4">
+          <h2 className="font-bold text-2xl">Beginner Lives</h2>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 xl:gap-8">
+          {beginnerLives.map(live => (
+            <VirtualLiveCard
+              key={`virtualLive-${live.id}`}
+              virtualLive={live}
+            />
+          ))}
+        </div>
       </div>
     </Fragment>
   )
@@ -60,11 +72,15 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
 
   const virtualLives = await getVirtualLives()
 
+  const getLives = (type: 'normal' | 'beginner') =>
+    reverse(sortBy(virtualLives, 'startAt'))
+      .filter(o => o.virtualLiveType === type)
+      .map(live => pick(live, ['id', 'assetbundleName']))
+
   return {
     props: {
-      virtualLives: reverse(sortBy(virtualLives, 'startAt')).map(live =>
-        pick(live, ['id', 'assetbundleName'])
-      ),
+      virtualLives: getLives('normal'),
+      beginnerLives: getLives('beginner').reverse(),
     },
   }
 }

@@ -1,4 +1,4 @@
-import { FunctionComponent, memo, useMemo } from 'react'
+import { FunctionComponent, memo, useMemo, Fragment } from 'react'
 
 import Image from 'next/image'
 
@@ -63,14 +63,35 @@ export const VirtualLiveDetail: FunctionComponent<Props> = memo(props => {
             {virtualLive.name}
           </h1>
           <div>
-            <p>
-              Live begins at{' '}
-              <b>{dayjs(virtualLive.startAt).format('DD MMMM YYYY HH:MM')}</b>
-            </p>
-            <p>
-              Live ended at{' '}
-              <b>{dayjs(virtualLive.endAt).format('DD MMMM YYYY HH:MM')}</b>
-            </p>
+            {virtualLive.virtualLiveType === 'normal' ? (
+              <Fragment>
+                <p>
+                  First live begins at{' '}
+                  <b>
+                    {dayjs(virtualLive.virtualLiveSchedules[0].startAt).format(
+                      'DD MMMM YYYY HH:MM'
+                    )}
+                  </b>
+                </p>
+                <p>
+                  Last live begins at{' '}
+                  <b>
+                    {dayjs(
+                      virtualLive.virtualLiveSchedules[
+                        virtualLive.virtualLiveSchedules.length - 1
+                      ].startAt
+                    ).format('DD MMMM YYYY HH:MM')}
+                  </b>
+                </p>
+              </Fragment>
+            ) : (
+              <p>
+                Live will be held on{' '}
+                <b className="capitalize">
+                  {virtualLive.virtualLiveBeginnerSchedules[0].dayOfWeek}
+                </b>
+              </p>
+            )}
             <p>
               Duration{' '}
               <b>
