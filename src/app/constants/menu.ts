@@ -1,5 +1,6 @@
 import { FunctionComponent, SVGProps } from 'react'
 
+import { BookmarkAlt } from '../../core/components/icons/bookmarkAlt'
 import { Calendar } from '../../core/components/icons/calendar'
 import { Collection } from '../../core/components/icons/collection'
 import { Film } from '../../core/components/icons/film'
@@ -39,6 +40,12 @@ export const menus: IMenu[] = [
     link: '/cards',
     name: 'Cards',
     match: ['/cards', '/card/[id]'],
+  },
+  {
+    icon: BookmarkAlt,
+    link: '/comics',
+    name: 'Comics',
+    match: ['/comics'],
   },
   {
     icon: Film,
