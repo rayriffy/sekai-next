@@ -9,7 +9,7 @@ interface TransformedSetlistBase<T = string, D = unknown> {
 }
 
 export type TransformedSetlist =
-  | TransformedSetlistBase<'mc', MCSerialData[]>
+  | TransformedSetlistBase<'mc', { id: string; serialData: MCSerialData[] }>
   | TransformedSetlistBase<
       'music',
       {

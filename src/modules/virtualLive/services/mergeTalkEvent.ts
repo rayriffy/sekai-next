@@ -9,8 +9,9 @@ export const mergeTalkEvent = (characterTalkEvents: CharacterTalkEvent[]) => {
     .map(([key, events]) => {
       return {
         order: characterTalkEvents.findIndex(o => o.Serif === key),
-        character3dIds: events.map(event => event.Character3dId),
-        event: events[0],
+        character3dIds: [...new Set(events.map(event => event.Character3dId))],
+        voiceKeys: [...new Set(events.map(event => event.VoiceKey))],
+        text: events[0].Serif,
       }
     })
     .sort((a, b) => a.order - b.order)

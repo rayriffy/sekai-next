@@ -26,5 +26,8 @@ export const getMCScenario = async (
     })),
   ]
 
-  return sortBy(payload, 'data.Time')
+  return {
+    id: res.data.Id,
+    serialData: sortBy(payload, 'data.Time'),
+  }
 }

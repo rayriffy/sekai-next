@@ -55,27 +55,27 @@ export const SetlistsReader: FunctionComponent<Props> = props => {
         </div>
       ) : (
         <Fragment>
-          <div className="px-4">
+          <div className="px-4 max-w-4xl mx-auto">
             {setlists.map((setlist, i) => (
               <Fragment>
                 {i !== 0 ? (
                   <div className="mx-6 my-8 border-t border-gray-200" />
                 ) : null}
-                <div
-                  key={`setlist-${setlist.seq}`}
-                  className="space-y-4 max-w-xl"
-                >
+                <div key={`setlist-${setlist.seq}`} className="space-y-4">
                   {setlist.type === 'mc' ? (
                     <Fragment>
                       <h1 className="text-xl text-gray-900 font-bold">
                         Talk que
                       </h1>
                       {mergeTalkEvent(
-                        setlist.data
+                        setlist.data.serialData
                           .filter(o => o.type === 'talk')
                           .map(o => o.data as CharacterTalkEvent)
                       ).map(talk => (
-                        <TalkBlock {...{ character3dIndex, ...talk }} />
+                        <TalkBlock
+                          mcId={setlist.data.id}
+                          {...{ character3dIndex, ...talk }}
+                        />
                       ))}
                     </Fragment>
                   ) : (

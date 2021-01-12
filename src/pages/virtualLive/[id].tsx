@@ -7,7 +7,6 @@ import { VirtualLiveDetail } from '../../modules/virtualLive/components/detail'
 
 import { VirtualLive } from '../../@types/VirtualLive'
 import { TransformedSetlist } from '../../@types/TransformedSetlist'
-import { MCSerialData } from '../../@types/MCSerialData'
 
 interface Props {
   virtualLive: VirtualLive
@@ -81,8 +80,13 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
   const targetCharacter3ds = flatMapDeep(
     setlists
       .filter(o => o.type === 'mc')
-      .map(o => o.data as MCSerialData[])
-      .map(o => o.map(p => p.data.Character3dId))
+      .map(o => {
+        if (o.type === 'mc') {
+          return o.data.serialData.map(p => p.data.Character3dId)
+        } else {
+          throw 'invalid-type'
+        }
+      })
   )
 
   return {
