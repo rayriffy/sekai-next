@@ -10,7 +10,7 @@ import { getVirtualLives } from '../../core/services/getVirtualLives'
 
 const api: NextApiHandler = async (req, res) => {
   const sitemapStream = new SitemapStream({
-    hostname: 'https://h.rayriffy.com',
+    hostname: 'https://sekai.rayriffy.com',
   })
 
   // generic pages
