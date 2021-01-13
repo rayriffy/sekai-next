@@ -68,6 +68,10 @@ module.exports = withPlugins(
           source: '/subscribe/virtual-lives.ics',
           destination: '/api/virtualLiveFeed',
         },
+        {
+          source: '/sitemap.xml',
+          destination: '/api/sitemap',
+        },
       ]
     },
     async redirects() {
