@@ -70,7 +70,7 @@ module.exports = withPlugins(
         },
         {
           source: '/sitemap.xml',
-          destination: '/api/sitemap',
+          destination: '/api/generateSitemap',
         },
       ]
     },
