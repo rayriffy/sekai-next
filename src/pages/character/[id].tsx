@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { Fragment, useMemo } from 'react'
 
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
@@ -20,13 +20,23 @@ interface Props {
 }
 
 const Page: NextPage<Props> = props => {
-  const { character } = props
+  const {
+    character: { firstName, givenName, firstNameRuby, givenNameRuby },
+  } = props
+
+  console.log(props)
+
+  const characterName = useMemo(
+    () =>
+      firstName === undefined
+        ? `${givenName} (${givenNameRuby})`
+        : `${firstName} ${givenName} (${firstNameRuby} ${givenNameRuby})`,
+    []
+  )
 
   return (
     <Fragment>
-      <HeadTitle
-        title={`${character.firstName} ${character.givenName} (${character.firstNameRuby} ${character.givenNameRuby})`}
-      />
+      <HeadTitle title={characterName} />
       <CharacterDetail {...props} />
     </Fragment>
   )
