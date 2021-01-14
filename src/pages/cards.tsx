@@ -8,12 +8,10 @@ import { CardsListing } from '../modules/cards/components/listing'
 import { Card } from '../@types/Card'
 
 interface Props {
-  cards: Card[]
+  cards: Pick<Card, 'id' | 'rarity' | 'attr' | 'assetbundleName' | 'prefix'>[]
 }
 
 const Page: NextPage<Props> = props => {
-  const { cards } = props
-
   return (
     <Fragment>
       <HeadTitle title="Cards" />
@@ -23,6 +21,7 @@ const Page: NextPage<Props> = props => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async context => {
+  const { pick } = await import('lodash')
   const { getCards } = await import('../core/services/getCards')
 
   const cards = await getCards()
@@ -30,11 +29,9 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
   return {
     props: {
       // discard data that will not be rendered
-      cards: cards.map(card => ({
-        ...card,
-        cardParameters: [],
-        specialTrainingCosts: [],
-      })),
+      cards: cards.map(card =>
+        pick(card, ['id', 'rarity', 'attr', 'assetbundleName', 'prefix'])
+      ),
     },
   }
 }

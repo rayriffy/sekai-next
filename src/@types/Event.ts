@@ -10,7 +10,7 @@ export interface Event {
   distributionStartAt: number
   closedAt: number
   distributionEndAt: number
-  virtualLiveId: number
+  virtualLiveId?: number
   eventRankingRewardRanges: {
     id: number
     eventId: number

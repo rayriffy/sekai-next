@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
 
 import { GetStaticProps, NextPage } from 'next'
+import Image from 'next/image'
 
 import { HeadTitle } from '../core/components/headTitle'
 import { MusicCard } from '../core/components/musicCard'
@@ -11,15 +12,30 @@ import { EventCard } from '../core/components/eventCard'
 import { Music } from '../@types/Music'
 import { Card } from '../@types/Card'
 import { Event } from '../@types/Event'
+import { VirtualLive } from '../@types/VirtualLive'
+import { VirtualLiveCard } from '../core/components/virtualLiveCard'
 
 interface Props {
-  musics: Music[]
-  cards: Card[]
-  event: Event
+  musics: Pick<
+    Music,
+    | 'title'
+    | 'categories'
+    | 'lyricist'
+    | 'composer'
+    | 'arranger'
+    | 'assetbundleName'
+    | 'id'
+  >[]
+  cards: Pick<Card, 'id' | 'rarity' | 'attr' | 'assetbundleName' | 'prefix'>[]
+  event: Pick<
+    Event,
+    'id' | 'startAt' | 'aggregateAt' | 'assetbundleName' | 'name'
+  >
+  virtualLive: Pick<VirtualLive, 'id' | 'assetbundleName'> | null
 }
 
 const Page: NextPage<Props> = props => {
-  const { musics, cards, event } = props
+  const { musics, cards, event, virtualLive } = props
 
   return (
     <Fragment>
@@ -62,6 +78,14 @@ const Page: NextPage<Props> = props => {
               logoSizes="300px"
               priority
             />
+            {virtualLive !== null ? (
+              <Fragment>
+                <div className="m-4 border-t border-gray-200" />
+                <div className="max-w-sm mx-auto mt-2">
+                  <VirtualLiveCard virtualLive={virtualLive} />
+                </div>
+              </Fragment>
+            ) : null}
           </CardHeading>
         </div>
       </div>
@@ -70,16 +94,18 @@ const Page: NextPage<Props> = props => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async context => {
-  const { sortBy, reverse, slice, first } = await import('lodash')
+  const { sortBy, reverse, slice, first, pick } = await import('lodash')
 
   const { getMusics } = await import('../core/services/getMusics')
   const { getCards } = await import('../core/services/getCards')
   const { getEvents } = await import('../core/services/getEvents')
+  const { getVirtualLives } = await import('../core/services/getVirtualLives')
 
-  const [musics, cards, events] = await Promise.all([
+  const [musics, cards, events, virtualLives] = await Promise.all([
     getMusics(),
     getCards(),
     getEvents(),
+    getVirtualLives(),
   ])
 
   // get first 6 latest musics
@@ -99,16 +125,37 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
   // get first 4 latest cards
   const filteredEvent = first(reverse(sortBy(events, event => event.startAt)))
 
+  // if event has virtual then, get ticket as well
+  const targetVirtualLive =
+    filteredEvent.virtualLiveId === undefined
+      ? null
+      : virtualLives.find(o => o.id === filteredEvent.virtualLiveId)
+
   return {
     props: {
-      musics: filteredMusics,
+      musics: filteredMusics.map(music =>
+        pick(music, [
+          'title',
+          'categories',
+          'lyricist',
+          'composer',
+          'arranger',
+          'assetbundleName',
+          'id',
+        ])
+      ),
       // discard data that will not be rendered
-      cards: filteredCards.map(card => ({
-        ...card,
-        cardParameters: [],
-        specialTrainingCosts: [],
-      })),
-      event: filteredEvent,
+      cards: filteredCards.map(card =>
+        pick(card, ['id', 'rarity', 'attr', 'assetbundleName', 'prefix'])
+      ),
+      event: pick(filteredEvent, [
+        'id',
+        'startAt',
+        'aggregateAt',
+        'assetbundleName',
+        'name',
+      ]),
+      virtualLive: pick(targetVirtualLive, ['id', 'assetbundleName']),
     },
   }
 }

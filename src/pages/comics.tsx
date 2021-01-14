@@ -8,7 +8,7 @@ import { HeadTitle } from '../core/components/headTitle'
 import { ComicTip } from '../@types/Tip'
 
 interface Props {
-  comics: ComicTip[]
+  comics: Pick<ComicTip, 'id' | 'title' | 'assetbundleName'>[]
 }
 
 const Page: NextPage<Props> = props => {
@@ -46,13 +46,16 @@ const Page: NextPage<Props> = props => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async context => {
+  const { pick } = await import('lodash')
   const { getComics } = await import('../core/services/getComics')
 
   const comics = await getComics()
 
   return {
     props: {
-      comics,
+      comics: comics.map(comic =>
+        pick(comic, ['id', 'title', 'assetbundleName'])
+      ),
     },
   }
 }

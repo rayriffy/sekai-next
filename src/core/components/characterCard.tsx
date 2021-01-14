@@ -15,7 +15,7 @@ import { Card } from '../../@types/Card'
 
 interface Props
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  card: Card
+  card: Pick<Card, 'id' | 'rarity' | 'attr' | 'assetbundleName' | 'prefix'>
   afterTraining?: boolean
   disableLink?: boolean
   cardSizes?: string

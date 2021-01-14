@@ -5,7 +5,7 @@ import { CharacterCard } from '../../../core/components/characterCard'
 import { Card } from '../../../@types/Card'
 
 interface Props {
-  cards: Card[]
+  cards: Pick<Card, 'id' | 'rarity' | 'attr' | 'assetbundleName' | 'prefix'>[]
 }
 
 export const CardsListing: FunctionComponent<Props> = props => {
