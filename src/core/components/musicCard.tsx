@@ -50,7 +50,7 @@ export const MusicCard: FunctionComponent<Props> = memo(props => {
             <div className="rounded-md absolute top-0 bottom-0 left-0 right-0 bg-black-overlay backdrop-blur transition ease-in-out duration-200 z-10 flex flex-col justify-between text-white p-6 opacity-0 hover:opacity-100">
               <div>
                 <h1 className="font-bold text-xl">{music.title}</h1>
-                <div className="pt-2 flex space-x-4">
+                {/* <div className="pt-2 flex space-x-4">
                   {music.categories.map(category => (
                     <div
                       key={`music-${music.id}-category-${category}`}
@@ -59,7 +59,7 @@ export const MusicCard: FunctionComponent<Props> = memo(props => {
                       {category}
                     </div>
                   ))}
-                </div>
+                </div> */}
               </div>
               <div className="pt-1 text-xs sm:text-sm">
                 <div>Lyricist: {music.lyricist}</div>
