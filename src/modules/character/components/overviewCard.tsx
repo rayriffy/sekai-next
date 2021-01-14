@@ -1,4 +1,4 @@
-import { FunctionComponent, memo, createContext } from 'react'
+import { FunctionComponent, memo, createContext, Fragment } from 'react'
 
 import Image from 'next/image'
 
@@ -36,25 +36,45 @@ export const OverviewCard: FunctionComponent<Props> = memo(props => {
             />
           </div>
           <div className="w-full grid grid-cols-1 lg:grid-cols-5 gap-4 p-4">
-            <div className="col-span-3 space-y-2">
-              <SectionSmall title="CV" content={profile.characterVoice} />
-              <SectionSmall title="School" content={profile.school} />
-              <SectionSmall title="Class" content={profile.schoolYear} />
-              <SectionLarge title="Hobby" content={profile.hobby} />
-              <SectionLarge
-                title="Special Skill"
-                content={profile.specialSkill}
-              />
-              <SectionLarge
-                title="Favorite Food"
-                content={profile.favoriteFood}
-              />
-              <SectionLarge title="Hated Food" content={profile.hatedFood} />
-              <SectionSpecial title="Weakness" content={profile.weak} />
+            <div
+              className={`space-y-2 ${
+                profile.school !== undefined ? 'col-span-3' : 'col-span-2'
+              }`}
+            >
+              {profile.school !== undefined ? (
+                <Fragment>
+                  <SectionSmall title="CV" content={profile.characterVoice} />
+                  <SectionSmall title="School" content={profile.school} />
+                  <SectionSmall title="Class" content={profile.schoolYear} />
+                  <SectionLarge title="Hobby" content={profile.hobby} />
+                  <SectionLarge
+                    title="Special Skill"
+                    content={profile.specialSkill}
+                  />
+                  <SectionLarge
+                    title="Favorite Food"
+                    content={profile.favoriteFood}
+                  />
+                  <SectionLarge
+                    title="Hated Food"
+                    content={profile.hatedFood}
+                  />
+                  <SectionSpecial title="Weakness" content={profile.weak} />
+                </Fragment>
+              ) : null}
             </div>
-            <div className="col-span-2 space-y-2">
+            <div
+              className={`${
+                profile.school !== undefined ? 'col-span-2' : 'col-span-3'
+              } space-y-2`}
+            >
               <SectionSmall title="Birthday" content={profile.birthday} />
               <SectionSmall title="Height" content={profile.height} />
+              <div>
+                <div className="bg-gray-50 text-gray-900 p-4 rounded-lg mt-4 pb-16">
+                  {profile.introduction}
+                </div>
+              </div>
             </div>
           </div>
         </div>
