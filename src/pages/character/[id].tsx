@@ -24,8 +24,6 @@ const Page: NextPage<Props> = props => {
     character: { firstName, givenName, firstNameRuby, givenNameRuby },
   } = props
 
-  console.log(props)
-
   const characterName = useMemo(
     () =>
       firstName === undefined
