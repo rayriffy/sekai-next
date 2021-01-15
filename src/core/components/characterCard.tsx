@@ -46,7 +46,7 @@ export const CharacterCard: FunctionComponent<Props> = props => {
         className={`rounded-lg overflow-hidden relative ${className}`}
         {...rest}
       >
-        <div className="z-10 absolute bottom-2 left-2 w-1/12">
+        <div className="z-10 absolute bottom-2 left-2 w-1/13">
           {Array.from({ length: card.rarity }).map((_, i) => (
             <Star
               key={`card-${card.id}-star-${i}-mode-${
@@ -57,7 +57,7 @@ export const CharacterCard: FunctionComponent<Props> = props => {
             />
           ))}
         </div>
-        <div className="z-10 absolute top-2 right-2 w-1/12">
+        <div className="z-10 absolute top-2 right-2 w-1/13">
           <Image
             src={`/static/icon_attribute_${card.attr}.png`}
             width={88}
@@ -66,7 +66,7 @@ export const CharacterCard: FunctionComponent<Props> = props => {
             alt={card.attr}
           />
         </div>
-        <div className="absolute top-0 bottom-2 left-0 right-0 overflow-hidden rounded-lg">
+        <div className="absolute top-0 bottom-1 left-0 right-0 overflow-hidden rounded-lg">
           <Image
             key={`card-${card.id}-mode-${
               afterTraining ? 'afterTraining' : 'normal'

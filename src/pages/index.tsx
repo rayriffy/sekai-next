@@ -31,7 +31,7 @@ interface Props {
     Event,
     'id' | 'startAt' | 'aggregateAt' | 'assetbundleName' | 'name'
   >
-  virtualLive: Pick<VirtualLive, 'id' | 'assetbundleName'> | null
+  virtualLive: Pick<VirtualLive, 'id' | 'assetbundleName' | 'name'> | null
 }
 
 const Page: NextPage<Props> = props => {
@@ -155,7 +155,7 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
         'assetbundleName',
         'name',
       ]),
-      virtualLive: pick(targetVirtualLive, ['id', 'assetbundleName']),
+      virtualLive: pick(targetVirtualLive, ['id', 'assetbundleName', 'name']),
     },
   }
 }

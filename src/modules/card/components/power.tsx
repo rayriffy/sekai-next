@@ -79,12 +79,13 @@ export const Power: FunctionComponent<Props> = memo(props => {
           </div>
         </div>
         <div className="ml-4 flex items-center">
-          <Image
-            className="w-5"
-            src="/static/icon_totalStrength.png"
-            width={36}
-            height={42}
-          />
+          <div className="w-6 h-6">
+            <Image
+              src="/static/icon_totalStrength.png"
+              width={36}
+              height={42}
+            />
+          </div>
           <span className="ml-2 text-xl text-gray-700 font-medium">
             {performanceValue + techniqueValue + staminaValue}
           </span>
@@ -93,32 +94,32 @@ export const Power: FunctionComponent<Props> = memo(props => {
       <div className="pt-6">
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
           <div className="flex items-center text-gray-700">
-            <Image
-              className="w-4 h-4"
-              src="/static/icon_performance.png"
-              width={28}
-              height={28}
-            />
+            <div className="w-5 h-5">
+              <Image
+                src="/static/icon_performance.png"
+                width={28}
+                height={28}
+              />
+            </div>
             <span className="text-sm pl-1 pr-2">Performance</span>
             <span className="text-md font-medium">{performanceValue}</span>
           </div>
           <div className="flex items-center text-gray-700">
-            <Image
-              className="w-4 h-4"
-              src="/static/icon_technique.png"
-              width={28}
-              height={28}
-            />
+            <div className="w-5 h-5">
+              <Image src="/static/icon_technique.png" width={28} height={28} />
+            </div>
             <span className="text-sm pl-1 pr-2">Technique</span>
             <span className="text-md font-medium">{techniqueValue}</span>
           </div>
           <div className="flex items-center text-gray-700">
-            <Image
-              className="w-4 h-4"
-              src="/static/icon_stamina.png"
-              width={28}
-              height={28}
-            />
+            <div className="w-5 h-5">
+              <Image
+                className="w-3.5 h-3.5"
+                src="/static/icon_stamina.png"
+                width={28}
+                height={28}
+              />
+            </div>
             <span className="text-sm pl-1 pr-2">Stamina</span>
             <span className="text-md font-medium">{staminaValue}</span>
           </div>

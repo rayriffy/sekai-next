@@ -64,6 +64,9 @@ module.exports = {
       scale: {
         102: '1.02',
       },
+      width: {
+        '1/13': '7.6923077%',
+      },
     },
   },
   variants: {},

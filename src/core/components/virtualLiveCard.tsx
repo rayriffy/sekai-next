@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { VirtualLive } from '../../@types/VirtualLive'
 
 interface Props {
-  virtualLive: Pick<VirtualLive, 'id' | 'assetbundleName'>
+  virtualLive: Pick<VirtualLive, 'id' | 'assetbundleName' | 'name'>
 }
 
 export const VirtualLiveCard: FunctionComponent<Props> = memo(props => {
@@ -21,6 +21,7 @@ export const VirtualLiveCard: FunctionComponent<Props> = memo(props => {
             height={243}
             src={`https://sekai-res.dnaroma.eu/file/sekai-assets/virtual_live/select/banner/${virtualLive.assetbundleName}_rip/${virtualLive.assetbundleName}.png`}
             className="w-full h-auto"
+            alt={virtualLive.name}
           />
         </a>
       </Link>
