@@ -54,7 +54,7 @@
     "sitemap": "^6.3.5",
     "storeon": "^3.1.1",
     "swr": "^0.4.2",
-    "tailwindcss": "^2.0.1",
+    "tailwindcss": "^2.0.3",
     "tailwindcss-filters": "^3.0.0",
     "web-api-hooks": "^3.0.2",
     "webpack": "4.46.0",
