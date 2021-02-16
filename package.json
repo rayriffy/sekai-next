@@ -58,7 +58,7 @@
     "tailwindcss-filters": "^3.0.0",
     "web-api-hooks": "^3.0.2",
     "webpack": "4.46.0",
-    "worker-loader": "^3.0.5"
+    "worker-loader": "^3.0.8"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
