@@ -53,7 +53,7 @@ export const CharacterDetail: FunctionComponent<Props> = memo(props => {
               {cards.map(card => (
                 <CharacterCard
                   card={card}
-                  className="w-72"
+                  className="w-96"
                   afterTraining={card.rarity >= 3}
                 />
               ))}

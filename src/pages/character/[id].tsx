@@ -41,6 +41,8 @@ const Page: NextPage<Props> = props => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async context => {
+  const { reverse } = await import('lodash')
+
   const { getGameCharacters } = await import(
     '../../core/services/getGameCharacters'
   )
@@ -108,11 +110,11 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
       profile: targetCharacterProfile,
       musics: targetMusics,
       characterUnit: targetCharacterUnit,
-      cards: targetCards.map(card => ({
+      cards: reverse(targetCards.map(card => ({
         ...card,
         cardParameters: [],
         specialTrainingCosts: [],
-      })),
+      }))),
     },
   }
 }

@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from 'react'
+import { Fragment } from 'react'
 
 import { GetStaticProps, NextPage } from 'next'
 
@@ -21,7 +21,7 @@ const Page: NextPage<Props> = props => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async context => {
-  const { pick } = await import('lodash')
+  const { pick, reverse } = await import('lodash')
   const { getCards } = await import('../core/services/getCards')
 
   const cards = await getCards()
@@ -29,9 +29,9 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
   return {
     props: {
       // discard data that will not be rendered
-      cards: cards.map(card =>
+      cards: reverse(cards.map(card =>
         pick(card, ['id', 'rarity', 'attr', 'assetbundleName', 'prefix'])
-      ),
+      )),
     },
   }
 }

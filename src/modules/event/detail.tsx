@@ -34,7 +34,6 @@ export const EventDetail: FunctionComponent<Props> = props => {
               Event ended at{' '}
               <b>{dayjs(event.aggregateAt).format('DD MMMM YYYY HH:MM')}</b>
             </p>
-            OK
           </div>
         </div>
       </div>
