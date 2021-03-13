@@ -1,4 +1,4 @@
-import { FunctionComponent, memo, Fragment } from 'react'
+import { FunctionComponent, memo } from 'react'
 
 import { Transition } from '@headlessui/react'
 
