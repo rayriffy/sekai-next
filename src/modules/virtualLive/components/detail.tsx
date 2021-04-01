@@ -22,8 +22,10 @@ interface Props {
 export const VirtualLiveDetail: FunctionComponent<Props> = memo(props => {
   const { virtualLive, setlists, character3dIndex } = props
 
+  const isBeginnerLive = useMemo(() => !['normal', 'cheerful_carnival'].includes(virtualLive.virtualLiveType), [virtualLive.virtualLiveType])
+
   const diffSeconds = useMemo(() => {
-    if (virtualLive.virtualLiveType === 'normal') {
+    if (!isBeginnerLive) {
       const schedule = virtualLive.virtualLiveSchedules[0]
 
       return dayjs(schedule.endAt).diff(dayjs(schedule.startAt), 'second')
@@ -63,7 +65,7 @@ export const VirtualLiveDetail: FunctionComponent<Props> = memo(props => {
             {virtualLive.name}
           </h1>
           <div>
-            {virtualLive.virtualLiveType === 'normal' ? (
+            {!isBeginnerLive ? (
               <Fragment>
                 <p>
                   First live begins at{' '}
@@ -114,7 +116,7 @@ export const VirtualLiveDetail: FunctionComponent<Props> = memo(props => {
           </div>
           <div className="border-t border-gray-200 px-4 py-5 sm:py-4">
             <div className="grid gap-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-              {virtualLive.virtualLiveType === 'normal'
+              {!isBeginnerLive
                 ? virtualLive.virtualLiveSchedules.map(schedule => (
                     <ScheduleBlock
                       key={`vlive-schedule-${schedule.id}`}
