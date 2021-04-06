@@ -5105,10 +5105,10 @@ postcss@^8.1.6, postcss@^8.2.1, postcss@^8.2.8:
     nanoid "^3.1.20"
     source-map "^0.6.1"
 
-preact-render-to-string@^5.1.17:
-  version "5.1.17"
-  resolved "https://registry.yarnpkg.com/preact-render-to-string/-/preact-render-to-string-5.1.17.tgz#4ae85520928165cb725acba747017d1d1c77c636"
-  integrity sha512-njguygfbkOBSTG7O9L2pwXfLqmeBHCP6MKOUAus+tJNqBUbmYY1mOUK2MtkmIwjddBafafo48ylOFvXVQKushA==
+preact-render-to-string@^5.1.19:
+  version "5.1.19"
+  resolved "https://registry.yarnpkg.com/preact-render-to-string/-/preact-render-to-string-5.1.19.tgz#ffae7c3bd1680be5ecf5991d41fe3023b3051e0e"
+  integrity sha512-bj8sn/oytIKO6RtOGSS/1+5CrQyRSC99eLUnEVbqUa6MzJX5dYh7wu9bmT0d6lm/Vea21k9KhCQwvr2sYN3rrQ==
   dependencies:
     pretty-format "^3.8.0"
 
