@@ -3575,12 +3575,12 @@ husky@^6.0.0:
   resolved "https://registry.yarnpkg.com/husky/-/husky-6.0.0.tgz#810f11869adf51604c32ea577edbc377d7f9319e"
   integrity sha512-SQS2gDTB7tBN486QSoKPKQItZw97BMOd+Kdb6ghfpBc0yXyzrddI0oDV5MkDAbuB4X2mO3/nj60TRMcYxwzZeQ==
 
-ical-generator@^1.15.4:
-  version "1.15.4"
-  resolved "https://registry.yarnpkg.com/ical-generator/-/ical-generator-1.15.4.tgz#f7a26e5aae9ff59ff35b07b8c5e6ea117efdc99d"
-  integrity sha512-drXe4RLkfNlvDvdy/E6BUI9p+01L3ySK1ufNEYI9TxNKG9ZA3G60QWoZvD1dtmH4scwDxYu6/sZBPJvYVNrj8A==
+ical-generator@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ical-generator/-/ical-generator-2.0.0.tgz#66162810950c0e42c8d07388a7fd3902a949f12d"
+  integrity sha512-fC6k2m+8Ob6WOFqoXclEpp73snoM+EnF8rMcOj6QFGUCmHQWBSlXKLu1Wb1p9G/v73hQN/j/FbV/lwBcf3CVSw==
   dependencies:
-    moment-timezone "^0.5.32"
+    uuid-random "^1.3.2"
 
 iconv-lite@0.4.24:
   version "0.4.24"
@@ -4536,18 +4536,6 @@ module-alias@^2.0.0:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/module-alias/-/module-alias-2.2.2.tgz#151cdcecc24e25739ff0aa6e51e1c5716974c0e0"
   integrity sha512-A/78XjoX2EmNvppVWEhM2oGk3x4lLxnkEA4jTbaK97QKSDjkIoOsKQlfylt/d3kKKi596Qy3NP5XrXJ6fZIC9Q==
-
-moment-timezone@^0.5.32:
-  version "0.5.32"
-  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.32.tgz#db7677cc3cc680fd30303ebd90b0da1ca0dfecc2"
-  integrity sha512-Z8QNyuQHQAmWucp8Knmgei8YNo28aLjJq6Ma+jy1ZSpSk5nyfRT8xgUbSQvD2+2UajISfenndwvFuH3NGS+nvA==
-  dependencies:
-    moment ">= 2.9.0"
-
-"moment@>= 2.9.0":
-  version "2.29.1"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
-  integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
 
 move-concurrently@^1.0.1:
   version "1.0.1"
@@ -6725,6 +6713,11 @@ util@^0.11.0:
   integrity sha512-HShAsny+zS2TZfaXxD9tYj4HQGlBezXZMZuM/S5PKLLoZkShZiGk9o5CzukI1LVHZvjdvZ2Sj1aW/Ndn2NB/HQ==
   dependencies:
     inherits "2.0.3"
+
+uuid-random@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/uuid-random/-/uuid-random-1.3.2.tgz#96715edbaef4e84b1dcf5024b00d16f30220e2d0"
+  integrity sha512-UOzej0Le/UgkbWEO8flm+0y+G+ljUon1QWTEZOq1rnMAsxo2+SckbiZdKzAHHlVh6gJqI1TjC/xwgR50MuCrBQ==
 
 uuid@^3.3.2:
   version "3.4.0"
