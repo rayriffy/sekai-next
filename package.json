@@ -36,7 +36,7 @@
     "@zeit/next-workers": "^1.0.0",
     "axios": "^0.21.0",
     "dayjs": "^1.10.4",
-    "ical-generator": "^1.15.4",
+    "ical-generator": "^2.1.0",
     "lodash": "^4.17.21",
     "markdown-to-jsx": "^7.1.2",
     "next": "^10.1.3",
