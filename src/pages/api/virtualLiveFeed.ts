@@ -16,7 +16,6 @@ const api: NextApiHandler = async (req, res) => {
   const virtualLives = await getVirtualLives()
 
   const calendar = ical({
-    domain: 'sekai.rayriffy.com',
     name: 'プロジェクトセカイ バーチャルライブ',
     prodId: {
       company: 'セカイ Wiki',
