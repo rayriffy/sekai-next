@@ -1042,10 +1042,10 @@
   resolved "https://registry.yarnpkg.com/@headlessui/react/-/react-1.2.0.tgz#e48652bfce82ddf73d7f331faeb9db6526ee6874"
   integrity sha512-19DkLz8gDgbi+WvkoTzi9vs0NK9TJf94vbYhMzB4LYJo03Kili0gmvXT9CiKZoxXZ7YAvy/b1U1oQKEnjWrqxw==
 
-"@next/bundle-analyzer@^10.1.3":
-  version "10.1.3"
-  resolved "https://registry.yarnpkg.com/@next/bundle-analyzer/-/bundle-analyzer-10.1.3.tgz#bf9a6883c66a210632954c957fe81fde04b35af5"
-  integrity sha512-25/I1+f83jJOryarNNGQ0cAlYdGfz5HFyQXmal4skKXhMKyWEBSKOu88tIZzsWktlhOEB8QC7O9KVgAlXPqTyw==
+"@next/bundle-analyzer@^10.2.1":
+  version "10.2.1"
+  resolved "https://registry.yarnpkg.com/@next/bundle-analyzer/-/bundle-analyzer-10.2.1.tgz#4e9214fae2fe7a521ad52deca18e6251727a5df0"
+  integrity sha512-hMtwBSRwpNxdPXhc+t74qoj2f99JuuAR/1klnYhBpu0hNhIzZxAWqFS0SnfZQLZhZfXO/YyJVpN9UtjrkhCZfA==
   dependencies:
     webpack-bundle-analyzer "4.3.0"
 
