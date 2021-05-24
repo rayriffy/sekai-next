@@ -42,7 +42,7 @@
     "next": "^10.2.1",
     "next-compose-plugins": "^2.2.0",
     "next-offline": "^5.0.5",
-    "next-plugin-preact": "^3.0.4",
+    "next-plugin-preact": "^3.0.6",
     "postcss": "^8.2.15",
     "preact": "^10.5.13",
     "preact-render-to-string": "^5.1.19",
