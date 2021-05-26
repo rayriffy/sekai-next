@@ -65,7 +65,7 @@
     "@commitlint/config-conventional": "^12.1.4",
     "@types/axios": "^0.14.0",
     "@types/lodash": "^4.14.170",
-    "@types/markdown-to-jsx": "^6.11.3",
+    "@types/markdown-to-jsx": "^7.0.1",
     "@types/node": "^15.6.0",
     "@types/react": "^17.0.6",
     "@types/react-transition-group": "^4.4.1",
