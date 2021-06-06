@@ -35,7 +35,7 @@
     "@tailwindcss/typography": "^0.4.1",
     "@zeit/next-workers": "^1.0.0",
     "axios": "^0.21.0",
-    "dayjs": "^1.10.4",
+    "dayjs": "^1.10.5",
     "ical-generator": "^2.2.0",
     "lodash": "^4.17.21",
     "markdown-to-jsx": "^7.1.3",
