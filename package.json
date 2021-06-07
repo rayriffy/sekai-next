@@ -67,7 +67,7 @@
     "@types/lodash": "^4.14.170",
     "@types/markdown-to-jsx": "^7.0.1",
     "@types/node": "^15.6.1",
-    "@types/react": "^17.0.8",
+    "@types/react": "^17.0.9",
     "@types/react-transition-group": "^4.4.1",
     "@types/wicg-mediasession": "^1.1.0",
     "babel-plugin-lodash": "^3.3.4",
