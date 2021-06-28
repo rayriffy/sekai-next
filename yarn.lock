@@ -1333,10 +1333,10 @@
   resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.1.tgz#18845205e86ff0038517aab7a18a62a6b9f71275"
   integrity sha512-EaCxbanVeyxDRTQBkdLb3Bvl/HK7PBK6UJjsSixB0iHKoWxE5uu2Q/DgtpOhPIojN0Zl1whvOd7PoHs2P0s5eA==
 
-"@types/wicg-mediasession@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@types/wicg-mediasession/-/wicg-mediasession-1.1.0.tgz#368bb113ffc1a5410895cbb1e5ba50ee291f162f"
-  integrity sha512-aA6+ZUHgNpXqWEL8UdS1fx/oCFSrh/Hu9BbM8rXYZLiCQSuZ8+Lzu1//LKwHMNBAXgen7/8LoThDEKS9VEaGxw==
+"@types/wicg-mediasession@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@types/wicg-mediasession/-/wicg-mediasession-1.1.1.tgz#afed861dca79e1af5d414a37960f7f53e38b6108"
+  integrity sha512-ys1fAW3mcNL6U1ZlGBv/WtnaqwSVSQgi8wVxrOyEfbTA6ES7ZhD5eLZ+96OoJSNRMe+GxTjc4qiKbVYMrANsgg==
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
