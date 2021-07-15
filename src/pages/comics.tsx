@@ -46,8 +46,10 @@ const Page: NextPage<Props> = props => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async context => {
-  const { pick } = await import('lodash')
+  const { default: _ } = await import('lodash')
   const { getComics } = await import('../core/services/getComics')
+
+  const { pick } = _
 
   const comics = await getComics()
 

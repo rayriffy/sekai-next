@@ -41,12 +41,13 @@ const Page: NextPage<Props> = props => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async context => {
-  const { reverse } = await import('lodash')
+  const { default: _ } = await import('lodash')
+
+  const { reverse } = _
 
   const { getGameCharacters } = await import(
     '../../core/services/getGameCharacters'
   )
-
   const { getCharacterProfiles } = await import(
     '../../core/services/getCharacterProfiles'
   )

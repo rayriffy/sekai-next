@@ -21,8 +21,10 @@ const Page: NextPage<Props> = props => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async context => {
-  const { pick, reverse } = await import('lodash')
+  const { default: _ } = await import('lodash')
   const { getCards } = await import('../core/services/getCards')
+
+  const { pick, reverse } = _
 
   const cards = await getCards()
 

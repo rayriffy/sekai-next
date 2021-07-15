@@ -1,6 +1,6 @@
 import { Fragment, FunctionComponent, memo, useMemo, useState } from 'react'
 
-import capitalize from 'lodash/capitalize'
+import { capitalize } from 'lodash'
 
 import {
   getDifficultyActiveColor,

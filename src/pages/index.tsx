@@ -94,7 +94,9 @@ const Page: NextPage<Props> = props => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async context => {
-  const { sortBy, reverse, slice, first, pick } = await import('lodash')
+  const { default: _ } = await import('lodash')
+
+  const { sortBy, reverse, slice, first, pick } = _
 
   const { getMusics } = await import('../core/services/getMusics')
   const { getCards } = await import('../core/services/getCards')

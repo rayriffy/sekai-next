@@ -1,4 +1,4 @@
-import chunk from 'lodash/chunk'
+import { chunk } from 'lodash'
 
 import { getMusics } from '../../../core/services/getMusics'
 import { itemsPerPage } from '../../../core/constants/itemsPerPage'

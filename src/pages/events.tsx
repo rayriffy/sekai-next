@@ -32,7 +32,9 @@ const Page: NextPage<Props> = props => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async context => {
-  const { sortBy, reverse, pick } = await import('lodash')
+  const { default: _ } = await import('lodash')
+
+  const { sortBy, reverse, pick } = _
 
   const { getEvents } = await import('../core/services/getEvents')
 

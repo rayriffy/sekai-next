@@ -29,7 +29,9 @@ const Page: NextPage<Props> = props => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async context => {
-  const { sortBy, flatMapDeep } = await import('lodash')
+  const { default: _ } = await import('lodash')
+
+  const { sortBy, flatMapDeep } = _
 
   const { getVirtualLives } = await import(
     '../../core/services/getVirtualLives'

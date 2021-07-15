@@ -1,6 +1,4 @@
 {
   "presets": ["next/babel"],
-  "plugins": [
-    // "babel-plugin-lodash"
-  ]
+  "plugins": ["lodash"]
 }
