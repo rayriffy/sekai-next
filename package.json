@@ -69,7 +69,7 @@
     "@types/node": "^16.3.1",
     "@types/react": "^17.0.11",
     "@types/react-transition-group": "^4.4.1",
-    "@types/wicg-mediasession": "^1.1.0",
+    "@types/wicg-mediasession": "^1.1.2",
     "babel-plugin-lodash": "^3.3.4",
     "husky": "^7.0.1",
     "lint-staged": "^11.0.0",
