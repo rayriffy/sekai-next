@@ -1,5 +1,7 @@
+import moize from 'moize'
+
 import { apiInstance } from './apiInstance'
 
 import { Card } from '../../@types/Card'
 
-export const getCards = apiInstance<Card[]>('cards.json')
+export const getCards = moize.promise(apiInstance<Card[]>('cards.json'))

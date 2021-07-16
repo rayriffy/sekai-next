@@ -1,10 +1,11 @@
 import axios from 'axios'
 import { sortBy } from 'lodash'
+import moize from 'moize'
 
 import { MasterOfCermonyData } from '../../@types/MasterOfCermonyData'
 import { MCSerialData } from '../../@types/MCSerialData'
 
-export const getMCScenario = async (
+export const getMCScenario = moize.promise(async (
   virtualLiveSetlistAssetBundleName: string
 ) => {
   const res = await axios.get<MasterOfCermonyData>(
@@ -36,4 +37,4 @@ export const getMCScenario = async (
     id: res.data.Id,
     serialData: sortBy(payload, 'data.Time'),
   }
-}
+})

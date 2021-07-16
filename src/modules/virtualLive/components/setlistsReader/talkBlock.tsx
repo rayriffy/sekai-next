@@ -28,21 +28,21 @@ export const TalkBlock: FunctionComponent<Props> = memo(props => {
   } = props
 
   // const audioRef = useRef<HTMLAudioElement>(null)
-  const audioRefArray = useRef<HTMLAudioElement[]>(new Array())
+  // const audioRefArray = useRef<HTMLAudioElement[]>(new Array())
 
-  const onClick = useCallback(() => {
-    // filter illegal element which is null when component unmount
-    const filteredElements = audioRefArray.current.filter(el => el !== null)
+  // const onClick = useCallback(() => {
+  //   // filter illegal element which is null when component unmount
+  //   const filteredElements = audioRefArray.current.filter(el => el !== null)
 
-    // if paused then start over, otherwise just stop
-    if (filteredElements[0].paused) {
-      // reset
-      filteredElements.map(el => (el.currentTime = 0))
-      filteredElements.map(el => el.play())
-    } else {
-      filteredElements.map(el => el.pause())
-    }
-  }, [audioRefArray])
+  //   // if paused then start over, otherwise just stop
+  //   if (filteredElements[0].paused) {
+  //     // reset
+  //     filteredElements.map(el => (el.currentTime = 0))
+  //     filteredElements.map(el => el.play())
+  //   } else {
+  //     filteredElements.map(el => el.pause())
+  //   }
+  // }, [audioRefArray])
 
   return (
     <div className="flex justify-between items-center">
@@ -55,7 +55,7 @@ export const TalkBlock: FunctionComponent<Props> = memo(props => {
         />
         <p className="text-gray-700 mt-2">{text}</p>
       </div>
-      <div>
+      {/* <div>
         <button
           type="button"
           onClick={onClick}
@@ -70,7 +70,7 @@ export const TalkBlock: FunctionComponent<Props> = memo(props => {
           key={`audio-mc-${mcId}-voice-${voiceKey}`}
           src={getVoiceUrl(mcId, voiceKey)}
         />
-      ))}
+      ))} */}
     </div>
   )
 })

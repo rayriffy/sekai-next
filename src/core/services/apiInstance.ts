@@ -1,7 +1,7 @@
 import axios from 'axios'
 import moize from 'moize'
 
-const api =
+export const apiInstance =
   <T = unknown>(url: string) =>
   async () => {
     const instance = axios.create({
@@ -12,4 +12,6 @@ const api =
     return res.data
   }
 
-export const apiInstance = moize(api, { isPromise: true })
+// export const apiInstance = moize(api)
+
+// console.log(apiInstance.getStats())
