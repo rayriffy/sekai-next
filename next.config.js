@@ -69,6 +69,10 @@ module.exports = withPlugins(
           source: '/sitemap.xml',
           destination: '/api/generateSitemap',
         },
+        {
+          source: '/static/chart/:chartId.svg',
+          destination: `/api/generateChart/:chartId`,
+        },
       ]
     },
     async redirects() {
