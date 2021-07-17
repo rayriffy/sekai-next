@@ -62,6 +62,9 @@ const fetchCache = async (remoteUrl: string, localPath: string, unit: string) =>
     const prebuiltZip = await axios.get(process.env.SEKAI_PREBUILT_URL, {
       responseType: 'arraybuffer'
     })
+    if (!fs.existsSync(nextCachePath)) {
+      fs.mkdirSync(nextCachePath)
+    }
     fs.writeFileSync(path.join(nextCachePath, 'prebuilt.zip'), Buffer.from(prebuiltZip.data))
     console.log('system - extract-prebuilt')
     execSync(`unzip ${path.join(nextCachePath, 'prebuilt.zip')} -d ${nextCachePath}`)
