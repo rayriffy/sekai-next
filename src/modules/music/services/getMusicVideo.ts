@@ -12,5 +12,5 @@ export const getMusicVideo = (
       : ''
   const paddedMusicId = String(musicId).padStart(4, '0')
 
-  return `https://sekai-res.dnaroma.eu/file/sekai-assets/live/2dmode/${mode}/${paddedMusicId}_rip/${paddedMusicId}.mp4`
+  return `/static/media/live/2dmode/${mode}/${paddedMusicId}_rip/${paddedMusicId}.mp4`
 }
