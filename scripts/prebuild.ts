@@ -2,6 +2,7 @@ import axios from 'axios'
 import fs from 'fs-extra'
 import path from 'path'
 import { flattenDeep } from 'lodash'
+import { execSync } from 'child_process'
 
 import { TaskQueue } from 'cwait'
 import { createFFmpeg, fetchFile } from '@ffmpeg/ffmpeg'
@@ -18,15 +19,17 @@ import { getMetadata } from './functions/getMetadata'
 
 const ffmpegQueue = new TaskQueue(Promise, 1)
 const ffmpeg = createFFmpeg({
-  log: true
+  log: false,
 })
 
-const nextCachePath = path.join(__dirname, '../.next/cache/sekai-next-assets')
+const nextCachePath = path.join(__dirname, '../.next/cache')
+const nextSekaiAssetsCachePath = path.join(nextCachePath, 'sekai-next-assets')
 const nextPublicPath = path.join(__dirname, '../public/static/media')
 
-const fetchCache = async (remoteUrl: string, localPath: string) => {
+const fetchCache = async (remoteUrl: string, localPath: string, unit: string) => {
   try {
     if (!fs.existsSync(localPath)) {
+      console.log(`${unit} - download`)
       const res = await axios.get(remoteUrl, {
         responseType: 'arraybuffer',
         headers: {
@@ -53,12 +56,23 @@ const fetchCache = async (remoteUrl: string, localPath: string) => {
 }
 
 ;(async () => {
+  if (!fs.existsSync(nextSekaiAssetsCachePath)) {
+    console.log('system - no-cache')
+    console.log('system - download-prebuilt')
+    const prebuiltZip = await axios.get(process.env.SEKAI_PREBUILT_URL, {
+      responseType: 'arraybuffer'
+    })
+    fs.writeFileSync(path.join(nextCachePath, 'prebuilt.zip'), Buffer.from(prebuiltZip.data))
+    console.log('system - extract-prebuilt')
+    execSync(`unzip ${path.join(nextCachePath, 'prebuilt.zip')} -d ${nextCachePath}`)
+    fs.rmSync(path.join(nextCachePath, 'prebuilt.zip'))
+  }
+
   const musics = await getMusics()
   const vocals = await getMusicVocals()
 
   const queue = new TaskQueue(Promise, 5)
 
-  console.log('downloading musics...')
   await Promise.all(
     musics.map(
       queue.wrap<void, Music>(async music => {
@@ -70,16 +84,18 @@ const fetchCache = async (remoteUrl: string, localPath: string) => {
               fetchCache(
                 getAudioFull(musicVocal.assetbundleName),
                 path.join(
-                  nextCachePath,
+                  nextSekaiAssetsCachePath,
                   getAudioFull(musicVocal.assetbundleName, true)
-                )
+                ),
+                `music:${music.id}:vocal:${musicVocal.id}`,
               ),
               fetchCache(
                 getAudioShort(musicVocal.assetbundleName),
                 path.join(
-                  nextCachePath,
+                  nextSekaiAssetsCachePath,
                   getAudioShort(musicVocal.assetbundleName, true)
-                )
+                ),
+                `music:${music.id}:vocal:${musicVocal.id}`,
               ),
             ])
           })
@@ -88,7 +104,6 @@ const fetchCache = async (remoteUrl: string, localPath: string) => {
     )
   )
 
-  console.log('downloading videos...')
   await Promise.all(
     musics.map(
       queue.wrap<void, Music>(async music => {
@@ -97,28 +112,24 @@ const fetchCache = async (remoteUrl: string, localPath: string) => {
         )
 
         await Promise.all(
-          filteredMusicCategory.map(
-            async category =>
-              await fetchCache(
-                getMusicVideo(music.id, category),
-                path.join(
-                  nextCachePath,
-                  getMusicVideo(music.id, category, true)
-                )
-              )
-          )
+          filteredMusicCategory.map(async category => {
+            await fetchCache(
+              getMusicVideo(music.id, category),
+              path.join(nextSekaiAssetsCachePath, getMusicVideo(music.id, category, true)),
+              `video:${music.id}:${category}`,
+            )
+          })
         )
       })
     )
   )
 
-  /*
-  console.log('postprocessing...')
   interface Item {
     remote: string
     local: string
     fillerSec: number
     type: string
+    unit: string
   }
 
   const musicUrls = flattenDeep<Item>(
@@ -127,11 +138,12 @@ const fetchCache = async (remoteUrl: string, localPath: string) => {
       return targetVocals.map(musicVocal => ({
         remote: getAudioFull(musicVocal.assetbundleName),
         local: path.join(
-          nextCachePath,
+          nextSekaiAssetsCachePath,
           getAudioFull(musicVocal.assetbundleName, true)
         ),
         fillerSec: music.fillerSec,
         type: 'mp3',
+        unit: `music:${music.id}:vocal:${musicVocal.id}`,
       }))
     })
   )
@@ -144,43 +156,64 @@ const fetchCache = async (remoteUrl: string, localPath: string) => {
       return filteredMusicCategory.map(category => ({
         remote: getMusicVideo(music.id, category),
         local: path.join(
-          nextCachePath,
+          nextSekaiAssetsCachePath,
           getMusicVideo(music.id, category, true)
         ),
         fillerSec: music.fillerSec,
         type: 'mp4',
+        unit: `video:${music.id}:${category}`,
       }))
     })
   )
 
   await Promise.all(
-    [...musicUrls, ...videoUrls].map(ffmpegQueue.wrap<void, Item>(async item => {
-      if (!ffmpeg.isLoaded()) {
-        await ffmpeg.load()
-      }
+    [...musicUrls, ...videoUrls].map(
+      ffmpegQueue.wrap<void, Item>(async item => {
+        const metadata = getMetadata(item.remote)
+        if (!(metadata?.data?.trimmed ?? false)) {
+          console.log(`${item.unit} - ffmpeg`)
 
-      const metadata = getMetadata(item.remote)
-      if (!(metadata?.data?.trimmed ?? false)) {
-        // load file
-        ffmpeg.FS('writeFile', `input.${item.type}`, await fetchFile(item.local))
-        await ffmpeg.run('-ss', `${item.fillerSec}`, '-i', `input.${item.type}`, `output.${item.type}`)
-        await fs.promises.writeFile(item.local, ffmpeg.FS('readFile', `output.${item.type}`))
+          if (!ffmpeg.isLoaded()) {
+            await ffmpeg.load()
+          }
 
-        updateMetadata(item.remote, {
-          trimmed: true
-        })
-      }
-    }))
+          // load file
+          ffmpeg.FS(
+            'writeFile',
+            `input.${item.type}`,
+            await fetchFile(item.local)
+          )
+          await ffmpeg.run(
+            '-ss',
+            `${item.fillerSec}`,
+            '-i',
+            `input.${item.type}`,
+            // '-vcodec',
+            // 'libx264',
+            // '-crf',
+            // '24',
+            `output.${item.type}`
+          )
+          await fs.promises.writeFile(
+            item.local,
+            ffmpeg.FS('readFile', `output.${item.type}`)
+          )
+
+          updateMetadata(item.remote, {
+            trimmed: true,
+          })
+        }
+      })
+    )
   )
-  */
 
   // copy all to public
-  console.log('copy to public...')
+    console.log('system - copy-public')
   if (!fs.existsSync(nextPublicPath)) {
     fs.mkdirSync(nextPublicPath, { recursive: true })
   }
 
-  fs.copySync(nextCachePath, nextPublicPath, {
+  fs.copySync(nextSekaiAssetsCachePath, nextPublicPath, {
     overwrite: false,
   })
 })()
