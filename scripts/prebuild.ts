@@ -1,63 +1,30 @@
 import axios from 'axios'
 import fs from 'fs-extra'
 import path from 'path'
+import { flattenDeep } from 'lodash'
 
 import { TaskQueue } from 'cwait'
+import { createFFmpeg, fetchFile } from '@ffmpeg/ffmpeg'
 
 import { getMusics } from '../src/core/services/getMusics'
 import { getMusicVocals } from '../src/core/services/getMusicVocals'
+import { updateMetadata } from './functions/updateMetadata'
 
-import { MusicCategory } from '../src/@types/MusicCategory'
+import { getAudioFull, getAudioShort } from './functions/getAudio'
+import { getMusicVideo } from './functions/getMusicVideo'
+
 import { Music } from '../src/@types/Music'
+import { getMetadata } from './functions/getMetadata'
+
+const ffmpegQueue = new TaskQueue(Promise, 1)
+const ffmpeg = createFFmpeg({
+  log: true
+})
 
 const nextCachePath = path.join(__dirname, '../.next/cache/sekai-next-assets')
 const nextPublicPath = path.join(__dirname, '../public/static/media')
 
-export const getAudioShort = (
-  musicVocalAssetbundleName: string,
-  trimmed?: boolean
-) =>
-  trimmed
-    ? `music/short/${musicVocalAssetbundleName}_rip/${musicVocalAssetbundleName}_short.mp3`
-    : `https://sekai-res.dnaroma.eu/file/sekai-assets/music/short/${musicVocalAssetbundleName}_rip/${musicVocalAssetbundleName}_short.mp3`
-export const getAudioFull = (
-  musicVocalAssetbundleName: string,
-  trimmed?: boolean
-) =>
-  trimmed
-    ? `music/long/${musicVocalAssetbundleName}_rip/${musicVocalAssetbundleName}.mp3`
-    : `https://sekai-res.dnaroma.eu/file/sekai-assets/music/long/${musicVocalAssetbundleName}_rip/${musicVocalAssetbundleName}.mp3`
-
-export const getMusicVideo = (
-  musicId: number,
-  musicCategories: MusicCategory,
-  trimmed?: boolean
-) => {
-  const mode =
-    musicCategories === 'original'
-      ? 'original_mv'
-      : musicCategories === 'mv_2d'
-      ? 'sekai_mv'
-      : ''
-  const paddedMusicId = String(musicId).padStart(4, '0')
-
-  const fileNameSpecialCases = [
-    [144, 'ainomaterial'],
-    [143, 'traffic_jam'],
-    [149, 'kanadetomosusora'],
-    [156, 'beateater'],
-  ]
-  const fileName = fileNameSpecialCases.find(o => o[0] === musicId) !== undefined ? fileNameSpecialCases.find(o => o[0] === musicId)[1] : paddedMusicId
-
-  return trimmed
-    ? `live/2dmode/${mode}/${paddedMusicId}_rip/${paddedMusicId}.mp4`
-    : `https://sekai-res.dnaroma.eu/file/sekai-assets/live/2dmode/${mode}/${paddedMusicId}_rip/${fileName}.mp4`
-}
-
-const fetchCache = async (
-  remoteUrl: string,
-  localPath: string,
-) => {
+const fetchCache = async (remoteUrl: string, localPath: string) => {
   try {
     if (!fs.existsSync(localPath)) {
       const res = await axios.get(remoteUrl, {
@@ -74,6 +41,10 @@ const fetchCache = async (
       }
 
       fs.writeFileSync(localPath, Buffer.from(res.data))
+
+      updateMetadata(remoteUrl, {
+        trimmed: false,
+      })
     }
   } catch (e) {
     console.error(e)
@@ -88,7 +59,7 @@ const fetchCache = async (
   const queue = new TaskQueue(Promise, 5)
 
   console.log('downloading musics...')
-  const allMusicVocalURL = await Promise.all(
+  await Promise.all(
     musics.map(
       queue.wrap<void, Music>(async music => {
         const targetVocals = vocals.filter(vocal => vocal.musicId === music.id)
@@ -118,21 +89,87 @@ const fetchCache = async (
   )
 
   console.log('downloading videos...')
-  const allMusicVideoURL = await Promise.all(
+  await Promise.all(
     musics.map(
       queue.wrap<void, Music>(async music => {
         const filteredMusicCategory = music.categories.filter(category =>
           ['original', 'mv_2d'].includes(category)
         )
 
-        await Promise.all(filteredMusicCategory.map(async category =>
-          await fetchCache(
-            getMusicVideo(music.id, category),
-            path.join(nextCachePath, getMusicVideo(music.id, category, true))
+        await Promise.all(
+          filteredMusicCategory.map(
+            async category =>
+              await fetchCache(
+                getMusicVideo(music.id, category),
+                path.join(
+                  nextCachePath,
+                  getMusicVideo(music.id, category, true)
+                )
+              )
           )
-        ))
+        )
       })
     )
+  )
+
+  console.log('postprocessing...')
+  interface Item {
+    remote: string
+    local: string
+    fillerSec: number
+    type: string
+  }
+
+  const musicUrls = flattenDeep<Item>(
+    musics.map(music => {
+      const targetVocals = vocals.filter(vocal => vocal.musicId === music.id)
+      return targetVocals.map(musicVocal => ({
+        remote: getAudioFull(musicVocal.assetbundleName),
+        local: path.join(
+          nextCachePath,
+          getAudioFull(musicVocal.assetbundleName, true)
+        ),
+        fillerSec: music.fillerSec,
+        type: 'mp3',
+      }))
+    })
+  )
+  const videoUrls = flattenDeep<Item>(
+    musics.map(music => {
+      const filteredMusicCategory = music.categories.filter(category =>
+        ['original', 'mv_2d'].includes(category)
+      )
+
+      return filteredMusicCategory.map(category => ({
+        remote: getMusicVideo(music.id, category),
+        local: path.join(
+          nextCachePath,
+          getMusicVideo(music.id, category, true)
+        ),
+        fillerSec: music.fillerSec,
+        type: 'mp4',
+      }))
+    })
+  )
+
+  await Promise.all(
+    [...musicUrls, ...videoUrls].map(ffmpegQueue.wrap<void, Item>(async item => {
+      if (!ffmpeg.isLoaded()) {
+        await ffmpeg.load()
+      }
+
+      const metadata = getMetadata(item.remote)
+      if (!(metadata?.data?.trimmed ?? false)) {
+        // load file
+        ffmpeg.FS('writeFile', `input.${item.type}`, await fetchFile(item.local))
+        await ffmpeg.run('-ss', `${item.fillerSec}`, '-i', `input.${item.type}`, `output.${item.type}`)
+        await fs.promises.writeFile(item.local, ffmpeg.FS('readFile', `output.${item.type}`))
+
+        updateMetadata(item.remote, {
+          trimmed: true
+        })
+      }
+    }))
   )
 
   // copy all to public

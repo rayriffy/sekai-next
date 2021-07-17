@@ -62,6 +62,8 @@
     "@babel/preset-env": "^7.14.7",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
+    "@ffmpeg/core": "^0.10.0",
+    "@ffmpeg/ffmpeg": "^0.10.1",
     "@types/axios": "^0.14.0",
     "@types/fs-extra": "^9.0.12",
     "@types/lodash": "^4.14.171",
