@@ -112,6 +112,7 @@ const fetchCache = async (remoteUrl: string, localPath: string) => {
     )
   )
 
+  /*
   console.log('postprocessing...')
   interface Item {
     remote: string
@@ -171,6 +172,7 @@ const fetchCache = async (remoteUrl: string, localPath: string) => {
       }
     }))
   )
+  */
 
   // copy all to public
   console.log('copy to public...')
