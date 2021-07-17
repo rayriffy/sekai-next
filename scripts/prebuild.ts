@@ -56,7 +56,7 @@ const fetchCache = async (remoteUrl: string, localPath: string, unit: string) =>
 }
 
 ;(async () => {
-  if (!fs.existsSync(nextSekaiAssetsCachePath)) {
+  if (!fs.existsSync(nextSekaiAssetsCachePath) && process.env.SEKAI_PREBUILT_URL !== undefined) {
     console.log('system - no-cache')
     console.log('system - download-prebuilt')
     const prebuiltZip = await axios.get(process.env.SEKAI_PREBUILT_URL, {
