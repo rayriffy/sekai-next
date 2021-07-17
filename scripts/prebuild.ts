@@ -63,7 +63,7 @@ const fetchCache = async (remoteUrl: string, localPath: string, unit: string) =>
       responseType: 'arraybuffer'
     })
     if (!fs.existsSync(nextCachePath)) {
-      fs.mkdirSync(nextCachePath)
+      fs.mkdirSync(nextCachePath, { recursive: true })
     }
     fs.writeFileSync(path.join(nextCachePath, 'prebuilt.zip'), Buffer.from(prebuiltZip.data))
     console.log('system - extract-prebuilt')
