@@ -5,7 +5,7 @@ const timezone = require('dayjs/plugin/timezone')
 const withPlugins = require('next-compose-plugins')
 
 // const withOffline = require('next-offline')
-// const withPreact = require('next-plugin-preact')
+const withPreact = require('next-plugin-preact')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
@@ -15,7 +15,7 @@ dayjs.extend(timezone)
 
 module.exports = withPlugins(
   [
-    // [withPreact],
+    [withPreact],
     [withBundleAnalyzer],
   ],
   {

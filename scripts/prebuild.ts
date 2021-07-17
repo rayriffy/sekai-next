@@ -141,5 +141,7 @@ const fetchCache = async (
     fs.mkdirSync(nextPublicPath, { recursive: true })
   }
 
-  fs.copySync(nextCachePath, nextPublicPath)
+  fs.copySync(nextCachePath, nextPublicPath, {
+    overwrite: false,
+  })
 })()
