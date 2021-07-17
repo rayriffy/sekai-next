@@ -1,7 +1,7 @@
 name: CRON
 
 # Run this workflow every time a new commit pushed to your repository
-on:  
+on:
   schedule:
     - cron: '2 * * * *'
 
@@ -50,5 +50,6 @@ jobs:
         env:
           PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
           DEPLOY_HOOKS: ${{ secrets.DEPLOY_HOOKS }}
+          CDN_HOOKS: ${{ secrets.CDN_HOOKS }}
           DB_UPDATED_AT: ${{ steps.prepare_metadata.outputs.updatedTimestamp }}
         run: yarn cron:hooker

@@ -7,7 +7,7 @@ import dayjs from 'dayjs'
 import fs from 'fs'
 import path from 'path'
 
-const { DEPLOY_HOOKS, DB_UPDATED_AT } = process.env
+const { DEPLOY_HOOKS, DB_UPDATED_AT, CDN_HOOKS } = process.env
 
 const cacheDirectory = path.join(__dirname, '../.cache')
 const fileEndpoint = path.join(cacheDirectory, 'data.json')
@@ -45,6 +45,13 @@ const defaultValues = {
 
     // Ping
     await axios.post(DEPLOY_HOOKS)
+    await axios.post(CDN_HOOKS, {
+      event_type: "deploy"
+    }, {
+      headers: {
+        Authorization: `Bearer ${process.env.PERSONAL_TOKEN}`,
+      }
+    })
 
     // Pong
     fs.writeFileSync(
