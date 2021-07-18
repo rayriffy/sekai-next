@@ -42,9 +42,9 @@ jobs:
         uses: actions/cache@v2
         with:
           path: .cache/data.json
-          key: ${{ runner.OS }}-sekai-next-data-json-${{ steps.prepare_metadata.outputs.updatedTimestamp }}
+          key: ${{ runner.OS }}-sekai-next-data-json-v2-${{ steps.prepare_metadata.outputs.updatedTimestamp }}
           restore-keys: |
-            ${{ runner.OS }}-sekai-next-data-json-
+            ${{ runner.OS }}-sekai-next-data-json-v2-
 
       - name: "Exec: Deploy Hooks"
         env:
