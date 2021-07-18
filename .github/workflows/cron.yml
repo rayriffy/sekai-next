@@ -53,3 +53,8 @@ jobs:
           CDN_HOOKS: ${{ secrets.CDN_HOOKS }}
           DB_UPDATED_AT: ${{ steps.prepare_metadata.outputs.updatedTimestamp }}
         run: yarn cron:hooker
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: data
+          path: .cache/data.json

@@ -40,6 +40,9 @@ const defaultValues = {
 
   const remoteRepositoryUpdatedAt = dayjs(DB_UPDATED_AT)
 
+  console.log('currentUpdatedAt', currentUpdatedAt.toDate())
+  console.log('remoteRepositoryUpdatedAt', remoteRepositoryUpdatedAt.toDate())
+
   if (currentUpdatedAt.isBefore(remoteRepositoryUpdatedAt)) {
     console.log('Update found! Pinging an update to Vercel')
 
