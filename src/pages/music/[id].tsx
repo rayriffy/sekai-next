@@ -2,6 +2,7 @@ import { Fragment, useMemo } from 'react'
 
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 import { HeadTitle } from '../../core/components/headTitle'
 import { MusicDetail } from '../../modules/music/components/detail'
@@ -27,21 +28,58 @@ const Page: NextPage<Props> = props => {
   const { music, vocals } = props
 
   const { query } = useRouter()
-  const uniqueArtists = useMemo(() => Array.from(new Set([music.composer, music.arranger, music.lyricist])), [])
+  const uniqueArtists = useMemo(
+    () => Array.from(new Set([music.composer, music.arranger, music.lyricist])),
+    []
+  )
 
   return (
     <Fragment>
-      <HeadTitle title={music.title}>
-        <meta key="og:type" property="og:type" content="music.song" />
-        <meta key="og:title" property="og:title" content={`${music.title} · セカイ Wiki`} />
-        <meta key="og:url" property="og:url" content={`https://sekai.rayriffy.com/music/${query.id}`} />
-        <meta key="og:image" property="og:image" content={`https://sekai.rayriffy.com/api/og/music/${query.id}`} />
-        <meta key="og:audio" property="og:audio" content={getAudioFull(vocals[0].assetbundleName)} />
-        <meta key="music:album" property="music:album" content={getMusicCover(music.assetbundleName)} />
+      <Head>
+        <title>{`${music.title} · セカイ Wiki`}</title>
+
+        <meta name="title" content={`${music.title} · セカイ Wiki`} />
+        <meta
+          name="description"
+          content="Data explorer for Project Sekai Colorful Stage"
+        />
+
+        <meta property="og:type" content="music.song" />
+        <meta property="og:title" content={`${music.title} · セカイ Wiki`} />
+        <meta
+          property="og:url"
+          content={`https://sekai.rayriffy.com/music/${query.id}`}
+        />
+        <meta
+          property="og:image"
+          content={`https://sekai.rayriffy.com/api/og/music/${query.id}`}
+        />
+        <meta
+          property="og:audio"
+          content={getAudioFull(vocals[0].assetbundleName)}
+        />
+        <meta
+          property="music:album"
+          content={getMusicCover(music.assetbundleName)}
+        />
         {uniqueArtists.map(artist => (
           <meta property="music:musician" content={artist} />
         ))}
-      </HeadTitle>
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+          property="twitter:url"
+          content={`https://sekai.rayriffy.com/music/${query.id}`}
+        />
+        <meta
+          property="twitter:title"
+          content={`${music.title} · セカイ Wiki`}
+        />
+        <meta
+          property="twitter:description"
+          content="Data explorer for Project Sekai Colorful Stage"
+        />
+      </Head>
       <MusicDetail {...props} />
     </Fragment>
   )

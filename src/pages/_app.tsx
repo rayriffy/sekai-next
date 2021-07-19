@@ -15,7 +15,7 @@ const NextApp: NextPage<AppProps> = props => {
 
   return (
     <Context>
-      <HeadTitle />
+      {!['/music/[id]'].includes(pathname) && <HeadTitle />}
       {['/og/music/[id]'].includes(pathname) ? (
         <Component {...pageProps} />
       ) : (
