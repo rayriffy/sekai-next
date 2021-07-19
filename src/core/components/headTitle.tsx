@@ -35,10 +35,10 @@ export const HeadTitle: FunctionComponent<Props> = props => {
       <meta name="title" content={transformedTitle} />
       <meta name="description" content={description} />
 
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content={router.asPath} />
-      <meta property="og:title" content={transformedTitle} />
-      <meta property="og:description" content={description} />
+      <meta key="og:type" property="og:type" content="website" />
+      <meta key="og:url" property="og:url" content={router.asPath} />
+      <meta key="og:title" property="og:title" content={transformedTitle} />
+      <meta key="og:description" property="og:description" content={description} />
 
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content={router.asPath} />

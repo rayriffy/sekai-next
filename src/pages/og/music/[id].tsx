@@ -1,7 +1,12 @@
+import { Fragment } from 'react'
+
 import { GetServerSideProps, NextPage } from 'next'
+import Head from 'next/head'
 import Image from 'next/image'
 
 import { getMusicCover } from '../../../modules/musics/services/getMusicCover'
+import { getUnitBanner } from '../../../modules/characters/services/getUnitBanner'
+import { CharacterStack } from '../../../core/components/characterStack'
 
 import { Music } from '../../../@types/Music'
 import { MusicDifficulty } from '../../../@types/MusicDifficulty'
@@ -10,8 +15,6 @@ import { MusicVocal } from '../../../@types/MusicVocal'
 import { Unit } from '../../../@types/Unit'
 import { UnitProfile } from '../../../@types/UnitProfile'
 import { Difficulty } from '../../../@types/Difficulty'
-import { getUnitBanner } from '../../../modules/characters/services/getUnitBanner'
-import { CharacterStack } from '../../../core/components/characterStack'
 
 interface Props {
   music: Music
@@ -40,57 +43,90 @@ const Page: NextPage<Props> = props => {
   const { music, difficulties, unitProfiles, vocals } = props
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="h-full flex items-center">
-        <div className="grid grid-cols-5 gap-8 px-10">
-          <div className="col-span-2">
-            <Image
-              src={getMusicCover(music.assetbundleName)}
-              className="rounded-lg"
-              width={429}
-              height={429}
-            />
-          </div>
-          <div className="col-span-3 space-y-2 pt-4 md:pt-0">
-            <h1 className="text-5xl font-bold text-gray-900 font-noto">{music.title}</h1>
-            <div className="flex space-x-4 flex-wrap py-4">
-              {unitProfiles.map(unit => (
-                <div key={`music-unit-${unit}`} className="w-36">
-                  <Image src={getUnitBanner(unit)} width={620} height={260} />
-                </div>
-              ))}
+    <Fragment>
+      <Head>
+        <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans:wght@400;700&display=swap"
+          rel="stylesheet"
+        ></link>
+      </Head>
+      <div className="flex flex-col h-full">
+        <div className="h-full flex items-center">
+          <div className="grid grid-cols-5 gap-8 px-10">
+            <div className="col-span-2">
+              <Image
+                src={getMusicCover(music.assetbundleName)}
+                className="rounded-lg"
+                width={429}
+                height={429}
+              />
             </div>
-            <div className="flex space-x-4">
-              {vocals.map(vocal => (
-                <div className="border border-gray-300 bg-gray-100 rounded-md px-4 py-2" key={`vocal-${vocal.id}`}>
-                  <CharacterStack characterIds={vocal.characters.map(o => o.characterId)} size='lg' />
-                </div>
-              ))}
-            </div>
-            <div className="py-4">
-              <h2 className="text-xl text-gray-900 font-noto"><span className="font-semibold">Composer:</span> {music.composer}</h2>
-              <h2 className="text-xl text-gray-900 font-noto"><span className="font-semibold">Arranger:</span> {music.arranger}</h2>
-              <h2 className="text-xl text-gray-900 font-noto"><span className="font-semibold">Lyricist:</span> {music.lyricist}</h2>
+            <div className="col-span-3 space-y-2 pt-4 md:pt-0">
+              <h1 className="text-5xl font-bold text-gray-900 font-noto">
+                {music.title}
+              </h1>
+              <div className="flex space-x-4 flex-wrap py-4">
+                {unitProfiles.map(unit => (
+                  <div key={`music-unit-${unit}`} className="w-36">
+                    <Image src={getUnitBanner(unit)} width={620} height={260} />
+                  </div>
+                ))}
+              </div>
+              <div className="flex space-x-4">
+                {vocals.map(vocal => (
+                  <div
+                    className="border border-gray-300 bg-gray-100 rounded-md px-4 py-2"
+                    key={`vocal-${vocal.id}`}
+                  >
+                    <CharacterStack
+                      characterIds={vocal.characters.map(o => o.characterId)}
+                      size="lg"
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className="py-4">
+                <h2 className="text-xl text-gray-900 font-noto">
+                  <span className="font-semibold">Composer:</span>{' '}
+                  {music.composer}
+                </h2>
+                <h2 className="text-xl text-gray-900 font-noto">
+                  <span className="font-semibold">Arranger:</span>{' '}
+                  {music.arranger}
+                </h2>
+                <h2 className="text-xl text-gray-900 font-noto">
+                  <span className="font-semibold">Lyricist:</span>{' '}
+                  {music.lyricist}
+                </h2>
+              </div>
             </div>
           </div>
         </div>
+        <div className="h-32 flex justify-evenly">
+          {difficulties.map(difficulty => (
+            <div
+              className="flex items-center align-center"
+              key={`music-difficulty-${difficulty.id}`}
+            >
+              <div
+                className={`${getDifficultyActiveColor(
+                  difficulty.musicDifficulty
+                )} text-center px-6 py-3 font-medium leading-5 rounded-md`}
+                key={`music-difficulty-${difficulty.id}`}
+              >
+                <p className="font-bold font-noto">
+                  {difficulty.musicDifficulty.toLocaleUpperCase()}
+                </p>
+                <p className="text-md text-lg font-noto">
+                  {difficulty.playLevel}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="h-32 flex justify-evenly">
-        {difficulties.map(difficulty => (
-          <div className="flex items-center align-center" key={`music-difficulty-${difficulty.id}`}>
-          <div
-            className={`${getDifficultyActiveColor(
-              difficulty.musicDifficulty
-            )} text-center px-6 py-3 font-medium leading-5 rounded-md`}
-            key={`music-difficulty-${difficulty.id}`}
-          >
-            <p className="font-bold font-noto">{difficulty.musicDifficulty.toLocaleUpperCase()}</p>
-            <p className="text-md text-lg font-noto">{difficulty.playLevel}</p>
-          </div>
-          </div>
-        ))}
-      </div>
-    </div>
+    </Fragment>
   )
 }
 
