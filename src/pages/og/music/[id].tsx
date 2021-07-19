@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 
-import { GetServerSideProps, NextPage } from 'next'
+import { GetStaticProps, GetStaticPaths, NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 
@@ -130,7 +130,7 @@ const Page: NextPage<Props> = props => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps<Props> = async context => {
+export const getStaticProps: GetStaticProps<Props> = async context => {
   const { sortBy } = require('lodash')
 
   const { getMusics } = await import('../../../core/services/getMusics')
@@ -148,8 +148,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async context => {
   const { getTargetUnitProfile } = await import(
     '../../../modules/music/services/getTargetUnitProfile'
   )
-
-  // const { uniq } = require('lodash')
 
   const targetId = Number(context.params.id)
 
@@ -183,6 +181,21 @@ export const getServerSideProps: GetServerSideProps<Props> = async context => {
       vocals: targetVocals,
       unitProfiles: targetUnitProfiles.map(unitProfile => unitProfile.unit),
     },
+  }
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const { getMusics } = await import('../../../core/services/getMusics')
+
+  const musics = await getMusics()
+
+  return {
+    paths: musics.map(music => ({
+      params: {
+        id: music.id.toString(),
+      },
+    })),
+    fallback: false,
   }
 }
 
