@@ -63,7 +63,7 @@ const Page: NextPage<Props> = props => {
               />
             </div>
             <div className="col-span-3 space-y-2 pt-4 md:pt-0">
-              <h1 className="text-8xl font-bold text-gray-900 font-noto truncate">
+              <h1 className="text-7xl font-bold text-gray-900 font-noto truncate">
                 {music.title}
               </h1>
               <div className="flex space-x-4 flex-wrap py-4">
