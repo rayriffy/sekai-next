@@ -63,17 +63,17 @@ const Page: NextPage<Props> = props => {
               />
             </div>
             <div className="col-span-3 space-y-2 pt-4 md:pt-0">
-              <h1 className="text-6xl font-bold text-gray-900 font-noto truncate">
+              <h1 className="text-8xl font-bold text-gray-900 font-noto truncate">
                 {music.title}
               </h1>
               <div className="flex space-x-4 flex-wrap py-4">
                 {unitProfiles.map(unit => (
-                  <div key={`music-unit-${unit}`} className="w-40">
+                  <div key={`music-unit-${unit}`} className="w-52">
                     <Image src={getUnitBanner(unit)} width={620} height={260} />
                   </div>
                 ))}
               </div>
-              <div className="flex space-x-4">
+              <div className="flex flex-wrap space-x-4 space-y-2 -mt-2">
                 {vocals.map(vocal => (
                   <div
                     className="border border-gray-300 bg-gray-100 rounded-md px-4 py-2"
@@ -87,15 +87,15 @@ const Page: NextPage<Props> = props => {
                 ))}
               </div>
               <div className="py-4 space-y-2">
-                <h2 className="text-2xl text-gray-900 font-noto">
+                <h2 className="text-3xl text-gray-900 font-noto">
                   <span className="font-semibold">Composer:</span>{' '}
                   {music.composer}
                 </h2>
-                <h2 className="text-2xl text-gray-900 font-noto">
+                <h2 className="text-3xl text-gray-900 font-noto">
                   <span className="font-semibold">Arranger:</span>{' '}
                   {music.arranger}
                 </h2>
-                <h2 className="text-2xl text-gray-900 font-noto">
+                <h2 className="text-3xl text-gray-900 font-noto">
                   <span className="font-semibold">Lyricist:</span>{' '}
                   {music.lyricist}
                 </h2>
@@ -115,10 +115,10 @@ const Page: NextPage<Props> = props => {
                 )} text-center px-6 py-3 font-medium leading-5 rounded-md`}
                 key={`music-difficulty-${difficulty.id}`}
               >
-                <p className="font-bold font-noto text-lg">
+                <p className="font-bold font-noto text-2xl">
                   {difficulty.musicDifficulty.toLocaleUpperCase()}
                 </p>
-                <p className="text-md text-xl font-noto">
+                <p className="text-md text-2xl font-noto">
                   {difficulty.playLevel}
                 </p>
               </div>
