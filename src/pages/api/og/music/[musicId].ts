@@ -9,8 +9,8 @@ const api: NextApiHandler = async (req, res) => {
     executablePath: await chromium.executablePath,
     headless: true,
     defaultViewport: {
-      width: 1200,
-      height: 627,
+      width: 1500,
+      height: 788,
     },
   })
 

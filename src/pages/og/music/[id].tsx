@@ -52,23 +52,23 @@ const Page: NextPage<Props> = props => {
         ></link>
       </Head>
       <div className="flex flex-col h-full">
-        <div className="h-full flex items-center">
-          <div className="grid grid-cols-5 gap-8 px-10">
+        <div className="h-full w-full flex items-center">
+          <div className="grid grid-cols-5 gap-8 px-14 w-full">
             <div className="col-span-2">
               <Image
                 src={getMusicCover(music.assetbundleName)}
                 className="rounded-lg"
-                width={429}
-                height={429}
+                width={600}
+                height={600}
               />
             </div>
             <div className="col-span-3 space-y-2 pt-4 md:pt-0">
-              <h1 className="text-5xl font-bold text-gray-900 font-noto">
+              <h1 className="text-6xl font-bold text-gray-900 font-noto truncate">
                 {music.title}
               </h1>
               <div className="flex space-x-4 flex-wrap py-4">
                 {unitProfiles.map(unit => (
-                  <div key={`music-unit-${unit}`} className="w-36">
+                  <div key={`music-unit-${unit}`} className="w-40">
                     <Image src={getUnitBanner(unit)} width={620} height={260} />
                   </div>
                 ))}
@@ -86,16 +86,16 @@ const Page: NextPage<Props> = props => {
                   </div>
                 ))}
               </div>
-              <div className="py-4">
-                <h2 className="text-xl text-gray-900 font-noto">
+              <div className="py-4 space-y-2">
+                <h2 className="text-2xl text-gray-900 font-noto">
                   <span className="font-semibold">Composer:</span>{' '}
                   {music.composer}
                 </h2>
-                <h2 className="text-xl text-gray-900 font-noto">
+                <h2 className="text-2xl text-gray-900 font-noto">
                   <span className="font-semibold">Arranger:</span>{' '}
                   {music.arranger}
                 </h2>
-                <h2 className="text-xl text-gray-900 font-noto">
+                <h2 className="text-2xl text-gray-900 font-noto">
                   <span className="font-semibold">Lyricist:</span>{' '}
                   {music.lyricist}
                 </h2>
@@ -103,10 +103,10 @@ const Page: NextPage<Props> = props => {
             </div>
           </div>
         </div>
-        <div className="h-32 flex justify-evenly">
+        <div className="h-36 flex justify-evenly align-top">
           {difficulties.map(difficulty => (
             <div
-              className="flex items-center align-center"
+              className="flex items-start"
               key={`music-difficulty-${difficulty.id}`}
             >
               <div
@@ -115,10 +115,10 @@ const Page: NextPage<Props> = props => {
                 )} text-center px-6 py-3 font-medium leading-5 rounded-md`}
                 key={`music-difficulty-${difficulty.id}`}
               >
-                <p className="font-bold font-noto">
+                <p className="font-bold font-noto text-lg">
                   {difficulty.musicDifficulty.toLocaleUpperCase()}
                 </p>
-                <p className="text-md text-lg font-noto">
+                <p className="text-md text-xl font-noto">
                   {difficulty.playLevel}
                 </p>
               </div>
