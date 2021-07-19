@@ -5,10 +5,11 @@ import Image from 'next/image'
 interface Props {
   characterIds: number[]
   keyPrefix?: string
+  size?: 'md' | 'lg'
 }
 
 export const CharacterStack: FunctionComponent<Props> = memo(props => {
-  const { characterIds, keyPrefix } = props
+  const { characterIds, keyPrefix, size = 'md' } = props
 
   return (
     <div className="flex overflow-hidden">
@@ -16,7 +17,7 @@ export const CharacterStack: FunctionComponent<Props> = memo(props => {
         <div
           className={`${
             i !== 0 ? '-ml-2' : ''
-          } inline-block h-10 w-10 rounded-full text-white shadow-solid`}
+          } inline-block ${size === 'md' ? 'h-10 w-10' : 'h-12 w-12'} rounded-full text-white shadow-solid`}
           key={`character-stack${
             keyPrefix ? `-${keyPrefix}` : '-'
           }${characterId}`}

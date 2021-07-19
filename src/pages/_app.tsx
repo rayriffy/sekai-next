@@ -1,5 +1,6 @@
 import { NextPage } from 'next'
 import { AppProps } from 'next/app'
+import { useRouter } from 'next/router'
 
 import { Context } from '../context/storeon'
 import { AppLayout } from '../app/components/appLayout'
@@ -10,12 +11,18 @@ import '../styles/tailwind.css'
 const NextApp: NextPage<AppProps> = props => {
   const { Component, pageProps } = props
 
+  const { pathname } = useRouter()
+
   return (
     <Context>
       <HeadTitle />
-      <AppLayout>
+      {['/og/music/[id]'].includes(pathname) ? (
         <Component {...pageProps} />
-      </AppLayout>
+      ) : (
+        <AppLayout>
+          <Component {...pageProps} />
+        </AppLayout>
+      )}
     </Context>
   )
 }
