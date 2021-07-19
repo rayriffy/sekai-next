@@ -19,6 +19,7 @@ const api: NextApiHandler = async (req, res) => {
 
   const screenshot = await page.screenshot({
     type: 'jpeg',
+    quality: 100,
   })
 
   res.setHeader('Content-Type', 'image/jpeg')
