@@ -47,12 +47,12 @@ const Page: NextPage<Props> = props => {
             <Image
               src={getMusicCover(music.assetbundleName)}
               className="rounded-lg"
-              width={740}
-              height={740}
+              width={429}
+              height={429}
             />
           </div>
           <div className="col-span-3 space-y-2 pt-4 md:pt-0">
-            <h1 className="text-5xl font-bold text-gray-900">{music.title}</h1>
+            <h1 className="text-5xl font-bold text-gray-900 font-noto">{music.title}</h1>
             <div className="flex space-x-4 flex-wrap py-4">
               {unitProfiles.map(unit => (
                 <div key={`music-unit-${unit}`} className="w-36">
@@ -68,9 +68,9 @@ const Page: NextPage<Props> = props => {
               ))}
             </div>
             <div className="py-4">
-              <h2 className="text-xl text-gray-900"><span className="font-semibold">Composer:</span> {music.composer}</h2>
-              <h2 className="text-xl text-gray-900"><span className="font-semibold">Arranger:</span> {music.arranger}</h2>
-              <h2 className="text-xl text-gray-900"><span className="font-semibold">Lyricist:</span> {music.lyricist}</h2>
+              <h2 className="text-xl text-gray-900 font-noto"><span className="font-semibold">Composer:</span> {music.composer}</h2>
+              <h2 className="text-xl text-gray-900 font-noto"><span className="font-semibold">Arranger:</span> {music.arranger}</h2>
+              <h2 className="text-xl text-gray-900 font-noto"><span className="font-semibold">Lyricist:</span> {music.lyricist}</h2>
             </div>
           </div>
         </div>
@@ -84,8 +84,8 @@ const Page: NextPage<Props> = props => {
             )} text-center px-6 py-3 font-medium leading-5 rounded-md`}
             key={`music-difficulty-${difficulty.id}`}
           >
-            <p className="font-bold">{difficulty.musicDifficulty.toLocaleUpperCase()}</p>
-            <p className="text-md text-lg">{difficulty.playLevel}</p>
+            <p className="font-bold font-noto">{difficulty.musicDifficulty.toLocaleUpperCase()}</p>
+            <p className="text-md text-lg font-noto">{difficulty.playLevel}</p>
           </div>
           </div>
         ))}

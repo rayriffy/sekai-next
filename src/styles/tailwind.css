@@ -32,3 +32,8 @@ img {
   word-spacing: 0;
   font-size: 0;
 }
+
+.font-noto {
+  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Noto Sans JP', sans-serif;
+}
