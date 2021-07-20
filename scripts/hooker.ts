@@ -48,13 +48,13 @@ const defaultValues = {
 
     // Ping
     await axios.post(DEPLOY_HOOKS)
-    await axios.post(CDN_HOOKS, {
-      event_type: "deploy"
-    }, {
-      headers: {
-        Authorization: `Bearer ${process.env.PERSONAL_TOKEN}`,
-      }
-    })
+    // await axios.post(CDN_HOOKS, {
+    //   event_type: "deploy"
+    // }, {
+    //   headers: {
+    //     Authorization: `Bearer ${process.env.PERSONAL_TOKEN}`,
+    //   }
+    // })
 
     // Pong
     fs.writeFileSync(
