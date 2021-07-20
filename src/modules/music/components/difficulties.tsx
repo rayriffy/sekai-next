@@ -6,20 +6,21 @@ import {
   getDifficultyActiveColor,
   getDifficultyColor,
 } from '../services/getDifficultyColor'
+import { ExternalLink } from '../../../core/components/icons/externalLink'
 
 import { Difficulty } from '../../../@types/Difficulty'
 import { MusicDifficulty } from '../../../@types/MusicDifficulty'
 
 interface Props {
+  musicId: number
   difficulties: MusicDifficulty[]
 }
 
 export const Difficulties: FunctionComponent<Props> = memo(props => {
-  const { difficulties } = props
+  const { musicId, difficulties } = props
 
-  const [selectedDifficulty, setSelectedDifficulty] = useState<Difficulty>(
-    'expert'
-  )
+  const [selectedDifficulty, setSelectedDifficulty] =
+    useState<Difficulty>('expert')
   const targetDifficulty = useMemo(
     () =>
       difficulties.find(
@@ -71,14 +72,26 @@ export const Difficulties: FunctionComponent<Props> = memo(props => {
             ))}
           </nav>
         </div>
-        <div className="pt-6 space-y-1 text-gray-900 uppercase">
+        <div className="pt-6 space-y-1 text-gray-900 uppercase flex justify-between">
           <div>
-            <span className="font-bold">Level:</span>{' '}
-            {targetDifficulty.playLevel}
+            <div>
+              <span className="font-bold">Level:</span>{' '}
+              {targetDifficulty.playLevel}
+            </div>
+            <div>
+              <span className="font-bold">Notes Count:</span>{' '}
+              {targetDifficulty.noteCount}
+            </div>
           </div>
-          <div>
-            <span className="font-bold">Notes Count:</span>{' '}
-            {targetDifficulty.noteCount}
+          <div className="flex items-center">
+            <a
+              className="text-blue-600 font-semibold flex cursor-pointer"
+              target="_blank"
+              rel="noopener noreferrer"
+              href={`/static/chart/${musicId}/${targetDifficulty.musicDifficulty}.svg`}
+            >
+              Chart <ExternalLink className="w-6 h-6 ml-1" />
+            </a>
           </div>
         </div>
       </div>

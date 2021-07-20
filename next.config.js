@@ -70,8 +70,8 @@ module.exports = withPlugins(
           destination: '/api/generateSitemap',
         },
         {
-          source: '/static/chart/:chartId.svg',
-          destination: `/api/generateChart/:chartId`,
+          source: '/static/chart/:chartId/:difficulty.svg',
+          destination: `/api/generateChart/:chartId/:difficulty`,
         },
       ]
     },

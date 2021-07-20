@@ -35,15 +35,7 @@ const Page: NextPage<Props> = props => {
 
   return (
     <Fragment>
-      <Head>
-        <title>{`${music.title} · セカイ Wiki`}</title>
-
-        <meta name="title" content={`${music.title} · セカイ Wiki`} />
-        <meta
-          name="description"
-          content="Data explorer for Project Sekai Colorful Stage"
-        />
-
+      <HeadTitle title={music.title} disableOg>
         <meta property="og:type" content="music.song" />
         <meta property="og:title" content={`${music.title} · セカイ Wiki`} />
         <meta
@@ -79,7 +71,7 @@ const Page: NextPage<Props> = props => {
           property="twitter:description"
           content="Data explorer for Project Sekai Colorful Stage"
         />
-      </Head>
+      </HeadTitle>
       <MusicDetail {...props} />
     </Fragment>
   )
@@ -101,8 +93,6 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
   const { getTargetUnitProfile } = await import(
     '../../modules/music/services/getTargetUnitProfile'
   )
-
-  // const { uniq } = require('lodash')
 
   const targetId = Number(context.params.id)
 

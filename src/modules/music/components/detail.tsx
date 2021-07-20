@@ -45,7 +45,7 @@ export const MusicDetail: FunctionComponent<Props> = memo(props => {
               </div>
             ))}
           </div>
-          <Difficulties difficulties={difficulties} />
+          <Difficulties musicId={music.id} difficulties={difficulties} />
         </div>
       </div>
       <div className="space-y-4 max-w-4xl mx-auto">

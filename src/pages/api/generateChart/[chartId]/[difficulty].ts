@@ -8,7 +8,7 @@ const api: NextApiHandler = async (req, res) => {
   const originalSVG = await axios.get<string>(
     `https://minio.dnaroma.eu/sekai-assets/music/charts/${String(
       req.query.chartId
-    ).padStart(4, '0')}/master.svg`
+    ).padStart(4, '0')}/${req.query.difficulty}.svg`
   )
   const modifiedSVG = replace(
     originalSVG.data,
@@ -16,7 +16,8 @@ const api: NextApiHandler = async (req, res) => {
     'sekai.rayriffy.com/static'
   )
 
-  res.send(modifiedSVG)
+  res.setHeader('Cache-Control', 's-maxage=86400')
+  return res.send(modifiedSVG)
 }
 
 export default api
