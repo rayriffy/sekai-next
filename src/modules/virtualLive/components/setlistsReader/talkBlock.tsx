@@ -3,7 +3,7 @@ import { FunctionComponent, memo, useCallback, useRef } from 'react'
 import { CharacterStack } from '../../../../core/components/characterStack'
 import { getVoiceUrl } from '../../services/getVoiceUrl'
 
-import { VolumeUp } from '../../../../core/components/icons/volumeUp'
+// import { VolumeUpIcon } from '@heroicons/react/outline'
 
 interface Props {
   character3dIds: number[]

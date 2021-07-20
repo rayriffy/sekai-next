@@ -3,7 +3,7 @@ import { FunctionComponent, memo } from 'react'
 import { useNetworkAvailability } from 'web-api-hooks'
 
 import { useStoreon } from '../../../context/storeon'
-import { MenuAlt1 } from '../../../core/components/icons/menuAlt1'
+import { MenuAlt1Icon } from '@heroicons/react/outline'
 
 interface IProps {
   onToggleSidebar?(): void
@@ -20,7 +20,7 @@ export const MobileHeader: FunctionComponent<IProps> = memo(props => {
         aria-label="Open sidebar"
       >
         <div className="inline-block relative">
-          <MenuAlt1 className="h-6 w-6" />
+          <MenuAlt1Icon className="h-6 w-6" />
           <Indicator />
         </div>
       </button>

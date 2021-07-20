@@ -1,8 +1,8 @@
-import { Fragment, FunctionComponent, useMemo, useState } from 'react'
+import { Fragment, FunctionComponent, useState } from 'react'
 
 import dayjs from 'dayjs'
 
-import { Exclamation } from '../../../../core/components/icons/exclamation'
+import { ExclamationIcon } from '@heroicons/react/outline'
 import { mergeTalkEvent } from '../../services/mergeTalkEvent'
 import { TalkBlock } from './talkBlock'
 
@@ -30,7 +30,7 @@ export const SetlistsReader: FunctionComponent<Props> = props => {
         <div className="w-full flex justify-center items-center">
           <div className="max-w-md text-center py-8">
             <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
-              <Exclamation className="h-6 w-6 text-red-600" />
+              <ExclamationIcon className="h-6 w-6 text-red-600" />
             </div>
             <h2 className="mt-2 font-bold text-lg text-gray-900">
               Spoiler Alert!

@@ -1,8 +1,7 @@
 import { FunctionComponent, memo } from 'react'
 
 import { Transition } from '@headlessui/react'
-
-import { X } from '../../core/components/icons/x'
+import { XIcon } from '@heroicons/react/outline'
 
 import { MobileNavbar } from './navbar/mobile'
 import { Offline } from './offline'
@@ -44,7 +43,7 @@ export const MobileOverlay: FunctionComponent<IProps> = memo(props => {
               className="flex items-center justify-center h-12 w-12 rounded-full focus:outline-none focus:bg-gray-600"
               aria-label="Close sidebar"
             >
-              <X className="h-6 w-6 text-white" />
+              <XIcon className="h-6 w-6 text-white" />
             </button>
           </div>
           <div className="px-4">

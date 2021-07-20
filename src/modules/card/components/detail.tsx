@@ -1,7 +1,7 @@
 import { FunctionComponent, memo, useState } from 'react'
 
 import { CharacterCard } from '../../../core/components/characterCard'
-import { SwitchHorizontal } from '../../../core/components/icons/switchHorizontal'
+import { SwitchHorizontalIcon } from '@heroicons/react/outline'
 import { Power } from './power'
 import { LevelSelector } from './level'
 import { Header } from './header'
@@ -53,7 +53,7 @@ export const CardDetail: FunctionComponent<Props> = memo(props => {
                       : 'bg-white'
                   } rounded-full border-4 border-gray-300 p-1 text-teal-500 relative z-10 focus:outline-none focus:border-teal-300 focus:shadow-outline-indigo transition ease-in-out duration-150`}
                 >
-                  <SwitchHorizontal className="w-6 h-6" />
+                  <SwitchHorizontalIcon className="w-6 h-6" />
                 </button>
                 <div className="absolute top-0 bottom-0 left-0 right-0 -mb-0.5 bg-black rounded-full transform scale-110"></div>
               </div>

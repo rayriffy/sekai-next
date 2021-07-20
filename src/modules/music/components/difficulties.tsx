@@ -6,7 +6,7 @@ import {
   getDifficultyActiveColor,
   getDifficultyColor,
 } from '../services/getDifficultyColor'
-import { ExternalLink } from '../../../core/components/icons/externalLink'
+import { ExternalLinkIcon } from '@heroicons/react/outline'
 
 import { Difficulty } from '../../../@types/Difficulty'
 import { MusicDifficulty } from '../../../@types/MusicDifficulty'
@@ -90,7 +90,7 @@ export const Difficulties: FunctionComponent<Props> = memo(props => {
               rel="noopener noreferrer"
               href={`/static/chart/${musicId}/${targetDifficulty.musicDifficulty}.svg`}
             >
-              Chart <ExternalLink className="w-6 h-6 ml-1" />
+              Chart <ExternalLinkIcon className="w-6 h-6 ml-1" />
             </a>
           </div>
         </div>

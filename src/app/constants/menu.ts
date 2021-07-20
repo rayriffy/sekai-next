@@ -1,13 +1,15 @@
 import { FunctionComponent, SVGProps } from 'react'
 
-import { BookmarkAlt } from '../../core/components/icons/bookmarkAlt'
-import { Calendar } from '../../core/components/icons/calendar'
-import { Collection } from '../../core/components/icons/collection'
-import { Film } from '../../core/components/icons/film'
-import { Home } from '../../core/components/icons/home'
-import { InformationCircle } from '../../core/components/icons/informationCircle'
-import { MusicNote } from '../../core/components/icons/musicNote'
-import { User } from '../../core/components/icons/user'
+import {
+  BookmarkAltIcon,
+  CalendarIcon,
+  CollectionIcon,
+  FilmIcon,
+  HomeIcon,
+  InformationCircleIcon,
+  MusicNoteIcon,
+  UserIcon,
+} from '@heroicons/react/outline'
 
 export interface IMenu {
   icon: FunctionComponent<SVGProps<SVGSVGElement>>
@@ -18,49 +20,49 @@ export interface IMenu {
 
 export const menus: IMenu[] = [
   {
-    icon: Home,
+    icon: HomeIcon,
     link: '/',
     name: 'Home',
     match: ['/'],
   },
   {
-    icon: MusicNote,
+    icon: MusicNoteIcon,
     link: '/musics',
     name: 'Musics',
     match: ['/musics/[[...page]]', '/music/[id]'],
   },
   {
-    icon: User,
+    icon: UserIcon,
     link: '/characters',
     name: 'Characters',
     match: ['/characters', '/character/[id]'],
   },
   {
-    icon: Collection,
+    icon: CollectionIcon,
     link: '/cards',
     name: 'Cards',
     match: ['/cards', '/card/[id]'],
   },
   {
-    icon: BookmarkAlt,
+    icon: BookmarkAltIcon,
     link: '/comics',
     name: 'Comics',
     match: ['/comics'],
   },
   {
-    icon: Film,
+    icon: FilmIcon,
     link: '/virtualLives',
     name: 'Virtual Lives',
     match: ['/virtualLives', '/virtualLive/[id]'],
   },
   {
-    icon: Calendar,
+    icon: CalendarIcon,
     link: '/events',
     name: 'Events',
     match: ['/events', '/event/[id]'],
   },
   {
-    icon: InformationCircle,
+    icon: InformationCircleIcon,
     link: '/about',
     name: 'About',
     match: ['/about'],
