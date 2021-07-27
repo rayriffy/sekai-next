@@ -2,7 +2,6 @@ import { Fragment, useMemo } from 'react'
 
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
-import Head from 'next/head'
 
 import { HeadTitle } from '../../core/components/headTitle'
 import { MusicDetail } from '../../modules/music/components/detail'
@@ -123,7 +122,10 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
       music: targetMusic,
       difficulties: targetDifficulties,
       tags: targetTags,
-      vocals: targetVocals,
+      vocals: [
+        ...targetVocals.filter(o => o.musicVocalType === 'sekai'),
+        ...targetVocals.filter(o => o.musicVocalType !== 'sekai'),
+      ],
       unitProfiles: targetUnitProfiles.map(unitProfile => unitProfile.unit),
     },
   }

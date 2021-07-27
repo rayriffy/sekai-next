@@ -16,7 +16,7 @@ interface Props {
 export const Vocals: FunctionComponent<Props> = memo(props => {
   const { vocals, music } = props
 
-  const [selectedVocalId, setSelectedVocalId] = useState<number>((vocals.find(o => o.musicVocalType === 'sekai') ?? vocals[0]).id)
+  const [selectedVocalId, setSelectedVocalId] = useState<number>(vocals[0].id)
   const targetVocal = useMemo(
     () => vocals.find(vocal => vocal.id === selectedVocalId),
     [selectedVocalId]
