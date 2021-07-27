@@ -10,15 +10,13 @@ import { getUnitBanner } from '../../characters/services/getUnitBanner'
 
 import { Music } from '../../../@types/Music'
 import { MusicDifficulty } from '../../../@types/MusicDifficulty'
-import { MusicTag } from '../../../@types/MusicTag'
 import { MusicVocal } from '../../../@types/MusicVocal'
 import { Unit } from '../../../@types/Unit'
 
 interface Props {
-  music: Music
-  difficulties: MusicDifficulty[]
-  tags: MusicTag[]
-  vocals: MusicVocal[]
+  music: Pick<Music, 'id' | 'categories' | 'title' | 'composer' | 'assetbundleName' | 'lyricist' | 'arranger' | 'publishedAt'>
+  difficulties: Pick<MusicDifficulty, 'id' | 'musicDifficulty' | 'playLevel' | 'noteCount'>[]
+  vocals: Pick<MusicVocal, 'id' | 'caption' | 'characters' | 'assetbundleName'>[]
   unitProfiles: Unit[]
 }
 

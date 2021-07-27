@@ -13,7 +13,7 @@ import { MusicDifficulty } from '../../../@types/MusicDifficulty'
 
 interface Props {
   musicId: number
-  difficulties: MusicDifficulty[]
+  difficulties: Pick<MusicDifficulty, 'id' | 'musicDifficulty' | 'playLevel' | 'noteCount'>[]
 }
 
 export const Difficulties: FunctionComponent<Props> = memo(props => {

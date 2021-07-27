@@ -15,8 +15,8 @@ import { Music } from '../../../@types/Music'
 import { MusicVocal } from '../../../@types/MusicVocal'
 
 interface Props {
-  music: Music
-  vocal: MusicVocal
+  music: Pick<Music, 'title' | 'composer' | 'assetbundleName'>
+  vocal: Pick<MusicVocal, 'caption'>
   audio: string
   video: string
 }

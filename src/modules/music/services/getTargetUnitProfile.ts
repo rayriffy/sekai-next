@@ -5,7 +5,7 @@ import { UnitProfile } from '../../../@types/UnitProfile'
 // tag vocaloid is unit piapro
 
 export const getTargetUnitProfile = (
-  tags: MusicTag[],
+  tags: Pick<MusicTag, 'musicTag'>[],
   unitProfiles: UnitProfile[]
 ): UnitProfile[] => {
   const allUnitTags = tags.map(tag =>

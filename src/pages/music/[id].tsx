@@ -10,16 +10,30 @@ import { getMusicCover } from '../../modules/musics/services/getMusicCover'
 
 import { Music } from '../../@types/Music'
 import { MusicDifficulty } from '../../@types/MusicDifficulty'
-import { MusicTag } from '../../@types/MusicTag'
 import { MusicVocal } from '../../@types/MusicVocal'
 import { Unit } from '../../@types/Unit'
 import { UnitProfile } from '../../@types/UnitProfile'
 
 interface Props {
-  music: Music
-  difficulties: MusicDifficulty[]
-  tags: MusicTag[]
-  vocals: MusicVocal[]
+  music: Pick<
+    Music,
+    | 'id'
+    | 'categories'
+    | 'title'
+    | 'composer'
+    | 'assetbundleName'
+    | 'lyricist'
+    | 'arranger'
+    | 'publishedAt'
+  >
+  difficulties: Pick<
+    MusicDifficulty,
+    'id' | 'musicDifficulty' | 'playLevel' | 'noteCount'
+  >[]
+  vocals: Pick<
+    MusicVocal,
+    'id' | 'caption' | 'characters' | 'assetbundleName'
+  >[]
   unitProfiles: Unit[]
 }
 
@@ -77,7 +91,7 @@ const Page: NextPage<Props> = props => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async context => {
-  const { sortBy } = require('lodash')
+  const { sortBy, pick } = require('lodash')
 
   const { getMusics } = await import('../../core/services/getMusics')
   const { getMusicDifficulties } = await import(
@@ -119,13 +133,30 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
 
   return {
     props: {
-      music: targetMusic,
-      difficulties: targetDifficulties,
+      music: pick(targetMusic, [
+        'id',
+        'categories',
+        'title',
+        'composer',
+        'assetbundleName',
+        'lyricist',
+        'arranger',
+        'publishedAt',
+      ]),
+      difficulties: pick(targetDifficulties, [
+        'id',
+        'musicDifficulty',
+        'playLevel',
+        'noteCount',
+      ]),
       tags: targetTags,
-      vocals: [
-        ...targetVocals.filter(o => o.musicVocalType === 'sekai'),
-        ...targetVocals.filter(o => o.musicVocalType !== 'sekai'),
-      ],
+      vocals: pick(
+        [
+          ...targetVocals.filter(o => o.musicVocalType === 'sekai'),
+          ...targetVocals.filter(o => o.musicVocalType !== 'sekai'),
+        ],
+        ['id', 'caption', 'characters', 'assetbundleName']
+      ),
       unitProfiles: targetUnitProfiles.map(unitProfile => unitProfile.unit),
     },
   }

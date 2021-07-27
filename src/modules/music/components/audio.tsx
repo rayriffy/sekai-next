@@ -20,8 +20,8 @@ interface Props
     AudioHTMLAttributes<HTMLAudioElement>,
     HTMLAudioElement
   > {
-  music: Music
-  vocal: MusicVocal
+  music: Pick<Music, 'title' | 'composer' | 'assetbundleName'>
+  vocal: Pick<MusicVocal, 'assetbundleName' | 'caption'>
   fullVersion?: boolean
 }
 

@@ -10,8 +10,8 @@ import { MusicVocal } from '../../../@types/MusicVocal'
 
 interface Props {
   audio: string
-  music: Music
-  vocal: MusicVocal
+  music: Pick<Music, 'title' | 'composer' | 'assetbundleName' | 'categories' | 'id'>
+  vocal: Pick<MusicVocal, 'caption'>
 }
 
 export const MusicVideo: FunctionComponent<Props> = memo(props => {
