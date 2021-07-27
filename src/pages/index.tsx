@@ -62,7 +62,7 @@ const Page: NextPage<Props> = props => {
                   key={`card-${card.id}`}
                   card={card}
                   afterTraining={card.rarity >= 3}
-                  cardSizes="300px"
+                  cardSizes="(min-width:1280px) 264px, (min-width:768px) 198px, 305px"
                   iconSizes="40px"
                   priority
                 />
@@ -74,8 +74,8 @@ const Page: NextPage<Props> = props => {
           <CardHeading title="Latest event">
             <EventCard
               event={event}
-              backgroundSizes="600px"
-              logoSizes="300px"
+              backgroundSizes="(min-width:1280px) 544px, (min-width:768px) 406px, 604px"
+              logoSizes="(min-width:1280px) 272px, 310px"
               priority
             />
             {virtualLive !== null ? (
