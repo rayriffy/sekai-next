@@ -8,7 +8,7 @@ import {
 
 import { useRouter } from 'next/router'
 
-import { ServiceWorker } from './serviceWorker'
+// import { ServiceWorker } from './serviceWorker'
 import { MobileHeader } from './header/mobile'
 import { MobileOverlay } from './mobileOverlay'
 import { DesktopHeader } from './header/destop'
@@ -40,7 +40,7 @@ export const AppLayout: FunctionComponent = props => {
           </main>
         </div>
       </div>
-      <ServiceWorker />
+      {/* <ServiceWorker /> */}
     </Fragment>
   )
 }
