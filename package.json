@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.2.0",
-    "@heroicons/react": "^1.0.2",
+    "@heroicons/react": "^1.0.3",
     "@next/bundle-analyzer": "^11.0.1",
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "@tailwindcss/forms": "^0.3.3",
@@ -45,7 +45,7 @@
     "next-compose-plugins": "^2.2.1",
     "next-offline": "^5.0.5",
     "next-plugin-preact": "^3.0.6",
-    "postcss": "^8.3.5",
+    "postcss": "^8.3.6",
     "preact": "^10.5.14",
     "preact-render-to-string": "^5.1.19",
     "puppeteer-core": "^10.1.0",
@@ -54,7 +54,7 @@
     "react-ssr-prepass": "npm:preact-ssr-prepass",
     "sitemap": "^7.0.0",
     "storeon": "^3.1.1",
-    "tailwindcss": "^2.2.4",
+    "tailwindcss": "^2.2.7",
     "tailwindcss-filters": "^3.0.0",
     "web-api-hooks": "^3.0.2",
     "webpack": "^5.45.1"
