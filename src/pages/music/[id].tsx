@@ -143,20 +143,13 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
         'arranger',
         'publishedAt',
       ]),
-      difficulties: pick(targetDifficulties, [
-        'id',
-        'musicDifficulty',
-        'playLevel',
-        'noteCount',
-      ]),
-      tags: targetTags,
-      vocals: pick(
-        [
-          ...targetVocals.filter(o => o.musicVocalType === 'sekai'),
-          ...targetVocals.filter(o => o.musicVocalType !== 'sekai'),
-        ],
-        ['id', 'caption', 'characters', 'assetbundleName']
+      difficulties: targetDifficulties.map(o =>
+        pick(o, ['id', 'musicDifficulty', 'playLevel', 'noteCount'])
       ),
+      vocals: [
+        ...targetVocals.filter(o => o.musicVocalType === 'sekai'),
+        ...targetVocals.filter(o => o.musicVocalType !== 'sekai'),
+      ].map(o => pick(o, ['id', 'caption', 'characters', 'assetbundleName'])),
       unitProfiles: targetUnitProfiles.map(unitProfile => unitProfile.unit),
     },
   }
