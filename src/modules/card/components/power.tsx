@@ -7,7 +7,14 @@ import { getTypeValue } from '../services/getTypeValue'
 import { Card } from '../../../@types/Card'
 
 interface Props {
-  card: Pick<Card, 'cardParameters' | 'rarity'>
+  card: Pick<
+    Card,
+    | 'cardParameters'
+    | 'rarity'
+    | 'specialTrainingPower1BonusFixed'
+    | 'specialTrainingPower2BonusFixed'
+    | 'specialTrainingPower3BonusFixed'
+  >
   episodes: Pick<
     CardEpisode,
     'power1BonusFixed' | 'power2BonusFixed' | 'power3BonusFixed'

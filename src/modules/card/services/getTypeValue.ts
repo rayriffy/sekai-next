@@ -4,7 +4,13 @@ import { Card } from '../../../@types/Card'
 
 export const getTypeValue = (
   params: string,
-  card: Pick<Card, 'rarity'>,
+  card: Pick<
+    Card,
+    | 'rarity'
+    | 'specialTrainingPower1BonusFixed'
+    | 'specialTrainingPower2BonusFixed'
+    | 'specialTrainingPower3BonusFixed'
+  >,
   level: number,
   cardParameters: Pick<CardParameter, 'cardParameterType' | 'power'>[],
   episodes: Pick<

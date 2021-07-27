@@ -20,6 +20,9 @@ interface Props {
     | 'prefix'
     | 'cardParameters'
     | 'cardSkillName'
+    | 'specialTrainingPower1BonusFixed'
+    | 'specialTrainingPower2BonusFixed'
+    | 'specialTrainingPower3BonusFixed'
   >
   character: Pick<GameCharacter, 'firstName' | 'givenName' | 'unit'>
   episodes: Pick<
@@ -86,6 +89,9 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
         'prefix',
         'cardParameters',
         'cardSkillName',
+        'specialTrainingPower1BonusFixed',
+        'specialTrainingPower2BonusFixed',
+        'specialTrainingPower3BonusFixed',
       ]),
       character: pick(targetCharacter, ['firstName', 'givenName', 'unit']),
       episodes: targetCardEpisodes.map(o =>

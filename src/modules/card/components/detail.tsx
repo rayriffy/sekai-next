@@ -23,6 +23,9 @@ interface Props {
     | 'prefix'
     | 'cardParameters'
     | 'cardSkillName'
+    | 'specialTrainingPower1BonusFixed'
+    | 'specialTrainingPower2BonusFixed'
+    | 'specialTrainingPower3BonusFixed'
   >
   character: Pick<GameCharacter, 'firstName' | 'givenName' | 'unit'>
   episodes: Pick<
