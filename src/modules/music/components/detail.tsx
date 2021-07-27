@@ -14,9 +14,25 @@ import { MusicVocal } from '../../../@types/MusicVocal'
 import { Unit } from '../../../@types/Unit'
 
 interface Props {
-  music: Pick<Music, 'id' | 'categories' | 'title' | 'composer' | 'assetbundleName' | 'lyricist' | 'arranger' | 'publishedAt'>
-  difficulties: Pick<MusicDifficulty, 'id' | 'musicDifficulty' | 'playLevel' | 'noteCount'>[]
-  vocals: Pick<MusicVocal, 'id' | 'caption' | 'characters' | 'assetbundleName'>[]
+  music: Pick<
+    Music,
+    | 'id'
+    | 'categories'
+    | 'title'
+    | 'composer'
+    | 'assetbundleName'
+    | 'lyricist'
+    | 'arranger'
+    | 'publishedAt'
+  >
+  difficulties: Pick<
+    MusicDifficulty,
+    'id' | 'musicDifficulty' | 'playLevel' | 'noteCount'
+  >[]
+  vocals: Pick<
+    MusicVocal,
+    'id' | 'caption' | 'characters' | 'assetbundleName'
+  >[]
   unitProfiles: Unit[]
 }
 

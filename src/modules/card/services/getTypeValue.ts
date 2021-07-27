@@ -7,7 +7,10 @@ export const getTypeValue = (
   card: Pick<Card, 'rarity'>,
   level: number,
   cardParameters: Pick<CardParameter, 'cardParameterType' | 'power'>[],
-  episodes: Pick<CardEpisode, 'power1BonusFixed' | 'power2BonusFixed' | 'power3BonusFixed'>[],
+  episodes: Pick<
+    CardEpisode,
+    'power1BonusFixed' | 'power2BonusFixed' | 'power3BonusFixed'
+  >[],
   unlockEpisode1: boolean,
   unlockEpisode2: boolean
 ) => {

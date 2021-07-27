@@ -4,4 +4,6 @@ import { apiInstance } from './apiInstance'
 
 import { ResourceBox } from '../../@types/ResourceBox'
 
-export const getResourceBoxes = moize.promise(apiInstance<ResourceBox[]>('resourceBoxes.json'))
+export const getResourceBoxes = moize.promise(
+  apiInstance<ResourceBox[]>('resourceBoxes.json')
+)

@@ -11,9 +11,21 @@ import { CardEpisode } from '../../@types/CardEpisode'
 import { Skill } from '../../@types/Skill'
 
 interface Props {
-  card: Pick<Card, 'id' | 'rarity' | 'attr' | 'assetbundleName' | 'prefix' | 'cardParameters' | 'cardSkillName'>
+  card: Pick<
+    Card,
+    | 'id'
+    | 'rarity'
+    | 'attr'
+    | 'assetbundleName'
+    | 'prefix'
+    | 'cardParameters'
+    | 'cardSkillName'
+  >
   character: Pick<GameCharacter, 'firstName' | 'givenName' | 'unit'>
-  episodes: Pick<CardEpisode, 'title' | 'power1BonusFixed' | 'power2BonusFixed' | 'power3BonusFixed'>[]
+  episodes: Pick<
+    CardEpisode,
+    'title' | 'power1BonusFixed' | 'power2BonusFixed' | 'power3BonusFixed'
+  >[]
   skill: Pick<Skill, 'description' | 'skillEffects'>
 }
 
@@ -66,9 +78,24 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
 
   return {
     props: {
-      card: pick(targetCard, ['id', 'rarity', 'attr', 'assetbundleName', 'prefix', 'cardParameters', 'cardSkillName']),
+      card: pick(targetCard, [
+        'id',
+        'rarity',
+        'attr',
+        'assetbundleName',
+        'prefix',
+        'cardParameters',
+        'cardSkillName',
+      ]),
       character: pick(targetCharacter, ['firstName', 'givenName', 'unit']),
-      episodes: targetCardEpisodes.map(o => pick(o, ['title', 'power1BonusFixed', 'power2BonusFixed', 'power3BonusFixed'])),
+      episodes: targetCardEpisodes.map(o =>
+        pick(o, [
+          'title',
+          'power1BonusFixed',
+          'power2BonusFixed',
+          'power3BonusFixed',
+        ])
+      ),
       skill: pick(targetSkill, ['description', 'skillEffects']),
     },
   }

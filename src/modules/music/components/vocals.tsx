@@ -9,8 +9,14 @@ import { Music } from '../../../@types/Music'
 import { Audio } from './audio'
 
 interface Props {
-  vocals: Pick<MusicVocal, 'id' | 'caption' | 'characters' | 'assetbundleName'>[]
-  music: Pick<Music, 'id' | 'categories' | 'title' | 'composer' | 'assetbundleName'>
+  vocals: Pick<
+    MusicVocal,
+    'id' | 'caption' | 'characters' | 'assetbundleName'
+  >[]
+  music: Pick<
+    Music,
+    'id' | 'categories' | 'title' | 'composer' | 'assetbundleName'
+  >
 }
 
 export const Vocals: FunctionComponent<Props> = memo(props => {

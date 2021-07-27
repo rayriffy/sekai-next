@@ -4,6 +4,6 @@ import { apiInstance } from './apiInstance'
 
 import { MusicDifficulty } from '../../@types/MusicDifficulty'
 
-export const getMusicDifficulties = moize.promise(apiInstance<MusicDifficulty[]>(
-  'musicDifficulties.json'
-))
+export const getMusicDifficulties = moize.promise(
+  apiInstance<MusicDifficulty[]>('musicDifficulties.json')
+)

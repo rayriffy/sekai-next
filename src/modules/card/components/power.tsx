@@ -8,7 +8,10 @@ import { Card } from '../../../@types/Card'
 
 interface Props {
   card: Pick<Card, 'cardParameters' | 'rarity'>
-  episodes: Pick<CardEpisode, 'power1BonusFixed' | 'power2BonusFixed' | 'power3BonusFixed'>[]
+  episodes: Pick<
+    CardEpisode,
+    'power1BonusFixed' | 'power2BonusFixed' | 'power3BonusFixed'
+  >[]
   level: number
   unlockEpisode1?: boolean
   unlockEpisode2?: boolean

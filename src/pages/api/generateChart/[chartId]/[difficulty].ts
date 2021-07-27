@@ -21,7 +21,7 @@ const api: NextApiHandler = async (req, res) => {
     return res.send(modifiedSVG)
   } catch (e) {
     return res.status(404).send({
-      message: 'chart not found'
+      message: 'chart not found',
     })
   }
 }

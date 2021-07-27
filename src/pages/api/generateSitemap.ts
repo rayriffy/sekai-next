@@ -32,19 +32,14 @@ const api: NextApiHandler = async (req, res) => {
   })
 
   // data-driven pages
-  const [
-    cards,
-    gameCharacters,
-    events,
-    musics,
-    virtualLives,
-  ] = await Promise.all([
-    getCards(),
-    getGameCharacters(),
-    getEvents(),
-    getMusics(),
-    getVirtualLives(),
-  ])
+  const [cards, gameCharacters, events, musics, virtualLives] =
+    await Promise.all([
+      getCards(),
+      getGameCharacters(),
+      getEvents(),
+      getMusics(),
+      getVirtualLives(),
+    ])
 
   cards.map(card => {
     sitemapStream.write({

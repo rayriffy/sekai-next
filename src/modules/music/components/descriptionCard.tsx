@@ -6,7 +6,10 @@ import relativeTime from 'dayjs/plugin/relativeTime'
 import { Music } from '../../../@types/Music'
 
 interface Props {
-  music: Pick<Music, 'title' | 'arranger' | 'lyricist' | 'composer' | 'publishedAt'>
+  music: Pick<
+    Music,
+    'title' | 'arranger' | 'lyricist' | 'composer' | 'publishedAt'
+  >
 }
 
 dayjs.extend(relativeTime)

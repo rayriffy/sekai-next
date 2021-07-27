@@ -4,6 +4,6 @@ import { apiInstance } from './apiInstance'
 
 import { GameCharacterUnit } from '../../@types/GameCharacterUnit'
 
-export const getGameCharacterUnits = moize.promise(apiInstance<GameCharacterUnit[]>(
-  'gameCharacterUnits.json'
-))
+export const getGameCharacterUnits = moize.promise(
+  apiInstance<GameCharacterUnit[]>('gameCharacterUnits.json')
+)

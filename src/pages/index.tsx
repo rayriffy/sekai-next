@@ -131,7 +131,10 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
   const targetVirtualLive =
     filteredEvent.virtualLiveId === undefined
       ? null
-      : pick(virtualLives.find(o => o.id === filteredEvent.virtualLiveId), ['id', 'assetbundleName', 'name'])
+      : pick(
+          virtualLives.find(o => o.id === filteredEvent.virtualLiveId),
+          ['id', 'assetbundleName', 'name']
+        )
 
   return {
     props: {

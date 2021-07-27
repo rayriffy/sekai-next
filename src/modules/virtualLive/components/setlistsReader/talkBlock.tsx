@@ -18,14 +18,8 @@ interface Props {
 }
 
 export const TalkBlock: FunctionComponent<Props> = memo(props => {
-  const {
-    character3dIds,
-    character3dIndex,
-    mcId,
-    order,
-    text,
-    voiceKeys,
-  } = props
+  const { character3dIds, character3dIndex, mcId, order, text, voiceKeys } =
+    props
 
   // const audioRef = useRef<HTMLAudioElement>(null)
   // const audioRefArray = useRef<HTMLAudioElement[]>(new Array())

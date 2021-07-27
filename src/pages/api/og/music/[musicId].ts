@@ -5,7 +5,7 @@ const api: NextApiHandler = async (req, res) => {
   const { musicId } = req.query
 
   const browser = await chromium.puppeteer.launch({
-    args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
+    args: [...chromium.args, '--hide-scrollbars', '--disable-web-security'],
     executablePath: await chromium.executablePath,
     headless: true,
     defaultViewport: {

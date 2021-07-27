@@ -22,7 +22,11 @@ interface Props {
 export const VirtualLiveDetail: FunctionComponent<Props> = memo(props => {
   const { virtualLive, setlists, character3dIndex } = props
 
-  const isBeginnerLive = useMemo(() => !['normal', 'cheerful_carnival'].includes(virtualLive.virtualLiveType), [virtualLive.virtualLiveType])
+  const isBeginnerLive = useMemo(
+    () =>
+      !['normal', 'cheerful_carnival'].includes(virtualLive.virtualLiveType),
+    [virtualLive.virtualLiveType]
+  )
 
   const diffSeconds = useMemo(() => {
     if (!isBeginnerLive) {

@@ -31,9 +31,11 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
   return {
     props: {
       // discard data that will not be rendered
-      cards: reverse(cards.map(card =>
-        pick(card, ['id', 'rarity', 'attr', 'assetbundleName', 'prefix'])
-      )),
+      cards: reverse(
+        cards.map(card =>
+          pick(card, ['id', 'rarity', 'attr', 'assetbundleName', 'prefix'])
+        )
+      ),
     },
   }
 }

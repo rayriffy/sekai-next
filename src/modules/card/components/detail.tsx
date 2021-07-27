@@ -14,9 +14,21 @@ import { CardEpisode } from '../../../@types/CardEpisode'
 import { Skill } from '../../../@types/Skill'
 
 interface Props {
-  card: Pick<Card, 'id' | 'rarity' | 'attr' | 'assetbundleName' | 'prefix' | 'cardParameters' | 'cardSkillName'>
+  card: Pick<
+    Card,
+    | 'id'
+    | 'rarity'
+    | 'attr'
+    | 'assetbundleName'
+    | 'prefix'
+    | 'cardParameters'
+    | 'cardSkillName'
+  >
   character: Pick<GameCharacter, 'firstName' | 'givenName' | 'unit'>
-  episodes: Pick<CardEpisode, 'title' | 'power1BonusFixed' | 'power2BonusFixed' | 'power3BonusFixed'>[]
+  episodes: Pick<
+    CardEpisode,
+    'title' | 'power1BonusFixed' | 'power2BonusFixed' | 'power3BonusFixed'
+  >[]
   skill: Pick<Skill, 'description' | 'skillEffects'>
 }
 

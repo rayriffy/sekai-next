@@ -4,6 +4,6 @@ import { apiInstance } from './apiInstance'
 
 import { CharacterProfile } from '../../@types/CharacterProfile'
 
-export const getCharacterProfiles = moize.promise(apiInstance<CharacterProfile[]>(
-  'characterProfiles.json'
-))
+export const getCharacterProfiles = moize.promise(
+  apiInstance<CharacterProfile[]>('characterProfiles.json')
+)

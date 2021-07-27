@@ -10,7 +10,10 @@ import { MusicVocal } from '../../../@types/MusicVocal'
 
 interface Props {
   audio: string
-  music: Pick<Music, 'title' | 'composer' | 'assetbundleName' | 'categories' | 'id'>
+  music: Pick<
+    Music,
+    'title' | 'composer' | 'assetbundleName' | 'categories' | 'id'
+  >
   vocal: Pick<MusicVocal, 'caption'>
 }
 

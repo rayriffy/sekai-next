@@ -8,10 +8,10 @@ interface Props {
 export const ProgressBar: FunctionComponent<Props> = props => {
   const { current, max } = props
 
-  const progress = useMemo(() => ((current * 100) / max).toFixed(2), [
-    current,
-    max,
-  ])
+  const progress = useMemo(
+    () => ((current * 100) / max).toFixed(2),
+    [current, max]
+  )
 
   return (
     <div className="rounded-full w-full border-2 border-black">

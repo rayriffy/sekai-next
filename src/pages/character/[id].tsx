@@ -66,19 +66,14 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
   )
 
   // mass data grinding
-  const [
-    characterProfiles,
-    musics,
-    musicVocals,
-    cards,
-    gameCharacterUnits,
-  ] = await Promise.all([
-    getCharacterProfiles(),
-    getMusics(),
-    getMusicVocals(),
-    getCards(),
-    getGameCharacterUnits(),
-  ])
+  const [characterProfiles, musics, musicVocals, cards, gameCharacterUnits] =
+    await Promise.all([
+      getCharacterProfiles(),
+      getMusics(),
+      getMusicVocals(),
+      getCards(),
+      getGameCharacterUnits(),
+    ])
 
   // get character profile
   const targetCharacterProfile = characterProfiles.find(
@@ -111,11 +106,13 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
       profile: targetCharacterProfile,
       musics: targetMusics,
       characterUnit: targetCharacterUnit,
-      cards: reverse(targetCards.map(card => ({
-        ...card,
-        cardParameters: [],
-        specialTrainingCosts: [],
-      }))),
+      cards: reverse(
+        targetCards.map(card => ({
+          ...card,
+          cardParameters: [],
+          specialTrainingCosts: [],
+        }))
+      ),
     },
   }
 }
