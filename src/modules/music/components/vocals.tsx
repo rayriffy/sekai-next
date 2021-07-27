@@ -22,8 +22,6 @@ export const Vocals: FunctionComponent<Props> = memo(props => {
     [selectedVocalId]
   )
 
-  console.log(vocals)
-
   return (
     <Fragment>
       <div>
