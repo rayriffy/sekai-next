@@ -49,7 +49,7 @@ const Page: NextPage<Props> = props => {
                   music={music}
                   key={`music-${music.id}`}
                   disableOverlay
-                  sizes="275px"
+                  sizes="(min-width:1280px) 170px, (min-width:768px) 197px, 275px"
                   priority
                 />
               ))}
