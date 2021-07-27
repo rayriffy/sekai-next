@@ -11,10 +11,10 @@ import { CardEpisode } from '../../@types/CardEpisode'
 import { Skill } from '../../@types/Skill'
 
 interface Props {
-  card: Card
-  character: GameCharacter
-  episodes: CardEpisode[]
-  skill: Skill
+  card: Pick<Card, 'id' | 'rarity' | 'attr' | 'assetbundleName' | 'prefix' | 'cardParameters' | 'cardSkillName'>
+  character: Pick<GameCharacter, 'firstName' | 'givenName' | 'unit'>
+  episodes: Pick<CardEpisode, 'title' | 'power1BonusFixed' | 'power2BonusFixed' | 'power3BonusFixed'>[]
+  skill: Pick<Skill, 'description' | 'skillEffects'>
 }
 
 const Page: NextPage<Props> = props => {
@@ -31,15 +31,12 @@ const Page: NextPage<Props> = props => {
 export const getStaticProps: GetStaticProps<Props> = async context => {
   const { default: _ } = await import('lodash')
 
-  const { first } = _
+  const { first, pick } = _
 
   const { getCards } = await import('../../core/services/getCards')
 
   const { getGameCharacters } = await import(
     '../../core/services/getGameCharacters'
-  )
-  const { getUnitProfiles } = await import(
-    '../../core/services/getUnitProfiles'
   )
   const { getCardEpisodes } = await import(
     '../../core/services/getCardEpisodes'
@@ -69,10 +66,10 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
 
   return {
     props: {
-      card: targetCard,
-      character: targetCharacter,
-      episodes: targetCardEpisodes,
-      skill: targetSkill,
+      card: pick(targetCard, ['id', 'rarity', 'attr', 'assetbundleName', 'prefix', 'cardParameters', 'cardSkillName']),
+      character: pick(targetCharacter, ['firstName', 'givenName', 'unit']),
+      episodes: targetCardEpisodes.map(o => pick(o, ['title', 'power1BonusFixed', 'power2BonusFixed', 'power3BonusFixed'])),
+      skill: pick(targetSkill, ['description', 'skillEffects']),
     },
   }
 }

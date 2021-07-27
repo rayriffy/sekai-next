@@ -15,7 +15,7 @@ interface InternalEpisode {
 }
 
 interface Props {
-  episodes: CardEpisode[]
+  episodes: Pick<CardEpisode, 'title'>[]
   episode1: InternalEpisode
   episode2: InternalEpisode
 }

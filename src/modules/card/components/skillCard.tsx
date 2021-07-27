@@ -7,8 +7,8 @@ import { Card } from '../../../@types/Card'
 import { Skill } from '../../../@types/Skill'
 
 interface Props {
-  card: Card
-  skill: Skill
+  card: Pick<Card, 'cardSkillName'>
+  skill: Pick<Skill, 'description' | 'skillEffects'>
 }
 
 export const SkillCard: FunctionComponent<Props> = memo(props => {

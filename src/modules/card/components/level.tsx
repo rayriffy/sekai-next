@@ -7,7 +7,7 @@ import { Card } from '../../../@types/Card'
 interface Props {
   onSelected(level: number): void
   afterTraining: boolean
-  card: Card
+  card: Pick<Card, 'rarity'>
   level: number
 }
 

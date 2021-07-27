@@ -7,8 +7,8 @@ import { getTypeValue } from '../services/getTypeValue'
 import { Card } from '../../../@types/Card'
 
 interface Props {
-  card: Card
-  episodes: CardEpisode[]
+  card: Pick<Card, 'cardParameters' | 'rarity'>
+  episodes: Pick<CardEpisode, 'power1BonusFixed' | 'power2BonusFixed' | 'power3BonusFixed'>[]
   level: number
   unlockEpisode1?: boolean
   unlockEpisode2?: boolean

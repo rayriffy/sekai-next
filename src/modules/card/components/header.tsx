@@ -8,8 +8,8 @@ import { Card } from '../../../@types/Card'
 import { GameCharacter } from '../../../@types/GameCharacter'
 
 interface Props {
-  card: Card
-  character: GameCharacter
+  card: Pick<Card, 'prefix'>
+  character: Pick<GameCharacter, 'firstName' | 'givenName' | 'unit'>
 }
 
 export const Header: FunctionComponent<Props> = memo(props => {
