@@ -67,7 +67,7 @@
     "@types/axios": "^0.14.0",
     "@types/lodash": "^4.14.172",
     "@types/markdown-to-jsx": "^7.0.1",
-    "@types/node": "^16.6.1",
+    "@types/node": "^16.7.1",
     "@types/react": "^17.0.18",
     "@types/wicg-mediasession": "^1.1.2",
     "babel-plugin-lodash": "^3.3.4",
