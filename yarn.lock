@@ -4954,10 +4954,10 @@ module-alias@^2.0.0:
   resolved "https://registry.yarnpkg.com/module-alias/-/module-alias-2.2.2.tgz#151cdcecc24e25739ff0aa6e51e1c5716974c0e0"
   integrity sha512-A/78XjoX2EmNvppVWEhM2oGk3x4lLxnkEA4jTbaK97QKSDjkIoOsKQlfylt/d3kKKi596Qy3NP5XrXJ6fZIC9Q==
 
-moize@^6.0.3:
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/moize/-/moize-6.0.3.tgz#20881786b68678bc75215ac15ac48a010592b221"
-  integrity sha512-7Jz9TSiqW9G2u8HwUWnaBQMFMPLblrWKEiWN4BA/GPOfQlsnfQqq0yRnTGHckGPlKApA9Eu1HPb/eTqvK9EtKg==
+moize@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/moize/-/moize-6.1.0.tgz#736e505d30d0ff7751005ed2c66c74cf52941b87"
+  integrity sha512-WrMcM+C2Jy+qyOC/UMhA3BCHGowxV34dhDZnDNfxsREW/8N+33SFjmc23Q61Xv1WUthUA1vYopTitP1sZ5jkeg==
   dependencies:
     fast-equals "^2.0.1"
     micro-memoize "^4.0.9"
