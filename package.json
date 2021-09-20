@@ -65,7 +65,7 @@
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
     "@types/axios": "^0.14.0",
-    "@types/lodash": "^4.14.172",
+    "@types/lodash": "^4.14.173",
     "@types/markdown-to-jsx": "^7.0.1",
     "@types/node": "^16.9.1",
     "@types/react": "^17.0.20",
