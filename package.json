@@ -54,7 +54,7 @@
     "react-ssr-prepass": "npm:preact-ssr-prepass",
     "sitemap": "^7.0.0",
     "storeon": "^3.1.1",
-    "tailwindcss": "^2.2.16",
+    "tailwindcss": "^3.0.7",
     "tailwindcss-filters": "^3.0.0",
     "web-api-hooks": "^3.0.2",
     "webpack": "^5.61.0"
