@@ -2,7 +2,9 @@ import { NextApiHandler } from 'next'
 
 import dayjs from 'dayjs'
 import ical from 'ical-generator'
-import { sortBy, first, last } from 'lodash'
+import sortBy from 'lodash/sortBy'
+import first from 'lodash/first'
+import last from 'lodash/last'
 
 import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'

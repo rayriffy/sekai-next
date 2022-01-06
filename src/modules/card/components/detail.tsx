@@ -73,17 +73,19 @@ export const CardDetail: FunctionComponent<Props> = memo(props => {
                 <div className="absolute top-0 bottom-0 left-0 right-0 -mb-0.5 bg-black rounded-full transform scale-110"></div>
               </div>
             </div>
-            <SideStory
-              episodes={episodes}
-              episode1={{
-                locked: !unlockEpisode1,
-                onToggle: () => setUnlockEpisode1(o => !o),
-              }}
-              episode2={{
-                locked: !unlockEpisode2,
-                onToggle: () => setUnlockEpisode2(o => !o),
-              }}
-            />
+            {episodes.length !== 0 && (
+              <SideStory
+                episodes={episodes}
+                episode1={{
+                  locked: !unlockEpisode1,
+                  onToggle: () => setUnlockEpisode1(o => !o),
+                }}
+                episode2={{
+                  locked: !unlockEpisode2,
+                  onToggle: () => setUnlockEpisode2(o => !o),
+                }}
+              />
+            )}
           </div>
         </div>
         <div className="col-span-6 space-y-4 sm:space-y-6 lg:space-y-8">

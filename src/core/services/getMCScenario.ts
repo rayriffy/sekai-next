@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { sortBy } from 'lodash'
+import sortBy from 'lodash/sortBy'
 import moize from 'moize'
 
 import { MasterOfCermonyData } from '../../@types/MasterOfCermonyData'

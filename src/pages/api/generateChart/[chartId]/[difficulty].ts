@@ -1,7 +1,7 @@
 import { NextApiHandler } from 'next'
 
 import axios from 'axios'
-import { replace } from 'lodash'
+import replace from 'lodash/replace'
 
 // read svg chart and convert blob resources point to local cdn prevent original cdn to  overload
 const api: NextApiHandler = async (req, res) => {
