@@ -16,12 +16,6 @@
     "cron:hooker": "ts-node --project tsconfig.tools.json scripts/hooker.ts",
     "cron:getDBLatestUpdate": "ts-node --project tsconfig.tools.json scripts/getDBLatestUpdate.ts"
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "prettier --write",
