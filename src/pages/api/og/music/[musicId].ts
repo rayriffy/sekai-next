@@ -1,7 +1,7 @@
 import { NextApiHandler } from 'next'
 import chromium from 'chrome-aws-lambda'
 
-const api: NextApiHandler = async (req, res) => {
+const api = async (req, res) => {
   const { musicId } = req.query
 
   const browser = await chromium.puppeteer.launch({

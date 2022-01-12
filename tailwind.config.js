@@ -6,7 +6,7 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
   },
-  purge: [
+  content: [
     './src/**/*.html',
     './src/**/*.tsx',
     './src/**/*.ts',
@@ -23,35 +23,11 @@ module.exports = {
       blur: 'blur(5px)',
       'blur-heavy': 'blur(20px)',
     },
-    colors: {
-      white: '#FFFFFF',
-      black: '#000000',
-      bluegray: colors.blueGray,
-      coolgray: colors.coolGray,
-      gray: colors.gray,
-      truegray: colors.trueGray,
-      warmgray: colors.warmGray,
-      red: colors.red,
-      orange: colors.orange,
-      amber: colors.amber,
-      yellow: colors.yellow,
-      lime: colors.lime,
-      green: colors.green,
-      emerald: colors.emerald,
-      teal: colors.teal,
-      cyan: colors.cyan,
-      sky: colors.sky,
-      blue: colors.blue,
-      indigo: colors.indigo,
-      violet: colors.violet,
-      purple: colors.purple,
-      pink: colors.pink,
-      rose: colors.rose,
-    },
     extend: {
-      // color: {
-      //   teal: colors.teal,
-      // },
+      colors: {
+        white: '#FFFFFF',
+        black: '#000000',
+      },
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
@@ -69,7 +45,6 @@ module.exports = {
       },
     },
   },
-  variants: {},
   plugins: [
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
