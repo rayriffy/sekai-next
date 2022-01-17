@@ -32,7 +32,7 @@
     "axios": "^0.24.0",
     "chrome-aws-lambda": "^10.1.0",
     "dayjs": "^1.10.7",
-    "ical-generator": "^3.1.1",
+    "ical-generator": "^3.2.0",
     "lodash": "^4.17.21",
     "markdown-to-jsx": "^7.1.5",
     "moize": "^6.1.0",
