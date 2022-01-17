@@ -23,7 +23,7 @@
     ]
   },
   "dependencies": {
-    "@headlessui/react": "^1.4.2",
+    "@headlessui/react": "^1.4.3",
     "@heroicons/react": "^1.0.5",
     "@next/bundle-analyzer": "^12.0.8",
     "@tailwindcss/aspect-ratio": "^0.4.0",
