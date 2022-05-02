@@ -29,7 +29,7 @@
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/forms": "^0.4.0",
     "@tailwindcss/typography": "^0.5.2",
-    "axios": "^0.25.0",
+    "axios": "^0.27.2",
     "chrome-aws-lambda": "^10.1.0",
     "dayjs": "^1.10.7",
     "ical-generator": "^3.2.1",
