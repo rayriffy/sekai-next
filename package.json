@@ -31,7 +31,7 @@
     "@tailwindcss/typography": "^0.5.2",
     "axios": "^0.25.0",
     "chrome-aws-lambda": "^10.1.0",
-    "dayjs": "^1.10.7",
+    "dayjs": "^1.11.4",
     "ical-generator": "^3.2.1",
     "lodash": "^4.17.21",
     "markdown-to-jsx": "^7.1.6",
