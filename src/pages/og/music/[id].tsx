@@ -51,7 +51,7 @@ const Page: NextPage<Props> = props => {
           rel="stylesheet"
         ></link>
       </Head>
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col h-full bg-gradient-to-r from-rose-50 to-teal-50">
         <div className="h-full w-full flex items-center">
           <div className="grid grid-cols-5 gap-8 px-14 w-full">
             <div className="col-span-2">
