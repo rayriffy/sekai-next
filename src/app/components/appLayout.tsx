@@ -4,6 +4,7 @@ import {
   useEffect,
   Fragment,
   FunctionComponent,
+  PropsWithChildren,
 } from 'react'
 
 import { useRouter } from 'next/router'
@@ -13,7 +14,7 @@ import { MobileHeader } from './header/mobile'
 import { MobileOverlay } from './mobileOverlay'
 import { DesktopHeader } from './header/destop'
 
-export const AppLayout: FunctionComponent = props => {
+export const AppLayout: FunctionComponent<PropsWithChildren> = props => {
   const { children } = props
 
   const router = useRouter()

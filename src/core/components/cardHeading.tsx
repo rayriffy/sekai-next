@@ -1,6 +1,6 @@
-import { FunctionComponent } from 'react'
+import { FunctionComponent, PropsWithChildren } from 'react'
 
-interface Props {
+interface Props extends PropsWithChildren {
   title: string
 }
 

@@ -1,11 +1,17 @@
-import { FunctionComponent, Fragment, useMemo, useEffect } from 'react'
+import {
+  FunctionComponent,
+  Fragment,
+  useMemo,
+  useEffect,
+  PropsWithChildren,
+} from 'react'
 
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 import { useStoreon } from '../../context/storeon'
 
-interface Props {
+interface Props extends PropsWithChildren {
   title?: string
   description?: string
   disableOg?: boolean
