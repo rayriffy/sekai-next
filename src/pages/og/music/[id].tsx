@@ -73,10 +73,10 @@ const Page: NextPage<Props> = props => {
                   </div>
                 ))}
               </div>
-              <div className="flex flex-wrap space-x-4 space-y-2 -mt-2">
+              <div className="flex flex-wrap -mt-2">
                 {vocals.map(vocal => (
                   <div
-                    className="border border-gray-300 bg-gray-100 rounded-md px-4 py-2"
+                    className="border border-gray-300 bg-gray-100 rounded-md px-4 py-2 m-2"
                     key={`vocal-${vocal.id}`}
                   >
                     <CharacterStack
