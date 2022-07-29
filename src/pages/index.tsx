@@ -14,6 +14,7 @@ import { Card } from '../@types/Card'
 import { Event } from '../@types/Event'
 import { VirtualLive } from '../@types/VirtualLive'
 import { VirtualLiveCard } from '../core/components/virtualLiveCard'
+import { getCardRarity } from '../core/services/getCardRarity'
 
 interface Props {
   musics: Pick<
@@ -26,7 +27,10 @@ interface Props {
     | 'assetbundleName'
     | 'id'
   >[]
-  cards: Pick<Card, 'id' | 'rarity' | 'attr' | 'assetbundleName' | 'prefix'>[]
+  cards: Pick<
+    Card,
+    'id' | 'cardRarityType' | 'attr' | 'assetbundleName' | 'prefix'
+  >[]
   event: Pick<
     Event,
     'id' | 'startAt' | 'aggregateAt' | 'assetbundleName' | 'name'
@@ -61,7 +65,8 @@ const Page: NextPage<Props> = props => {
                 <CharacterCard
                   key={`card-${card.id}`}
                   card={card}
-                  afterTraining={card.rarity >= 3}
+                  cardRarity={getCardRarity(card)}
+                  afterTraining={getCardRarity(card).level >= 3}
                   cardSizes="(min-width:1280px) 264px, (min-width:768px) 198px, 305px"
                   iconSizes="40px"
                   priority
@@ -151,7 +156,13 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
       ),
       // discard data that will not be rendered
       cards: filteredCards.map(card =>
-        pick(card, ['id', 'rarity', 'attr', 'assetbundleName', 'prefix'])
+        pick(card, [
+          'id',
+          'cardRarityType',
+          'attr',
+          'assetbundleName',
+          'prefix',
+        ])
       ),
       event: pick(filteredEvent, [
         'id',

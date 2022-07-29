@@ -6,11 +6,11 @@ export const getTypeValue = (
   params: string,
   card: Pick<
     Card,
-    | 'rarity'
     | 'specialTrainingPower1BonusFixed'
     | 'specialTrainingPower2BonusFixed'
     | 'specialTrainingPower3BonusFixed'
   >,
+  cardRarity: number,
   level: number,
   cardParameters: Pick<CardParameter, 'cardParameterType' | 'power'>[],
   episodes: Pick<
@@ -23,7 +23,7 @@ export const getTypeValue = (
   const targetParameter = cardParameters.find(
     cardParameter => cardParameter.cardParameterType === `param${params}`
   )
-  const minimumMaxLevel = (card.rarity + 1) * 10
+  const minimumMaxLevel = (cardRarity + 1) * 10
 
   return (
     targetParameter.power +

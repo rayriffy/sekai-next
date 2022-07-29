@@ -8,7 +8,10 @@ import { CardsListing } from '../modules/cards/components/listing'
 import { Card } from '../@types/Card'
 
 interface Props {
-  cards: Pick<Card, 'id' | 'rarity' | 'attr' | 'assetbundleName' | 'prefix'>[]
+  cards: Pick<
+    Card,
+    'id' | 'cardRarityType' | 'attr' | 'assetbundleName' | 'prefix'
+  >[]
 }
 
 const Page: NextPage<Props> = props => {
@@ -33,7 +36,13 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
       // discard data that will not be rendered
       cards: reverse(
         cards.map(card =>
-          pick(card, ['id', 'rarity', 'attr', 'assetbundleName', 'prefix'])
+          pick(card, [
+            'id',
+            'cardRarityType',
+            'attr',
+            'assetbundleName',
+            'prefix',
+          ])
         )
       ),
     },

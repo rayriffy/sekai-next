@@ -2,24 +2,22 @@ import { FunctionComponent, memo, useCallback, useEffect, useMemo } from 'react'
 
 import { ProgressBar } from '../../../app/components/progressBar'
 
-import { Card } from '../../../@types/Card'
-
 interface Props {
   onSelected(level: number): void
   afterTraining: boolean
-  card: Pick<Card, 'rarity'>
+  cardRarity: number
   level: number
 }
 
 export const LevelSelector: FunctionComponent<Props> = memo(props => {
-  const { onSelected, afterTraining, card, level } = props
+  const { onSelected, afterTraining, cardRarity, level } = props
 
   const minimumSafeLevel = useMemo(
-    () => (afterTraining ? (card.rarity + 1) * 10 : 1),
+    () => (afterTraining ? (cardRarity + 1) * 10 : 1),
     [afterTraining]
   )
   const maxLevel = useMemo(
-    () => (card.rarity + 1) * 10 + (afterTraining ? 10 : 0),
+    () => (cardRarity + 1) * 10 + (afterTraining ? 10 : 0),
     [afterTraining]
   )
 

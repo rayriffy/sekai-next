@@ -1,4 +1,4 @@
-import { FunctionComponent, memo, useState } from 'react'
+import { FunctionComponent, memo, useMemo, useState } from 'react'
 
 import { CharacterCard } from '../../../core/components/characterCard'
 import { SwitchHorizontalIcon } from '@heroicons/react/outline'
@@ -12,12 +12,13 @@ import { Card } from '../../../@types/Card'
 import { GameCharacter } from '../../../@types/GameCharacter'
 import { CardEpisode } from '../../../@types/CardEpisode'
 import { Skill } from '../../../@types/Skill'
+import { getCardRarity } from '../../../core/services/getCardRarity'
 
 interface Props {
   card: Pick<
     Card,
     | 'id'
-    | 'rarity'
+    | 'cardRarityType'
     | 'attr'
     | 'assetbundleName'
     | 'prefix'
@@ -38,9 +39,13 @@ interface Props {
 export const CardDetail: FunctionComponent<Props> = memo(props => {
   const { card, character, episodes, skill } = props
 
-  const [afterTrainingCard, setAfterTrainingCard] = useState(card.rarity >= 3)
+  const cardRarity = useMemo(() => getCardRarity(card), [card.cardRarityType])
+
+  const [afterTrainingCard, setAfterTrainingCard] = useState(
+    cardRarity.level >= 3
+  )
   const [selectedLevel, setSelectedLevel] = useState(
-    (card.rarity + 1) * 10 + (afterTrainingCard ? 10 : 0)
+    (cardRarity.level + 1) * 10 + (afterTrainingCard ? 10 : 0)
   )
 
   const [unlockEpisode1, setUnlockEpisode1] = useState<boolean>(false)
@@ -53,26 +58,29 @@ export const CardDetail: FunctionComponent<Props> = memo(props => {
           <Header card={card} character={character} />
           <CharacterCard
             card={card}
+            cardRarity={cardRarity}
             afterTraining={afterTrainingCard}
             disableLink
           />
           <div className="block xl:flex justify-between pt-4">
-            <div className="flex pb-4 xl:pb-0">
-              <div className="relative">
-                <button
-                  onClick={() => setAfterTrainingCard(o => !o)}
-                  disabled={card.rarity < 3}
-                  className={`${
-                    card.rarity < 3
-                      ? 'bg-gray-200 cursor-not-allowed'
-                      : 'bg-white'
-                  } rounded-full border-4 border-gray-300 p-1 text-teal-500 relative z-10 focus:outline-none focus:border-teal-300 focus:shadow-outline-indigo transition ease-in-out duration-150`}
-                >
-                  <SwitchHorizontalIcon className="w-6 h-6" />
-                </button>
-                <div className="absolute top-0 bottom-0 left-0 right-0 -mb-0.5 bg-black rounded-full transform scale-110"></div>
+            {!cardRarity.birthday && (
+              <div className="flex pb-4 xl:pb-0">
+                <div className="relative">
+                  <button
+                    onClick={() => setAfterTrainingCard(o => !o)}
+                    disabled={cardRarity.level < 3}
+                    className={`${
+                      cardRarity.level < 3
+                        ? 'bg-gray-200 cursor-not-allowed'
+                        : 'bg-white'
+                    } rounded-full border-4 border-gray-300 p-1 text-teal-500 relative z-10 focus:outline-none focus:border-teal-300 focus:shadow-outline-indigo transition ease-in-out duration-150`}
+                  >
+                    <SwitchHorizontalIcon className="w-6 h-6" />
+                  </button>
+                  <div className="absolute top-0 bottom-0 left-0 right-0 -mb-0.5 bg-black rounded-full transform scale-110"></div>
+                </div>
               </div>
-            </div>
+            )}
             {episodes.length !== 0 && (
               <SideStory
                 episodes={episodes}
@@ -91,6 +99,7 @@ export const CardDetail: FunctionComponent<Props> = memo(props => {
         <div className="col-span-6 space-y-4 sm:space-y-6 lg:space-y-8">
           <Power
             level={selectedLevel}
+            cardRarity={cardRarity.level}
             {...{
               card,
               episodes,
@@ -101,7 +110,7 @@ export const CardDetail: FunctionComponent<Props> = memo(props => {
           <LevelSelector
             onSelected={level => setSelectedLevel(level)}
             afterTraining={afterTrainingCard}
-            card={card}
+            cardRarity={cardRarity.level}
             level={selectedLevel}
           />
           <SkillCard card={card} skill={skill} />

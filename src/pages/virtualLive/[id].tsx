@@ -113,11 +113,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const virtualLives = await getVirtualLives()
 
   return {
-    paths: virtualLives.filter(o => ![112].includes(o.id)).map(live => ({
-      params: {
-        id: live.id.toString(),
-      },
-    })),
+    paths: virtualLives
+      .filter(o => o.virtualLiveType !== 'streaming')
+      .map(live => ({
+        params: {
+          id: live.id.toString(),
+        },
+      })),
     fallback: false,
   }
 }

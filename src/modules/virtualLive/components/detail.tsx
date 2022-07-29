@@ -60,7 +60,7 @@ export const VirtualLiveDetail: FunctionComponent<Props> = memo(props => {
           <Image
             width={790}
             height={243}
-            src={`https://sekai-res.dnaroma.eu/file/sekai-assets/virtual_live/select/banner/${virtualLive.assetbundleName}_rip/${virtualLive.assetbundleName}.png`}
+            src={`https://minio.dnaroma.eu/sekai-assets/virtual_live/select/banner/${virtualLive.assetbundleName}_rip/${virtualLive.assetbundleName}.png`}
             className="w-full h-auto"
           />
         </div>

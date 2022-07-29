@@ -10,11 +10,11 @@ interface Props {
   card: Pick<
     Card,
     | 'cardParameters'
-    | 'rarity'
     | 'specialTrainingPower1BonusFixed'
     | 'specialTrainingPower2BonusFixed'
     | 'specialTrainingPower3BonusFixed'
   >
+  cardRarity: number
   episodes: Pick<
     CardEpisode,
     'power1BonusFixed' | 'power2BonusFixed' | 'power3BonusFixed'
@@ -29,6 +29,7 @@ export const Power: FunctionComponent<Props> = memo(props => {
     episodes,
     unlockEpisode1 = false,
     unlockEpisode2 = false,
+    cardRarity,
     level,
     card,
   } = props
@@ -45,6 +46,7 @@ export const Power: FunctionComponent<Props> = memo(props => {
       getTypeValue(
         '1',
         card,
+        cardRarity,
         level,
         targetCardParameters,
         episodes,
@@ -58,6 +60,7 @@ export const Power: FunctionComponent<Props> = memo(props => {
       getTypeValue(
         '2',
         card,
+        cardRarity,
         level,
         targetCardParameters,
         episodes,
@@ -71,6 +74,7 @@ export const Power: FunctionComponent<Props> = memo(props => {
       getTypeValue(
         '3',
         card,
+        cardRarity,
         level,
         targetCardParameters,
         episodes,

@@ -12,10 +12,12 @@ import Link from 'next/link'
 import { getCard } from '../../modules/cards/services/getCard'
 
 import { Card } from '../../@types/Card'
+import { ProcessedCardRarityType } from '../services/getCardRarity'
 
 interface Props
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  card: Pick<Card, 'id' | 'rarity' | 'attr' | 'assetbundleName' | 'prefix'>
+  card: Pick<Card, 'id' | 'attr' | 'assetbundleName' | 'prefix'>
+  cardRarity: ProcessedCardRarityType
   afterTraining?: boolean
   disableLink?: boolean
   cardSizes?: string
@@ -26,6 +28,7 @@ interface Props
 interface StarProps {
   afterTraining?: boolean
   iconSizes?: string
+  birthday?: boolean
 }
 
 export const CharacterCard: FunctionComponent<Props> = props => {
@@ -35,6 +38,7 @@ export const CharacterCard: FunctionComponent<Props> = props => {
     disableLink = false,
     cardSizes,
     iconSizes,
+    cardRarity,
     priority = false,
     className,
     ...rest
@@ -47,13 +51,20 @@ export const CharacterCard: FunctionComponent<Props> = props => {
         {...rest}
       >
         <div className="z-10 absolute bottom-2 left-2 w-1/13">
-          {Array.from({ length: card.rarity }).map((_, i) => (
+          {Array.from({
+            length: cardRarity.birthday ? 1 : cardRarity.level,
+          }).map((_, i) => (
             <Star
               key={`card-${card.id}-star-${i}-mode-${
-                afterTraining ? 'afterTraining' : 'normal'
+                cardRarity.birthday
+                  ? 'birthday'
+                  : afterTraining
+                  ? 'afterTraining'
+                  : 'normal'
               }`}
               iconSizes={iconSizes}
               afterTraining={afterTraining}
+              birthday={cardRarity.birthday}
             />
           ))}
         </div>
@@ -71,7 +82,11 @@ export const CharacterCard: FunctionComponent<Props> = props => {
             key={`card-${card.id}-mode-${
               afterTraining ? 'afterTraining' : 'normal'
             }`}
-            src={getCard(card.assetbundleName, afterTraining)}
+            src={getCard(
+              card.assetbundleName,
+              afterTraining,
+              cardRarity.birthday
+            )}
             width={2048}
             height={1261}
             sizes={cardSizes}
@@ -80,7 +95,9 @@ export const CharacterCard: FunctionComponent<Props> = props => {
           />
         </div>
         <Image
-          src={`/static/frame/cardFrame_L_${card.rarity}.png`}
+          src={`/static/frame/cardFrame_L_${
+            cardRarity.birthday ? 'bd' : cardRarity.level
+          }.png`}
           className="rounded-lg"
           width={1024}
           height={576}
@@ -104,12 +121,12 @@ export const CharacterCard: FunctionComponent<Props> = props => {
 }
 
 export const Star: FunctionComponent<StarProps> = memo(props => {
-  const { afterTraining, iconSizes } = props
+  const { afterTraining, iconSizes, birthday } = props
 
   return (
     <Image
       src={`/static/rarity_star_${
-        afterTraining ? 'afterTraining' : 'normal'
+        birthday ? 'birthday' : afterTraining ? 'afterTraining' : 'normal'
       }.png`}
       width={72}
       height={70}

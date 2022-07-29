@@ -9,6 +9,7 @@ import { Music } from '../../../@types/Music'
 import { GameCharacterUnit } from '../../../@types/GameCharacterUnit'
 import { MusicCard } from '../../../core/components/musicCard'
 import { CharacterCard } from '../../../core/components/characterCard'
+import { getCardRarity } from '../../../core/services/getCardRarity'
 
 interface Props {
   character: GameCharacter
@@ -54,7 +55,8 @@ export const CharacterDetail: FunctionComponent<Props> = memo(props => {
                 <CharacterCard
                   card={card}
                   className="w-96"
-                  afterTraining={card.rarity >= 3}
+                  cardRarity={getCardRarity(card)}
+                  afterTraining={getCardRarity(card).level >= 3}
                 />
               ))}
             </div>

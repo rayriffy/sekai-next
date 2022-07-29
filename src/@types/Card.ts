@@ -5,7 +5,12 @@ export interface Card {
   id: number
   seq: number
   characterId: number
-  rarity: number
+  cardRarityType:
+    | 'rarity_1'
+    | 'rarity_2'
+    | 'rarity_3'
+    | 'rarity_4'
+    | 'rarity_birthday'
   specialTrainingPower1BonusFixed: number
   specialTrainingPower2BonusFixed: number
   specialTrainingPower3BonusFixed: number

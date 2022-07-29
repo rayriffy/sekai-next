@@ -14,7 +14,7 @@ interface Props {
   card: Pick<
     Card,
     | 'id'
-    | 'rarity'
+    | 'cardRarityType'
     | 'attr'
     | 'assetbundleName'
     | 'prefix'
@@ -83,7 +83,7 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
     props: {
       card: pick(targetCard, [
         'id',
-        'rarity',
+        'cardRarityType',
         'attr',
         'assetbundleName',
         'prefix',

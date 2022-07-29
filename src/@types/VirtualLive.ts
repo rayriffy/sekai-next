@@ -8,7 +8,7 @@ import { VirtualLiveWaitingRoom } from './VirtualLiveWaitingRoom'
 
 export interface VirtualLive {
   id: number
-  virtualLiveType: 'normal' | 'beginner'
+  virtualLiveType: 'normal' | 'beginner' | 'streaming'
   virtualLivePlatform: string
   seq: number
   name: string
