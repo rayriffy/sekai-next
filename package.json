@@ -39,7 +39,7 @@
     "next": "^12.2.3",
     "next-compose-plugins": "^2.2.1",
     "postcss": "^8.4.14",
-    "puppeteer-core": "^15.5.0",
+    "puppeteer-core": "^16.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sitemap": "^7.1.1",

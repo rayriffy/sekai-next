@@ -2334,10 +2334,10 @@ punycode@^2.1.0:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-puppeteer-core@^15.5.0:
-  version "15.5.0"
-  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-15.5.0.tgz#7b06b0772f4266bb3a2230a16c24316e12812460"
-  integrity sha512-5Q8EmF++MARczJD1JcRehVePlctxGG2TFHSxdCV8NqPOk44/cMySmZw2nETn+lwUOyp0L9afosMFTnT4KgmWgw==
+puppeteer-core@^16.1.0:
+  version "16.1.0"
+  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-16.1.0.tgz#0485312363e6e1d65889d4b31de677bd36f872e4"
+  integrity sha512-Eu9FCqdWU2PU/RY53sa+JTsbFiQg5fJyaHX5DP0WZ4+lVLVdMfR9dwPimRkSl9NEcArm7lZMpiDlVCYelE90ZA==
   dependencies:
     cross-fetch "3.1.5"
     debug "4.3.4"
@@ -2350,7 +2350,7 @@ puppeteer-core@^15.5.0:
     rimraf "3.0.2"
     tar-fs "2.1.1"
     unbzip2-stream "1.4.3"
-    ws "8.8.0"
+    ws "8.8.1"
 
 q@^1.5.1:
   version "1.5.1"
@@ -3108,10 +3108,10 @@ wrappy@1:
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==
 
-ws@8.8.0:
-  version "8.8.0"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-8.8.0.tgz#8e71c75e2f6348dbf8d78005107297056cb77769"
-  integrity sha512-JDAgSYQ1ksuwqfChJusw1LSJ8BizJ2e/vVu5Lxjq3YvNJNlROv1ui4i+c/kUUrPheBvQl4c5UbERhTwKa6QBJQ==
+ws@8.8.1:
+  version "8.8.1"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-8.8.1.tgz#5dbad0feb7ade8ecc99b830c1d77c913d4955ff0"
+  integrity sha512-bGy2JzvzkPowEJV++hF07hAD6niYSr0JzBNo/J29WsB57A2r7Wlc1UFcTR9IzrPvuNVO4B8LGqF8qcpsVOhJCA==
 
 ws@^7.3.1:
   version "7.5.9"
