@@ -36,7 +36,7 @@
     "lodash": "^4.17.21",
     "markdown-to-jsx": "^7.1.7",
     "moize": "^6.1.1",
-    "next": "^12.2.3",
+    "next": "^12.2.5",
     "next-compose-plugins": "^2.2.1",
     "postcss": "^8.4.14",
     "puppeteer-core": "^15.5.0",
