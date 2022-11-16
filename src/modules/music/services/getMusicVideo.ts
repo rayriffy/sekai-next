@@ -12,5 +12,5 @@ export const getMusicVideo = (
       : ''
   const paddedMusicId = String(musicId).padStart(4, '0')
 
-  return `https://sekai-cdn.rayriffy.com/live/2dmode/${mode}/${paddedMusicId}_rip/${paddedMusicId}.mp4`
+  return `https://sekai-cdn.rayriffy.com/live/2dmode/${mode}/${paddedMusicId}_rip/${paddedMusicId}.webm`
 }

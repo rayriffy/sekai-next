@@ -100,7 +100,7 @@ const Component: FunctionComponent<Props> = memo(props => {
         className="w-full h-auto"
         ref={videoRef}
       >
-        <source src={video} type="video/mp4"></source>
+        <source src={video} type="video/webm"></source>
       </video>
       <audio ref={audioRef}>
         <source src={audio} type="audio/mp3"></source>
