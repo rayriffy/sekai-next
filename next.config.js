@@ -20,11 +20,7 @@ module.exports = withPlugins([[withBundleAnalyzer]], {
     excludeDefaultMomentLocales: true,
   },
   images: {
-    deviceSizes: [
-      200, 250, 300, 350, 400, 450, 500, 550, 600, 640, 750, 828, 1080, 1200,
-      1920, 2048, 3840,
-    ],
-    domains: ['minio.dnaroma.eu'],
+    unoptimized: true,
   },
   experimental: {
     modern: true,
