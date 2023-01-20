@@ -30,9 +30,9 @@ export const OverviewCard: FunctionComponent<Props> = memo(props => {
         <div className="block sm:flex bg-white rounded-lg overflow-hidden shadow">
           <div className="sm:p-0 aspect-w-3 aspect-h-3 sm:aspect-h-4 w-full sm:w-2/5 relative">
             <Image
+              alt={character.firstName}
               className="transform scale-102 sm:scale-150 -mt-0 sm:-mt-10 xl:-mt-16 object-cover"
               src={getCharacterCutout(character.id)}
-              layout="fill"
             />
           </div>
           <div className="w-full grid grid-cols-1 lg:grid-cols-5 gap-4 p-4">

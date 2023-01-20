@@ -56,6 +56,7 @@ const Page: NextPage<Props> = props => {
           <div className="grid grid-cols-5 gap-8 px-14 w-full">
             <div className="col-span-2">
               <Image
+                alt="cover"
                 src={getMusicCover(music.assetbundleName)}
                 className="rounded-lg"
                 width={600}
@@ -69,7 +70,12 @@ const Page: NextPage<Props> = props => {
               <div className="flex space-x-4 flex-wrap py-4">
                 {unitProfiles.map(unit => (
                   <div key={`music-unit-${unit}`} className="w-52">
-                    <Image src={getUnitBanner(unit)} width={620} height={260} />
+                    <Image
+                      alt={unit}
+                      src={getUnitBanner(unit)}
+                      width={620}
+                      height={260}
+                    />
                   </div>
                 ))}
               </div>

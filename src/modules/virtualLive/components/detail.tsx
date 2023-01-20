@@ -58,6 +58,7 @@ export const VirtualLiveDetail: FunctionComponent<Props> = memo(props => {
         <div className="col-span-1 lg:col-span-2">
           {/* <EventCard event={event} disableSlug /> */}
           <Image
+            alt="live banner"
             width={790}
             height={243}
             src={`https://minio.dnaroma.eu/sekai-assets/virtual_live/select/banner/${virtualLive.assetbundleName}_rip/${virtualLive.assetbundleName}.png`}

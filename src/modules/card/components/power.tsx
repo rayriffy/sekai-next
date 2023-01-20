@@ -95,6 +95,7 @@ export const Power: FunctionComponent<Props> = memo(props => {
         <div className="ml-4 flex items-center">
           <div className="w-6 h-6">
             <Image
+              alt="strength"
               src="/static/icon_totalStrength.png"
               width={36}
               height={42}
@@ -110,6 +111,7 @@ export const Power: FunctionComponent<Props> = memo(props => {
           <div className="flex items-center text-gray-700">
             <div className="w-5 h-5">
               <Image
+                alt="performance"
                 src="/static/icon_performance.png"
                 width={28}
                 height={28}
@@ -120,7 +122,12 @@ export const Power: FunctionComponent<Props> = memo(props => {
           </div>
           <div className="flex items-center text-gray-700">
             <div className="w-5 h-5">
-              <Image src="/static/icon_technique.png" width={28} height={28} />
+              <Image
+                alt="technique"
+                src="/static/icon_technique.png"
+                width={28}
+                height={28}
+              />
             </div>
             <span className="text-sm pl-1 pr-2">Technique</span>
             <span className="text-md font-medium">{techniqueValue}</span>
@@ -128,6 +135,7 @@ export const Power: FunctionComponent<Props> = memo(props => {
           <div className="flex items-center text-gray-700">
             <div className="w-5 h-5">
               <Image
+                alt="stamina"
                 className="w-3.5 h-3.5"
                 src="/static/icon_stamina.png"
                 width={28}

@@ -18,7 +18,12 @@ export const Header: FunctionComponent<Props> = memo(props => {
   return (
     <div className="flex pb-2 space-x-2">
       <div className="w-32 h-auto p-2 relative">
-        <Image src={getUnitBanner(character.unit)} width={620} height={260} />
+        <Image
+          alt={character.unit}
+          src={getUnitBanner(character.unit)}
+          width={620}
+          height={260}
+        />
       </div>
       <div className="w-full text-gray-900 font-semibold">
         <h2 className="text-md border-b-4 border-teal-400 border-dotted">

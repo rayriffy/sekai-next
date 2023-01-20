@@ -23,6 +23,7 @@ export const CharacterStack: FunctionComponent<Props> = memo(props => {
           }${characterId}`}
         >
           <Image
+            alt={`${characterId}`}
             src={`/static/chara_icons/chr_ts_${characterId}.png`}
             width={128}
             height={128}

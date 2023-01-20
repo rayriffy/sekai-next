@@ -48,7 +48,7 @@ const Button: FunctionComponent<ButtonProps> = memo(props => {
       {data.locked && (
         <div className="absolute left-0 z-20 mt-1.5 -ml-2.5">
           <div className="w-5 h-5">
-            <Image src="/static/lock.png" width={48} height={48} />
+            <Image alt="lock" src="/static/lock.png" width={48} height={48} />
           </div>
         </div>
       )}

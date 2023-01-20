@@ -33,6 +33,7 @@ const Page: NextPage<Props> = props => {
                 </h4>
               </div>
               <Image
+                alt={comic.title}
                 src={`https://minio.dnaroma.eu/sekai-assets/comic/one_frame_rip/${comic.assetbundleName}.webp`}
                 width={644}
                 height={478}

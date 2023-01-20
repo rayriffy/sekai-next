@@ -25,6 +25,7 @@ export const CharactersListing: FunctionComponent<Props> = memo(props => {
           <div className="flex justify-center pt-2 pb-6">
             <div className="w-64 h-auto relative">
               <Image
+                alt={chunk.unit.unitName}
                 src={getUnitBanner(chunk.unit.unit)}
                 width={620}
                 height={260}
@@ -43,6 +44,7 @@ export const CharactersListing: FunctionComponent<Props> = memo(props => {
                 <Link href={`/character/${character.id}`}>
                   <a>
                     <Image
+                      alt={character.firstName}
                       src={getCharacterBanner(character.id)}
                       width={character.unit === 'piapro' ? 240 : 320}
                       height={620}

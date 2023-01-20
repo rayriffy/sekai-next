@@ -44,6 +44,7 @@ export const MusicDetail: FunctionComponent<Props> = memo(props => {
       <div className="max-w-4xl mx-auto block sm:grid sm:grid-cols-3 py-8 gap-8">
         <div className="col-span-1">
           <Image
+            alt="cover"
             src={getMusicCover(music.assetbundleName)}
             className="rounded-lg"
             width={740}
@@ -55,7 +56,12 @@ export const MusicDetail: FunctionComponent<Props> = memo(props => {
           <div className="flex space-x-4 flex-wrap border-b py-4 border-gray-200">
             {unitProfiles.map(unit => (
               <div key={`music-unit-${unit}`} className="w-36">
-                <Image src={getUnitBanner(unit)} width={620} height={260} />
+                <Image
+                  alt={unit}
+                  src={getUnitBanner(unit)}
+                  width={620}
+                  height={260}
+                />
               </div>
             ))}
           </div>

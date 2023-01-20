@@ -12,7 +12,6 @@ dayjs.extend(utc)
 dayjs.extend(timezone)
 
 module.exports = withPlugins([[withBundleAnalyzer]], {
-  analyticsId: '8IiZe32S3qEvfNoZOPXTkEuio2C',
   env: {
     buildNumber: dayjs.tz(dayjs(), 'Asia/Tokyo').format('YYYYMMDD.HH'),
   },
@@ -20,12 +19,7 @@ module.exports = withPlugins([[withBundleAnalyzer]], {
     excludeDefaultMomentLocales: true,
   },
   images: {
-    unoptimized: true,
-  },
-  experimental: {
-    modern: true,
-    polyfillsOptimization: true,
-    scrollRestoration: true,
+    domains: ['minio.dnaroma.eu'],
   },
   async rewrites() {
     return [
