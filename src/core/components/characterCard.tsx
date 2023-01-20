@@ -113,8 +113,8 @@ export const CharacterCard: FunctionComponent<Props> = props => {
     return cardNode
   } else {
     return (
-      <Link href={`/card/${card.id}`}>
-        <a aria-label={card.prefix}>{cardNode}</a>
+      <Link href={`/card/${card.id}`} aria-label={card.prefix}>
+        {cardNode}
       </Link>
     )
   }

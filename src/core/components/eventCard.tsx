@@ -40,30 +40,28 @@ export const EventCard: FunctionComponent<Props> = memo(props => {
 
   return (
     <Link href={`/event/${event.id}`}>
-      <a>
-        <div className="relative rounded-md overflow-hidden">
-          {!disableSlug && (
-            <DateSlug startAt={event.startAt} aggregateAt={event.aggregateAt} />
-          )}
-          <div className="absolute bottom-4 left-2 z-10 w-1/2">
-            <Image
-              src={getEventLogo(event.assetbundleName)}
-              width={600}
-              height={300}
-              sizes={logoSizes}
-              alt={`${event.name} Logo`}
-            />
-          </div>
+      <div className="relative rounded-md overflow-hidden">
+        {!disableSlug && (
+          <DateSlug startAt={event.startAt} aggregateAt={event.aggregateAt} />
+        )}
+        <div className="absolute bottom-4 left-2 z-10 w-1/2">
           <Image
-            src={getEventBackground(event.assetbundleName)}
-            width={2048}
-            height={1261}
-            sizes={backgroundSizes}
-            alt={`${event.name} Background`}
-            priority={priority}
+            src={getEventLogo(event.assetbundleName)}
+            width={600}
+            height={300}
+            sizes={logoSizes}
+            alt={`${event.name} Logo`}
           />
         </div>
-      </a>
+        <Image
+          src={getEventBackground(event.assetbundleName)}
+          width={2048}
+          height={1261}
+          sizes={backgroundSizes}
+          alt={`${event.name} Background`}
+          priority={priority}
+        />
+      </div>
     </Link>
   )
 })

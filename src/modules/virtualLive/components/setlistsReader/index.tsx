@@ -59,7 +59,10 @@ export const SetlistsReader: FunctionComponent<Props> = props => {
             {setlists.map((setlist, i) => (
               <Fragment>
                 {i !== 0 ? (
-                  <div className="mx-6 my-8 border-t border-gray-200" />
+                  <div
+                    key={`setlist-${setlist.seq}`}
+                    className="mx-6 my-8 border-t border-gray-200"
+                  />
                 ) : null}
                 <div key={`setlist-${setlist.seq}`} className="space-y-4">
                   {setlist.type === 'mc' ? (

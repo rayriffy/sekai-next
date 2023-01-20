@@ -54,9 +54,7 @@ export const Pagination: FunctionComponent<Props> = memo(props => {
             startPoint + i === 0 ? prefix : `${prefix}p/${startPoint + i + 1}`
           }
         >
-          <a>
-            <Page {...{ startPoint, i, current }} />
-          </a>
+          <Page {...{ startPoint, i, current }} />
         </Link>
       ))}
     </div>

@@ -42,14 +42,12 @@ export const CharactersListing: FunctionComponent<Props> = memo(props => {
             {chunk.characters.map(character => (
               <div className="col-span-1" key={`character-${character.id}`}>
                 <Link href={`/character/${character.id}`}>
-                  <a>
-                    <Image
-                      alt={character.firstName}
-                      src={getCharacterBanner(character.id)}
-                      width={character.unit === 'piapro' ? 240 : 320}
-                      height={620}
-                    />
-                  </a>
+                  <Image
+                    alt={character.firstName}
+                    src={getCharacterBanner(character.id)}
+                    width={character.unit === 'piapro' ? 240 : 320}
+                    height={620}
+                  />
                 </Link>
               </div>
             ))}
