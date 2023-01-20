@@ -15,7 +15,6 @@ FROM node:16-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-COPY .next .next
 
 RUN yarn global add pnpm && pnpm build
 
