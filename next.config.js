@@ -46,4 +46,5 @@ module.exports = withPlugins([[withBundleAnalyzer]], {
       },
     ]
   },
+  output: 'standalone',
 })
